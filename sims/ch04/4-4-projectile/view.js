@@ -1,6 +1,6 @@
 // 4.4 Projectile Motion — 3D view. Scene layout ported from the approved Codex preview.
 // Changes: board top face at y = 0 (the launch height), so the dashed height line equals y;
-// ball and marker trim use slate instead of the velocity colour; English labels.
+// ball and marker trim use slate instead of the velocity colour; Korean labels with textbook English terms.
 import { fmt } from '../../../core/format.js';
 import * as M from './model.js';
 
@@ -43,8 +43,8 @@ export function view(stage) {
         stage.mesh(rig, new THREE.BoxGeometry(0.22, 0.7, 0.2), stage.lit(0x536779, 0.55, 0.32), [-0.3, 0.35, z]);
         stage.mesh(rig, new THREE.CylinderGeometry(0.11, 0.11, 0.1, 24), stage.lit(0x8c9ca9, 0.5, 0.3), [-0.3, 0.5, z], [Math.PI / 2, 0, 0]);
       }
-      stage.label('Launch point', toWorld([0, 0.2, -half + 0.6]), 'station');
-      stage.label('Landing point', toWorld([R, 0.2, -half + 0.6]), 'station');
+      stage.label('발사점 (launch point)', toWorld([0, 0.2, -half + 0.6]), 'station');
+      stage.label('도달점', toWorld([R, 0.2, -half + 0.6]), 'station');
 
       const pts = Array.from({ length: 181 }, (_, i) => M.at(T * i / 180, p).position_m);
       const path = stage.mesh(root, new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts.map(v3)), 180, 0.08, 10, false), stage.lit(0x6c8194, 0.12, 0.5));
@@ -59,7 +59,7 @@ export function view(stage) {
 
       const apex = M.at(T / 2, p).position_m;
       stage.ring(root, apex, 0.16, 0x7c8e9e, 0.03, [0, 0, 0]);
-      stage.label(`Maximum height ${fmt(H)} m`, apex, 'apex');
+      stage.label(`최고 높이 (maximum height) ${fmt(H)} m`, apex, 'apex');
 
       // World axes at a corner of the board (readouts use these x, y, z).
       const origin = toWorld([-2.8, 0.05, half - 0.7]);
@@ -73,7 +73,7 @@ export function view(stage) {
       const target = [R * 0.46 * Math.cos(phi), H * 0.37, -R * 0.46 * Math.sin(phi)];
       const direction = v3([-0.23, 0.68, 1.15]).applyAxisAngle(v3([0, 1, 0]), phi).toArray();
       stage.setHome({ target, direction, distance: span * 0.98, minDistance: span * 0.55, maxDistance: span * 3 });
-      return { legend: [{ label: 'Trajectory', color: '#6c8194' }] };
+      return { legend: [{ label: '궤적 (trajectory)', color: '#6c8194' }] };
     },
 
     render(o) {

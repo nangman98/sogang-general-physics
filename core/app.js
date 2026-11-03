@@ -20,20 +20,20 @@ function decimalsOf(step) {
 }
 
 export async function mountScreen({ spec, model, view }) {
-  document.title = `${spec.module} ${spec.title} · Sogang General Physics`;
+  document.title = `${spec.module} ${spec.title} · 서강대 일반물리 시뮬레이션`;
   const body = document.body;
   body.innerHTML = '';
 
   // ---------- header ----------
   const header = el('header', { class: 'page' });
-  header.append(el('div', {}, `<div class="crumb"><a href="${spec.home ?? '../../../index.html'}">${spec.course}</a> · Chapter ${spec.chapter} ${spec.chapterTitle}</div><h1>${spec.module} ${spec.title}</h1>`));
-  header.append(el('p', { class: 'header-note' }, spec.headerNote ?? `Principles of Physics 12e · Module ${spec.module}`));
+  header.append(el('div', {}, `<div class="crumb"><a href="${spec.home ?? '../../../index.html'}">${spec.course}</a> · ${spec.chapter}장 ${spec.chapterTitle}</div><h1>${spec.module} ${spec.title}</h1>`));
+  header.append(el('p', { class: 'header-note' }, spec.headerNote ?? `교재 Principles of Physics 12e · Module ${spec.module}`));
   body.append(header);
 
   // ---------- controls ----------
   const main = el('main', { class: 'sim' });
-  const aside = el('aside', { class: 'panel', 'aria-label': 'Controls' });
-  aside.append(el('div', { class: 'panel-title' }, `Controls<span>SI units</span>`));
+  const aside = el('aside', { class: 'panel', 'aria-label': '실험 설정' });
+  aside.append(el('div', { class: 'panel-title' }, `실험 설정<span>SI 단위</span>`));
   const controls = el('div', { class: 'controls' });
   const inputs = {};
   for (const c of model.params) {
@@ -59,7 +59,7 @@ export async function mountScreen({ spec, model, view }) {
   let timeInput = null, timeOut = null;
   const timed = typeof model.duration === 'function';
   if (timed) {
-    const lab = el('label', { class: 'control', for: 'time' }, `Time<span class="sym"><i>t</i></span>`);
+    const lab = el('label', { class: 'control', for: 'time' }, `시간 (time)<span class="sym"><i>t</i></span>`);
     timeOut = el('output', { for: 'time' });
     timeInput = el('input', { id: 'time', type: 'range', min: 0, max: 1000, step: 1, value: 0 });
     lab.prepend(timeOut); lab.append(timeInput); controls.append(lab);
@@ -67,32 +67,32 @@ export async function mountScreen({ spec, model, view }) {
   const animated = timed || typeof model.step === 'function';
   const run = el('div', { class: 'run' });
   run.hidden = !animated;
-  const play = el('button', { class: 'primary', type: 'button' }, 'Play');
-  const reset = el('button', { type: 'button' }, 'Reset');
+  const play = el('button', { class: 'primary', type: 'button' }, '재생');
+  const reset = el('button', { type: 'button' }, '초기화');
   run.append(play, reset); controls.append(run);
   if (spec.assumptions?.length) controls.append(el('div', { class: 'note' }, '<ul>' + spec.assumptions.map(a => `<li>${a}</li>`).join('') + '</ul>'));
   aside.append(controls);
   if (spec.equations?.length) {
-    const eqs = el('div', { class: 'equations', 'aria-label': 'Equations' });
+    const eqs = el('div', { class: 'equations', 'aria-label': '식' });
     for (const e of spec.equations) eqs.append(el('div', { class: 'eq' }, `<span>${e.html}</span><span class="eqno">${e.no ? `(${e.no})` : ''}</span>`));
     aside.append(eqs);
   }
 
   // ---------- stage ----------
-  const section = el('section', { class: 'view', 'aria-label': '3D scene' });
+  const section = el('section', { class: 'view', 'aria-label': '3D 장면' });
   const stageRoot = el('div', { class: 'stage' });
-  stageRoot.append(el('canvas', { class: 'scene', tabindex: '0', 'aria-label': spec.sceneLabel ?? '3D scene. Drag or use arrow keys to rotate, + and − to zoom, Home to reset.' }));
+  stageRoot.append(el('canvas', { class: 'scene', tabindex: '0', 'aria-label': spec.sceneLabel ?? '3D 장면. 드래그나 방향키로 회전, + 와 − 로 확대, Home으로 시점 초기화' }));
   stageRoot.append(el('div', { class: 'world-labels', 'aria-hidden': 'true' }));
   stageRoot.append(el('div', { class: 'scene-heading' }, `<small>Module ${spec.module}</small><strong>${spec.sceneTitle ?? spec.title}</strong>`));
   const actions = el('div', { class: 'scene-actions' });
-  const resetView = el('button', { type: 'button' }, 'Reset view');
+  const resetView = el('button', { type: 'button' }, '시점 초기화');
   actions.append(resetView); stageRoot.append(actions);
   const footer = el('div', { class: 'scene-footer' });
   const legendBox = el('span', { class: 'legend' });
-  footer.append(legendBox, el('span', { class: 'hint' }, 'Drag to rotate · Scroll or +/− to zoom · Arrow keys'));
+  footer.append(legendBox, el('span', { class: 'hint' }, '드래그로 회전 · 스크롤이나 +/−로 확대 · 방향키'));
   stageRoot.append(footer);
   stageRoot.append(el('canvas', { class: 'compass', width: 152, height: 152, 'aria-hidden': 'true' }));
-  const status = el('div', { class: 'status' }, 'Loading 3D scene…');
+  const status = el('div', { class: 'status' }, '3D 장면 준비 중');
   stageRoot.append(status);
   section.append(stageRoot);
 
@@ -112,12 +112,12 @@ export async function mountScreen({ spec, model, view }) {
   body.append(main);
 
   if (spec.objectives) {
-    const obj = el('section', { class: 'objectives', 'aria-label': 'Textbook objectives' });
-    obj.append(el('h2', {}, 'Textbook link'));
+    const obj = el('section', { class: 'objectives', 'aria-label': '교재 대응' });
+    obj.append(el('h2', {}, '교재 대응'));
     obj.append(el('p', {}, spec.objectives));
     body.append(obj);
   }
-  body.append(el('footer', { class: 'page' }, spec.footer ?? 'Sogang University Department of Physics · Based on Halliday, Resnick, Walker, Principles of Physics, 12th ed. (International Adaptation). No textbook figures or text are reproduced.'));
+  body.append(el('footer', { class: 'page' }, spec.footer ?? '서강대학교 물리학과 · Halliday, Resnick, Walker, Principles of Physics 12판(International Adaptation) 기준. 교재 그림과 본문은 싣지 않았다.'));
 
   // Initial values from the URL, e.g. ?quantity=mass&n=-3 (links for review and for lecture slides).
   const query = new URLSearchParams(location.search);
@@ -181,7 +181,7 @@ export async function mountScreen({ spec, model, view }) {
     setLegend(built.legend);
     refresh();
   }
-  function stop() { playing = false; play.textContent = 'Play'; }
+  function stop() { playing = false; play.textContent = '재생'; }
 
   for (const c of model.params) inputs[c.id].addEventListener('input', () => { if (!c.live) stop(); rebuild(); });
   if (timed) timeInput.addEventListener('input', () => {
@@ -193,7 +193,7 @@ export async function mountScreen({ spec, model, view }) {
   play.addEventListener('click', () => {
     if (playing) { stop(); return; }
     if (timed && state.t >= model.duration(p) - 1e-12) state = model.init(p);
-    playing = true; play.textContent = 'Pause';
+    playing = true; play.textContent = '일시정지';
   });
   reset.addEventListener('click', () => { stop(); state = model.init(p); refresh(); });
   resetView.addEventListener('click', () => stage.resetCamera());

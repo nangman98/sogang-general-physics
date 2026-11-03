@@ -5,9 +5,9 @@
 export const G = 9.8; // m/s^2, value used in Sample Problems 4.4.1 and 4.4.2
 
 export const params = [
-  { id: 'v0', label: 'Launch speed', sym: '<i>v</i><sub>0</sub>', unit: 'm/s', min: 10, max: 30, step: 1, value: 20 },
-  { id: 'theta0', label: 'Launch angle', sym: '<i>θ</i><sub>0</sub>', unit: '°', min: 10, max: 80, step: 1, value: 45 },
-  { id: 'phi', label: 'Turn launch plane', sym: '<i>φ</i>', unit: '°', min: -60, max: 60, step: 5, value: 0 },
+  { id: 'v0', label: '발사 속력 (launch speed)', sym: '<i>v</i><sub>0</sub>', unit: 'm/s', min: 10, max: 30, step: 1, value: 20 },
+  { id: 'theta0', label: '발사각 (launch angle)', sym: '<i>θ</i><sub>0</sub>', unit: '°', min: 10, max: 80, step: 1, value: 45 },
+  { id: 'phi', label: '발사면 회전', sym: '<i>φ</i>', unit: '°', min: -60, max: 60, step: 5, value: 0 },
 ];
 
 const rad = d => d * Math.PI / 180;

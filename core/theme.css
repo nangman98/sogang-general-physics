@@ -84,6 +84,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, canvas:focus-vi
 .reading:last-child { border: 0; }
 .reading small { display: block; color: var(--ink-2); font-size: 12px; line-height: 1.5; margin-bottom: 6px; }
 .reading small i { font-family: var(--math); font-size: 14px; }
+.reading strong i { font-family: var(--math); font-weight: 400; font-size: 17px; }
 .reading strong { display: block; font-weight: 600; font-size: 16px; line-height: 1.5; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
 .below-note { padding: 0 3px; font-size: 12px; line-height: 1.7; margin: 10px 0 0; color: var(--ink-2); }
 .graphs { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 14px; }

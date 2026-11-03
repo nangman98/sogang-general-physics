@@ -1,0 +1,7 @@
+{
+  "name": "sogang-general-physics",
+  "private": true,
+  "type": "module",
+  "description": "Interactive 3D simulations for Sogang University General Physics, based on Principles of Physics 12e",
+  "scripts": { "test": "node --test \"sims/**/*.test.js\"" }
+}

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>4.4 Projectile Motion · Sogang General Physics</title>
+<link rel="stylesheet" href="../../../core/theme.css">
+<script type="importmap">{ "imports": { "three": "../../../vendor/three/three.module.js" } }</script>
+</head>
+<body>
+<noscript>This simulation needs JavaScript and WebGL.</noscript>
+<script type="module">
+import { mountScreen } from '../../../core/app.js';
+import * as model from './model.js';
+import { view } from './view.js';
+import { spec } from './spec.js';
+mountScreen({ spec, model, view }).catch(e => { document.body.insertAdjacentHTML('beforeend', '<pre>' + e.stack + '</pre>'); window.screenError = String(e.stack || e); });
+</script>
+</body>
+</html>

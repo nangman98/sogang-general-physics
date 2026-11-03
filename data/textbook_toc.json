@@ -1,0 +1,2458 @@
+{
+ "source": "Principles of Physics 12e International Adaptation, pdf/ftoc.pdf",
+ "note": "제목 안의 콜론·세미콜론은 ' – ', 장 제목의 em dash는 '–' 로 표기",
+ "chapters": [
+  {
+   "chapter": 1,
+   "title": "Measurement",
+   "course": "I",
+   "modules": [
+    {
+     "id": "1.1",
+     "title": "Measuring Things, Including Lengths"
+    },
+    {
+     "id": "1.2",
+     "title": "Time"
+    },
+    {
+     "id": "1.3",
+     "title": "Mass"
+    }
+   ],
+   "screens": [
+    {
+     "id": "1-1",
+     "parts": [
+      "1.1",
+      "1.2",
+      "1.3"
+     ],
+     "ko": "길이·시간·질량의 크기 비교와 SI 접두어",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 2,
+   "title": "Motion Along a Straight Line",
+   "course": "I",
+   "modules": [
+    {
+     "id": "2.1",
+     "title": "Position, Displacement, and Average Velocity"
+    },
+    {
+     "id": "2.2",
+     "title": "Instantaneous Velocity and Speed"
+    },
+    {
+     "id": "2.3",
+     "title": "Acceleration"
+    },
+    {
+     "id": "2.4",
+     "title": "Constant Acceleration"
+    },
+    {
+     "id": "2.5",
+     "title": "Free-Fall Acceleration"
+    },
+    {
+     "id": "2.6",
+     "title": "Graphical Integration in Motion Analysis"
+    }
+   ],
+   "screens": [
+    {
+     "id": "2-1",
+     "parts": [
+      "2.2",
+      "2.3"
+     ],
+     "ko": "x–t 접선 기울기로 순간 속도, v–t 기울기로 가속도",
+     "priority": "○"
+    },
+    {
+     "id": "2-2",
+     "parts": [
+      "2.4"
+     ],
+     "ko": "x–t, v–t, a–t 그래프 연동",
+     "priority": "★"
+    },
+    {
+     "id": "2-3",
+     "parts": [
+      "2.5"
+     ],
+     "ko": "위로 던진 물체의 자유 낙하",
+     "priority": "○"
+    },
+    {
+     "id": "2-4",
+     "parts": [
+      "2.6"
+     ],
+     "ko": "a–t 넓이로 Δv, v–t 넓이로 Δx",
+     "priority": "★"
+    }
+   ]
+  },
+  {
+   "chapter": 3,
+   "title": "Vectors",
+   "course": "I",
+   "modules": [
+    {
+     "id": "3.1",
+     "title": "Vectors and Their Components"
+    },
+    {
+     "id": "3.2",
+     "title": "Unit Vectors, Adding Vectors by Components"
+    },
+    {
+     "id": "3.3",
+     "title": "Multiplying Vectors"
+    }
+   ],
+   "screens": [
+    {
+     "id": "3-1",
+     "parts": [
+      "3.1",
+      "3.2"
+     ],
+     "ko": "성분 분해와 벡터 덧셈",
+     "priority": "★"
+    },
+    {
+     "id": "3-2",
+     "parts": [
+      "3.3"
+     ],
+     "ko": "내적과 외적",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 4,
+   "title": "Motion in Two and Three Dimensions",
+   "course": "I",
+   "modules": [
+    {
+     "id": "4.1",
+     "title": "Position and Displacement"
+    },
+    {
+     "id": "4.2",
+     "title": "Average Velocity and Instantaneous Velocity"
+    },
+    {
+     "id": "4.3",
+     "title": "Average Acceleration and Instantaneous Acceleration"
+    },
+    {
+     "id": "4.4",
+     "title": "Projectile Motion"
+    },
+    {
+     "id": "4.5",
+     "title": "Uniform Circular Motion"
+    },
+    {
+     "id": "4.6",
+     "title": "Relative Motion in One Dimension"
+    },
+    {
+     "id": "4.7",
+     "title": "Relative Motion in Two Dimensions"
+    }
+   ],
+   "screens": [
+    {
+     "id": "4-1",
+     "parts": [
+      "4.2",
+      "4.3"
+     ],
+     "ko": "곡선 경로의 평균·순간 속도와 가속도 벡터",
+     "priority": "○"
+    },
+    {
+     "id": "4-2",
+     "parts": [
+      "4.4"
+     ],
+     "ko": "포물체 궤적, 수평·수직 운동의 독립",
+     "priority": "★"
+    },
+    {
+     "id": "4-3",
+     "parts": [
+      "4.5"
+     ],
+     "ko": "속도 벡터와 구심 가속도 벡터",
+     "priority": "★"
+    },
+    {
+     "id": "4-4",
+     "parts": [
+      "4.6",
+      "4.7"
+     ],
+     "ko": "강을 건너는 배의 상대 속도",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 5,
+   "title": "Force and Motion–I",
+   "course": "I",
+   "modules": [
+    {
+     "id": "5.1",
+     "title": "Newton's First and Second Laws"
+    },
+    {
+     "id": "5.2",
+     "title": "Some Particular Forces"
+    },
+    {
+     "id": "5.3",
+     "title": "Applying Newton's Laws"
+    }
+   ],
+   "screens": [
+    {
+     "id": "5-1",
+     "parts": [
+      "5.1",
+      "5.2"
+     ],
+     "ko": "여러 힘의 알짜힘과 자유물체도",
+     "priority": "★"
+    },
+    {
+     "id": "5-2",
+     "parts": [
+      "5.3"
+     ],
+     "ko": "연결된 물체(Atwood 기계, 마찰 없는 빗면)",
+     "priority": "★"
+    }
+   ]
+  },
+  {
+   "chapter": 6,
+   "title": "Force and Motion–II",
+   "course": "I",
+   "modules": [
+    {
+     "id": "6.1",
+     "title": "Friction"
+    },
+    {
+     "id": "6.2",
+     "title": "The Drag Force and Terminal Speed"
+    },
+    {
+     "id": "6.3",
+     "title": "Uniform Circular Motion"
+    }
+   ],
+   "screens": [
+    {
+     "id": "6-1",
+     "parts": [
+      "6.1"
+     ],
+     "ko": "정지·운동 마찰, 빗면 임계각",
+     "priority": "★"
+    },
+    {
+     "id": "6-2",
+     "parts": [
+      "6.2"
+     ],
+     "ko": "속력 제곱에 비례하는 항력과 종단 속력",
+     "priority": "★"
+    },
+    {
+     "id": "6-3",
+     "parts": [
+      "6.3"
+     ],
+     "ko": "원운동의 구심력(경사진 커브, 연직 원)",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 7,
+   "title": "Kinetic Energy and Work",
+   "course": "I",
+   "modules": [
+    {
+     "id": "7.1",
+     "title": "Kinetic Energy"
+    },
+    {
+     "id": "7.2",
+     "title": "Work and Kinetic Energy"
+    },
+    {
+     "id": "7.3",
+     "title": "Work Done by the Gravitational Force"
+    },
+    {
+     "id": "7.4",
+     "title": "Work Done by a Spring Force"
+    },
+    {
+     "id": "7.5",
+     "title": "Work Done by a General Variable Force"
+    },
+    {
+     "id": "7.6",
+     "title": "Power"
+    }
+   ],
+   "screens": [
+    {
+     "id": "7-1",
+     "parts": [
+      "7.2"
+     ],
+     "ko": "일–운동에너지 정리",
+     "priority": "★"
+    },
+    {
+     "id": "7-2",
+     "parts": [
+      "7.4",
+      "7.5"
+     ],
+     "ko": "F–x 그래프 넓이로 구하는 일",
+     "priority": "★"
+    },
+    {
+     "id": "7-3",
+     "parts": [
+      "7.6"
+     ],
+     "ko": "일률 P = F·v",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 8,
+   "title": "Potential Energy and Conservation of Energy",
+   "course": "I",
+   "modules": [
+    {
+     "id": "8.1",
+     "title": "Potential Energy"
+    },
+    {
+     "id": "8.2",
+     "title": "Conservation of Mechanical Energy"
+    },
+    {
+     "id": "8.3",
+     "title": "Reading a Potential Energy Curve"
+    },
+    {
+     "id": "8.4",
+     "title": "Work Done on a System by an External Force"
+    },
+    {
+     "id": "8.5",
+     "title": "Conservation of Energy"
+    }
+   ],
+   "screens": [
+    {
+     "id": "8-1",
+     "parts": [
+      "8.2"
+     ],
+     "ko": "트랙과 진자의 K↔U 변환",
+     "priority": "★"
+    },
+    {
+     "id": "8-2",
+     "parts": [
+      "8.3"
+     ],
+     "ko": "반환점, 안정·불안정 평형",
+     "priority": "★"
+    },
+    {
+     "id": "8-3",
+     "parts": [
+      "8.4",
+      "8.5"
+     ],
+     "ko": "마찰이 만드는 열에너지 ΔE_th",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 9,
+   "title": "Center of Mass and Linear Momentum",
+   "course": "I",
+   "modules": [
+    {
+     "id": "9.1",
+     "title": "Center of Mass"
+    },
+    {
+     "id": "9.2",
+     "title": "Newton's Second Law for a System of Particles"
+    },
+    {
+     "id": "9.3",
+     "title": "Linear Momentum"
+    },
+    {
+     "id": "9.4",
+     "title": "Collision and Impulse"
+    },
+    {
+     "id": "9.5",
+     "title": "Conservation of Linear Momentum"
+    },
+    {
+     "id": "9.6",
+     "title": "Momentum and Kinetic Energy in Collisions"
+    },
+    {
+     "id": "9.7",
+     "title": "Elastic Collisions in One Dimension"
+    },
+    {
+     "id": "9.8",
+     "title": "Collisions in Two Dimensions"
+    },
+    {
+     "id": "9.9",
+     "title": "Systems with Varying Mass – A Rocket"
+    }
+   ],
+   "screens": [
+    {
+     "id": "9-1",
+     "parts": [
+      "9.1",
+      "9.2"
+     ],
+     "ko": "공중에서 쪼개지는 물체의 질량중심 궤적",
+     "priority": "★"
+    },
+    {
+     "id": "9-2",
+     "parts": [
+      "9.4"
+     ],
+     "ko": "F–t 넓이와 충격량",
+     "priority": "○"
+    },
+    {
+     "id": "9-3",
+     "parts": [
+      "9.6",
+      "9.7"
+     ],
+     "ko": "1차원 탄성·비탄성 충돌",
+     "priority": "★"
+    },
+    {
+     "id": "9-4",
+     "parts": [
+      "9.8"
+     ],
+     "ko": "2차원 충돌 산란각",
+     "priority": "○"
+    },
+    {
+     "id": "9-5",
+     "parts": [
+      "9.9"
+     ],
+     "ko": "로켓 속도 v_f − v_i = v_rel ln(M_i/M_f)",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 10,
+   "title": "Rotation",
+   "course": "I",
+   "modules": [
+    {
+     "id": "10.1",
+     "title": "Rotational Variables"
+    },
+    {
+     "id": "10.2",
+     "title": "Rotation with Constant Angular Acceleration"
+    },
+    {
+     "id": "10.3",
+     "title": "Relating the Linear and Angular Variables"
+    },
+    {
+     "id": "10.4",
+     "title": "Kinetic Energy of Rotation"
+    },
+    {
+     "id": "10.5",
+     "title": "Calculating the Rotational Inertia"
+    },
+    {
+     "id": "10.6",
+     "title": "Torque"
+    },
+    {
+     "id": "10.7",
+     "title": "Newton's Second Law for Rotation"
+    },
+    {
+     "id": "10.8",
+     "title": "Work and Rotational Kinetic Energy"
+    }
+   ],
+   "screens": [
+    {
+     "id": "10-1",
+     "parts": [
+      "10.2",
+      "10.3"
+     ],
+     "ko": "등각가속도 회전, v = ωr, a_r = ω²r",
+     "priority": "★"
+    },
+    {
+     "id": "10-2",
+     "parts": [
+      "10.5"
+     ],
+     "ko": "모양별 관성모멘트, 평행축 정리",
+     "priority": "○"
+    },
+    {
+     "id": "10-3",
+     "parts": [
+      "10.6",
+      "10.7"
+     ],
+     "ko": "돌림힘과 각가속도(도르래에 감긴 줄과 매달린 물체)",
+     "priority": "★"
+    }
+   ]
+  },
+  {
+   "chapter": 11,
+   "title": "Rolling, Torque, and Angular Momentum",
+   "course": "I",
+   "modules": [
+    {
+     "id": "11.1",
+     "title": "Rolling as Translation and Rotation Combined"
+    },
+    {
+     "id": "11.2",
+     "title": "Forces and Kinetic Energy of Rolling"
+    },
+    {
+     "id": "11.3",
+     "title": "The Yo-Yo"
+    },
+    {
+     "id": "11.4",
+     "title": "Torque Revisited"
+    },
+    {
+     "id": "11.5",
+     "title": "Angular Momentum"
+    },
+    {
+     "id": "11.6",
+     "title": "Newton's Second Law in Angular Form"
+    },
+    {
+     "id": "11.7",
+     "title": "Angular Momentum of a Rigid Body"
+    },
+    {
+     "id": "11.8",
+     "title": "Conservation of Angular Momentum"
+    },
+    {
+     "id": "11.9",
+     "title": "Precession of a Gyroscope"
+    }
+   ],
+   "screens": [
+    {
+     "id": "11-1",
+     "parts": [
+      "11.1"
+     ],
+     "ko": "구르는 바퀴 위 점의 속도(병진과 회전의 합)",
+     "priority": "○"
+    },
+    {
+     "id": "11-2",
+     "parts": [
+      "11.2"
+     ],
+     "ko": "빗면 굴림 경주",
+     "priority": "★"
+    },
+    {
+     "id": "11-3",
+     "parts": [
+      "11.3"
+     ],
+     "ko": "요요의 가속도와 장력",
+     "priority": "○"
+    },
+    {
+     "id": "11-4",
+     "parts": [
+      "11.8"
+     ],
+     "ko": "회전 원판 위 질량 이동과 각운동량 보존",
+     "priority": "★"
+    },
+    {
+     "id": "11-5",
+     "parts": [
+      "11.9"
+     ],
+     "ko": "자이로스코프 세차",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 12,
+   "title": "Equilibrium and Elasticity",
+   "course": "I",
+   "modules": [
+    {
+     "id": "12.1",
+     "title": "Equilibrium"
+    },
+    {
+     "id": "12.2",
+     "title": "Some Examples of Static Equilibrium"
+    },
+    {
+     "id": "12.3",
+     "title": "Elasticity"
+    }
+   ],
+   "screens": [
+    {
+     "id": "12-1",
+     "parts": [
+      "12.2"
+     ],
+     "ko": "벽에 기댄 사다리",
+     "priority": "★"
+    },
+    {
+     "id": "12-2",
+     "parts": [
+      "12.3"
+     ],
+     "ko": "응력–변형률, 영률",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 13,
+   "title": "Gravitation",
+   "course": "I",
+   "modules": [
+    {
+     "id": "13.1",
+     "title": "Newton's Law of Gravitation"
+    },
+    {
+     "id": "13.2",
+     "title": "Gravitation and the Principle of Superposition"
+    },
+    {
+     "id": "13.3",
+     "title": "Gravitation Near Earth's Surface"
+    },
+    {
+     "id": "13.4",
+     "title": "Gravitation Inside Earth"
+    },
+    {
+     "id": "13.5",
+     "title": "Gravitational Potential Energy"
+    },
+    {
+     "id": "13.6",
+     "title": "Planets and Satellites – Kepler's Laws"
+    },
+    {
+     "id": "13.7",
+     "title": "Satellites – Orbits and Energy"
+    },
+    {
+     "id": "13.8",
+     "title": "Einstein and Gravitation"
+    }
+   ],
+   "screens": [
+    {
+     "id": "13-1",
+     "parts": [
+      "13.2"
+     ],
+     "ko": "여러 질량이 만드는 중력장",
+     "priority": "○"
+    },
+    {
+     "id": "13-2",
+     "parts": [
+      "13.4"
+     ],
+     "ko": "지구 관통 터널 속 운동",
+     "priority": "○"
+    },
+    {
+     "id": "13-3",
+     "parts": [
+      "13.6",
+      "13.7"
+     ],
+     "ko": "케플러 법칙, 궤도 에너지와 탈출",
+     "priority": "★"
+    }
+   ]
+  },
+  {
+   "chapter": 14,
+   "title": "Fluids",
+   "course": "I",
+   "modules": [
+    {
+     "id": "14.1",
+     "title": "Fluids, Density, and Pressure"
+    },
+    {
+     "id": "14.2",
+     "title": "Fluids at Rest"
+    },
+    {
+     "id": "14.3",
+     "title": "Measuring Pressure"
+    },
+    {
+     "id": "14.4",
+     "title": "Pascal's Principle"
+    },
+    {
+     "id": "14.5",
+     "title": "Archimedes' Principle"
+    },
+    {
+     "id": "14.6",
+     "title": "The Equation of Continuity"
+    },
+    {
+     "id": "14.7",
+     "title": "Bernoulli's Equation"
+    }
+   ],
+   "screens": [
+    {
+     "id": "14-1",
+     "parts": [
+      "14.2",
+      "14.3",
+      "14.4"
+     ],
+     "ko": "깊이에 따른 압력, 파스칼 원리",
+     "priority": "○"
+    },
+    {
+     "id": "14-2",
+     "parts": [
+      "14.5"
+     ],
+     "ko": "부력과 잠기는 비율",
+     "priority": "★"
+    },
+    {
+     "id": "14-3",
+     "parts": [
+      "14.6",
+      "14.7"
+     ],
+     "ko": "연속 방정식과 베르누이 방정식",
+     "priority": "★"
+    }
+   ]
+  },
+  {
+   "chapter": 15,
+   "title": "Oscillations",
+   "course": "I",
+   "modules": [
+    {
+     "id": "15.1",
+     "title": "Simple Harmonic Motion"
+    },
+    {
+     "id": "15.2",
+     "title": "Energy in Simple Harmonic Motion"
+    },
+    {
+     "id": "15.3",
+     "title": "An Angular Simple Harmonic Oscillator"
+    },
+    {
+     "id": "15.4",
+     "title": "Pendulums, Circular Motion"
+    },
+    {
+     "id": "15.5",
+     "title": "Damped Simple Harmonic Motion"
+    },
+    {
+     "id": "15.6",
+     "title": "Forced Oscillations and Resonance"
+    }
+   ],
+   "screens": [
+    {
+     "id": "15-1",
+     "parts": [
+      "15.1",
+      "15.2"
+     ],
+     "ko": "용수철 SHM과 에너지",
+     "priority": "★"
+    },
+    {
+     "id": "15-2",
+     "parts": [
+      "15.4"
+     ],
+     "ko": "진자 주기(작은 각 근사와 큰 진폭 비교), SHM과 등속 원운동의 대응",
+     "priority": "★"
+    },
+    {
+     "id": "15-3",
+     "parts": [
+      "15.5"
+     ],
+     "ko": "감쇠 진동",
+     "priority": "○"
+    },
+    {
+     "id": "15-4",
+     "parts": [
+      "15.6"
+     ],
+     "ko": "구동 진동수에 따른 진폭과 공명 곡선",
+     "priority": "★"
+    }
+   ]
+  },
+  {
+   "chapter": 16,
+   "title": "Waves–I",
+   "course": "I",
+   "modules": [
+    {
+     "id": "16.1",
+     "title": "Transverse Waves"
+    },
+    {
+     "id": "16.2",
+     "title": "Wave Speed on a Stretched String"
+    },
+    {
+     "id": "16.3",
+     "title": "Energy and Power of a Wave Traveling Along a String"
+    },
+    {
+     "id": "16.4",
+     "title": "The Wave Equation"
+    },
+    {
+     "id": "16.5",
+     "title": "Interference of Waves"
+    },
+    {
+     "id": "16.6",
+     "title": "Phasors"
+    },
+    {
+     "id": "16.7",
+     "title": "Standing Waves and Resonance"
+    }
+   ],
+   "screens": [
+    {
+     "id": "16-1",
+     "parts": [
+      "16.1",
+      "16.2"
+     ],
+     "ko": "진행파 y = y_m sin(kx − ωt), 줄의 파동 속력",
+     "priority": "★"
+    },
+    {
+     "id": "16-2",
+     "parts": [
+      "16.5",
+      "16.6"
+     ],
+     "ko": "두 파의 위상차와 간섭, phasor 합",
+     "priority": "○"
+    },
+    {
+     "id": "16-3",
+     "parts": [
+      "16.7"
+     ],
+     "ko": "양 끝 고정 줄의 정상파",
+     "priority": "★"
+    }
+   ]
+  },
+  {
+   "chapter": 17,
+   "title": "Waves–II",
+   "course": "I",
+   "modules": [
+    {
+     "id": "17.1",
+     "title": "Speed of Sound"
+    },
+    {
+     "id": "17.2",
+     "title": "Traveling Sound Waves"
+    },
+    {
+     "id": "17.3",
+     "title": "Interference"
+    },
+    {
+     "id": "17.4",
+     "title": "Intensity and Sound Level"
+    },
+    {
+     "id": "17.5",
+     "title": "Sources of Musical Sound"
+    },
+    {
+     "id": "17.6",
+     "title": "Beats"
+    },
+    {
+     "id": "17.7",
+     "title": "The Doppler Effect"
+    },
+    {
+     "id": "17.8",
+     "title": "Supersonic Speeds, Shock Waves"
+    }
+   ],
+   "screens": [
+    {
+     "id": "17-1",
+     "parts": [
+      "17.1",
+      "17.2"
+     ],
+     "ko": "음파의 변위와 압력 변화(종파의 입자 운동)",
+     "priority": "★"
+    },
+    {
+     "id": "17-2",
+     "parts": [
+      "17.3"
+     ],
+     "ko": "두 음원의 경로차 간섭",
+     "priority": "○"
+    },
+    {
+     "id": "17-3",
+     "parts": [
+      "17.5"
+     ],
+     "ko": "열린관·닫힌관 정상파",
+     "priority": "★"
+    },
+    {
+     "id": "17-4",
+     "parts": [
+      "17.6"
+     ],
+     "ko": "맥놀이",
+     "priority": "○"
+    },
+    {
+     "id": "17-5",
+     "parts": [
+      "17.7",
+      "17.8"
+     ],
+     "ko": "도플러 효과와 충격파",
+     "priority": "★"
+    }
+   ]
+  },
+  {
+   "chapter": 18,
+   "title": "Temperature, Heat, and the First Law of Thermodynamics",
+   "course": "I",
+   "modules": [
+    {
+     "id": "18.1",
+     "title": "Temperature"
+    },
+    {
+     "id": "18.2",
+     "title": "The Celsius and Fahrenheit Scales"
+    },
+    {
+     "id": "18.3",
+     "title": "Thermal Expansion"
+    },
+    {
+     "id": "18.4",
+     "title": "Absorption of Heat"
+    },
+    {
+     "id": "18.5",
+     "title": "The First Law of Thermodynamics"
+    },
+    {
+     "id": "18.6",
+     "title": "Heat Transfer Mechanisms"
+    }
+   ],
+   "screens": [
+    {
+     "id": "18-1",
+     "parts": [
+      "18.3"
+     ],
+     "ko": "선팽창과 부피 팽창",
+     "priority": "○"
+    },
+    {
+     "id": "18-2",
+     "parts": [
+      "18.4"
+     ],
+     "ko": "비열, 상변화 가열 곡선, 열평형 온도",
+     "priority": "○"
+    },
+    {
+     "id": "18-3",
+     "parts": [
+      "18.5"
+     ],
+     "ko": "p–V 과정별 W, Q, ΔE_int",
+     "priority": "★"
+    },
+    {
+     "id": "18-4",
+     "parts": [
+      "18.6"
+     ],
+     "ko": "판 전도와 복사",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 19,
+   "title": "The Kinetic Theory of Gases",
+   "course": "I",
+   "modules": [
+    {
+     "id": "19.1",
+     "title": "Avogadro's Number"
+    },
+    {
+     "id": "19.2",
+     "title": "Ideal Gases"
+    },
+    {
+     "id": "19.3",
+     "title": "Pressure, Temperature, and RMS Speed"
+    },
+    {
+     "id": "19.4",
+     "title": "Translational Kinetic Energy"
+    },
+    {
+     "id": "19.5",
+     "title": "Mean Free Path"
+    },
+    {
+     "id": "19.6",
+     "title": "The Distribution of Molecular Speeds"
+    },
+    {
+     "id": "19.7",
+     "title": "The Molar Specific Heats of an Ideal Gas"
+    },
+    {
+     "id": "19.8",
+     "title": "Degrees of Freedom and Molar Specific Heats"
+    },
+    {
+     "id": "19.9",
+     "title": "The Adiabatic Expansion of an Ideal Gas"
+    }
+   ],
+   "screens": [
+    {
+     "id": "19-1",
+     "parts": [
+      "19.3",
+      "19.4"
+     ],
+     "ko": "분자 충돌로 생기는 압력과 온도",
+     "priority": "★"
+    },
+    {
+     "id": "19-2",
+     "parts": [
+      "19.5"
+     ],
+     "ko": "평균 자유 경로",
+     "priority": "○"
+    },
+    {
+     "id": "19-3",
+     "parts": [
+      "19.6"
+     ],
+     "ko": "Maxwell 속력 분포",
+     "priority": "★"
+    },
+    {
+     "id": "19-4",
+     "parts": [
+      "19.7",
+      "19.8",
+      "19.9"
+     ],
+     "ko": "자유도와 몰비열, 단열 팽창",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 20,
+   "title": "Entropy and the Second Law of Thermodynamics",
+   "course": "I",
+   "modules": [
+    {
+     "id": "20.1",
+     "title": "Entropy"
+    },
+    {
+     "id": "20.2",
+     "title": "Entropy in the Real World – Engines"
+    },
+    {
+     "id": "20.3",
+     "title": "Refrigerators and Real Engines"
+    },
+    {
+     "id": "20.4",
+     "title": "A Statistical View of Entropy"
+    }
+   ],
+   "screens": [
+    {
+     "id": "20-1",
+     "parts": [
+      "20.1"
+     ],
+     "ko": "자유 팽창과 등온 팽창의 엔트로피 변화",
+     "priority": "○"
+    },
+    {
+     "id": "20-2",
+     "parts": [
+      "20.2",
+      "20.3"
+     ],
+     "ko": "카르노 기관과 냉동기",
+     "priority": "★"
+    },
+    {
+     "id": "20-3",
+     "parts": [
+      "20.4"
+     ],
+     "ko": "상자 속 분자 배치 수와 엔트로피",
+     "priority": "★"
+    }
+   ]
+  },
+  {
+   "chapter": 21,
+   "title": "Coulomb's Law",
+   "course": "II",
+   "modules": [
+    {
+     "id": "21.1",
+     "title": "Coulomb's Law"
+    },
+    {
+     "id": "21.2",
+     "title": "Charge Is Quantized"
+    },
+    {
+     "id": "21.3",
+     "title": "Charge Is Conserved"
+    }
+   ],
+   "screens": [
+    {
+     "id": "21-1",
+     "parts": [
+      "21.1"
+     ],
+     "ko": "점전하 사이 힘과 중첩",
+     "priority": "★"
+    }
+   ]
+  },
+  {
+   "chapter": 22,
+   "title": "Electric Fields",
+   "course": "II",
+   "modules": [
+    {
+     "id": "22.1",
+     "title": "The Electric Field"
+    },
+    {
+     "id": "22.2",
+     "title": "The Electric Field Due to a Charged Particle"
+    },
+    {
+     "id": "22.3",
+     "title": "The Electric Field Due to a Dipole"
+    },
+    {
+     "id": "22.4",
+     "title": "The Electric Field Due to a Line of Charge"
+    },
+    {
+     "id": "22.5",
+     "title": "The Electric Field Due to a Charged Disk"
+    },
+    {
+     "id": "22.6",
+     "title": "A Point Charge in an Electric Field"
+    },
+    {
+     "id": "22.7",
+     "title": "A Dipole in an Electric Field"
+    }
+   ],
+   "screens": [
+    {
+     "id": "22-1",
+     "parts": [
+      "22.1",
+      "22.2",
+      "22.3"
+     ],
+     "ko": "점전하·쌍극자 전기장선",
+     "priority": "★"
+    },
+    {
+     "id": "22-2",
+     "parts": [
+      "22.4",
+      "22.5"
+     ],
+     "ko": "선전하·원판 전기장을 조각 합으로 적분",
+     "priority": "○"
+    },
+    {
+     "id": "22-3",
+     "parts": [
+      "22.6",
+      "22.7"
+     ],
+     "ko": "균일 장 속 전하 궤적, 쌍극자 돌림힘",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 23,
+   "title": "Gauss' Law",
+   "course": "II",
+   "modules": [
+    {
+     "id": "23.1",
+     "title": "Electric Flux"
+    },
+    {
+     "id": "23.2",
+     "title": "Gauss' Law"
+    },
+    {
+     "id": "23.3",
+     "title": "A Charged Isolated Conductor"
+    },
+    {
+     "id": "23.4",
+     "title": "Applying Gauss' Law – Cylindrical Symmetry"
+    },
+    {
+     "id": "23.5",
+     "title": "Applying Gauss' Law – Planar Symmetry"
+    },
+    {
+     "id": "23.6",
+     "title": "Applying Gauss' Law – Spherical Symmetry"
+    }
+   ],
+   "screens": [
+    {
+     "id": "23-1",
+     "parts": [
+      "23.1",
+      "23.2"
+     ],
+     "ko": "닫힌 면의 선속과 내부 전하",
+     "priority": "★"
+    },
+    {
+     "id": "23-2",
+     "parts": [
+      "23.4",
+      "23.5",
+      "23.6"
+     ],
+     "ko": "대칭 분포의 E(r)",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 24,
+   "title": "Electric Potential",
+   "course": "II",
+   "modules": [
+    {
+     "id": "24.1",
+     "title": "Electric Potential"
+    },
+    {
+     "id": "24.2",
+     "title": "Equipotential Surfaces and the Electric Field"
+    },
+    {
+     "id": "24.3",
+     "title": "Potential Due to a Charged Particle"
+    },
+    {
+     "id": "24.4",
+     "title": "Potential Due to an Electric Dipole"
+    },
+    {
+     "id": "24.5",
+     "title": "Potential Due to a Continuous Charge Distribution"
+    },
+    {
+     "id": "24.6",
+     "title": "Calculating the Field from the Potential"
+    },
+    {
+     "id": "24.7",
+     "title": "Electric Potential Energy of a System of Charged Particles"
+    },
+    {
+     "id": "24.8",
+     "title": "Potential of a Charged Isolated Conductor"
+    }
+   ],
+   "screens": [
+    {
+     "id": "24-1",
+     "parts": [
+      "24.2",
+      "24.3"
+     ],
+     "ko": "등전위선과 전기장선",
+     "priority": "★"
+    },
+    {
+     "id": "24-2",
+     "parts": [
+      "24.6"
+     ],
+     "ko": "E = −∇V",
+     "priority": "○"
+    },
+    {
+     "id": "24-3",
+     "parts": [
+      "24.7"
+     ],
+     "ko": "전하 배치의 퍼텐셜에너지",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 25,
+   "title": "Capacitance",
+   "course": "II",
+   "modules": [
+    {
+     "id": "25.1",
+     "title": "Capacitance"
+    },
+    {
+     "id": "25.2",
+     "title": "Calculating the Capacitance"
+    },
+    {
+     "id": "25.3",
+     "title": "Capacitors in Parallel and in Series"
+    },
+    {
+     "id": "25.4",
+     "title": "Energy Stored in an Electric Field"
+    },
+    {
+     "id": "25.5",
+     "title": "Capacitor with a Dielectric"
+    },
+    {
+     "id": "25.6",
+     "title": "Dielectrics and Gauss' Law"
+    }
+   ],
+   "screens": [
+    {
+     "id": "25-1",
+     "parts": [
+      "25.2",
+      "25.3"
+     ],
+     "ko": "평행판 C = ε₀A/d, 직렬·병렬 연결",
+     "priority": "★"
+    },
+    {
+     "id": "25-2",
+     "parts": [
+      "25.4",
+      "25.5"
+     ],
+     "ko": "저장 에너지, 유전체 삽입",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 26,
+   "title": "Current and Resistance",
+   "course": "II",
+   "modules": [
+    {
+     "id": "26.1",
+     "title": "Electric Current"
+    },
+    {
+     "id": "26.2",
+     "title": "Current Density"
+    },
+    {
+     "id": "26.3",
+     "title": "Resistance and Resistivity"
+    },
+    {
+     "id": "26.4",
+     "title": "Ohm's Law"
+    },
+    {
+     "id": "26.5",
+     "title": "Power, Semiconductors, Superconductors"
+    }
+   ],
+   "screens": [
+    {
+     "id": "26-1",
+     "parts": [
+      "26.2"
+     ],
+     "ko": "drift speed와 전류밀도",
+     "priority": "○"
+    },
+    {
+     "id": "26-2",
+     "parts": [
+      "26.3",
+      "26.4"
+     ],
+     "ko": "비저항과 I–V 특성",
+     "priority": "★"
+    }
+   ]
+  },
+  {
+   "chapter": 27,
+   "title": "Circuits",
+   "course": "II",
+   "modules": [
+    {
+     "id": "27.1",
+     "title": "Single-Loop Circuits"
+    },
+    {
+     "id": "27.2",
+     "title": "Multiloop Circuits"
+    },
+    {
+     "id": "27.3",
+     "title": "The Ammeter and the Voltmeter"
+    },
+    {
+     "id": "27.4",
+     "title": "RC Circuits"
+    }
+   ],
+   "screens": [
+    {
+     "id": "27-1",
+     "parts": [
+      "27.1",
+      "27.2"
+     ],
+     "ko": "내부 저항 있는 회로, Kirchhoff 법칙",
+     "priority": "★"
+    },
+    {
+     "id": "27-2",
+     "parts": [
+      "27.4"
+     ],
+     "ko": "충전·방전, τ = RC",
+     "priority": "★"
+    }
+   ]
+  },
+  {
+   "chapter": 28,
+   "title": "Magnetic Fields",
+   "course": "II",
+   "modules": [
+    {
+     "id": "28.1",
+     "title": "Magnetic Fields and the Definition of B"
+    },
+    {
+     "id": "28.2",
+     "title": "Crossed Fields – Discovery of the Electron"
+    },
+    {
+     "id": "28.3",
+     "title": "Crossed Fields – The Hall Effect"
+    },
+    {
+     "id": "28.4",
+     "title": "A Circulating Charged Particle"
+    },
+    {
+     "id": "28.5",
+     "title": "Cyclotrons and Synchrotrons"
+    },
+    {
+     "id": "28.6",
+     "title": "Magnetic Force on a Current-Carrying Wire"
+    },
+    {
+     "id": "28.7",
+     "title": "Torque on a Current Loop"
+    },
+    {
+     "id": "28.8",
+     "title": "The Magnetic Dipole Moment"
+    }
+   ],
+   "screens": [
+    {
+     "id": "28-1",
+     "parts": [
+      "28.1"
+     ],
+     "ko": "운동하는 전하가 받는 자기력 F = qv × B",
+     "priority": "★"
+    },
+    {
+     "id": "28-2",
+     "parts": [
+      "28.2"
+     ],
+     "ko": "crossed fields 속 전자 편향",
+     "priority": "○"
+    },
+    {
+     "id": "28-3",
+     "parts": [
+      "28.3"
+     ],
+     "ko": "Hall 전압",
+     "priority": "○"
+    },
+    {
+     "id": "28-4",
+     "parts": [
+      "28.4",
+      "28.5"
+     ],
+     "ko": "원운동·나선 운동, cyclotron",
+     "priority": "★"
+    },
+    {
+     "id": "28-5",
+     "parts": [
+      "28.7"
+     ],
+     "ko": "전류 고리의 돌림힘",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 29,
+   "title": "Magnetic Fields Due to Currents",
+   "course": "II",
+   "modules": [
+    {
+     "id": "29.1",
+     "title": "Magnetic Field Due to a Current"
+    },
+    {
+     "id": "29.2",
+     "title": "Force Between Two Parallel Currents"
+    },
+    {
+     "id": "29.3",
+     "title": "Ampere's Law"
+    },
+    {
+     "id": "29.4",
+     "title": "Solenoids and Toroids"
+    },
+    {
+     "id": "29.5",
+     "title": "A Current-Carrying Coil as a Magnetic Dipole"
+    }
+   ],
+   "screens": [
+    {
+     "id": "29-1",
+     "parts": [
+      "29.1",
+      "29.2"
+     ],
+     "ko": "Biot–Savart 법칙, 평행 전류 사이 힘",
+     "priority": "★"
+    },
+    {
+     "id": "29-2",
+     "parts": [
+      "29.3",
+      "29.4"
+     ],
+     "ko": "Ampere 법칙, 솔레노이드 내부 자기장",
+     "priority": "★"
+    }
+   ]
+  },
+  {
+   "chapter": 30,
+   "title": "Induction and Inductance",
+   "course": "II",
+   "modules": [
+    {
+     "id": "30.1",
+     "title": "Faraday's Law and Lenz's Law"
+    },
+    {
+     "id": "30.2",
+     "title": "Induction and Energy Transfers"
+    },
+    {
+     "id": "30.3",
+     "title": "Induced Electric Fields"
+    },
+    {
+     "id": "30.4",
+     "title": "Inductors and Inductance"
+    },
+    {
+     "id": "30.5",
+     "title": "Self-Induction"
+    },
+    {
+     "id": "30.6",
+     "title": "RL Circuits"
+    },
+    {
+     "id": "30.7",
+     "title": "Energy Stored in a Magnetic Field"
+    },
+    {
+     "id": "30.8",
+     "title": "Energy Density of a Magnetic Field"
+    },
+    {
+     "id": "30.9",
+     "title": "Mutual Induction"
+    }
+   ],
+   "screens": [
+    {
+     "id": "30-1",
+     "parts": [
+      "30.1",
+      "30.2"
+     ],
+     "ko": "자석과 코일, 레일 위 막대",
+     "priority": "★"
+    },
+    {
+     "id": "30-2",
+     "parts": [
+      "30.6"
+     ],
+     "ko": "전류 증가·감소, τ = L/R",
+     "priority": "★"
+    },
+    {
+     "id": "30-3",
+     "parts": [
+      "30.9"
+     ],
+     "ko": "두 코일의 상호 유도",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 31,
+   "title": "Electromagnetic Oscillations and Alternating Current",
+   "course": "II",
+   "modules": [
+    {
+     "id": "31.1",
+     "title": "LC Oscillations"
+    },
+    {
+     "id": "31.2",
+     "title": "Damped Oscillations in an RLC Circuit"
+    },
+    {
+     "id": "31.3",
+     "title": "Forced Oscillations of Three Simple Circuits"
+    },
+    {
+     "id": "31.4",
+     "title": "The Series RLC Circuit"
+    },
+    {
+     "id": "31.5",
+     "title": "Power in Alternating-Current Circuits"
+    },
+    {
+     "id": "31.6",
+     "title": "Transformers"
+    }
+   ],
+   "screens": [
+    {
+     "id": "31-1",
+     "parts": [
+      "31.1",
+      "31.2"
+     ],
+     "ko": "전기·자기 에너지 교환과 감쇠",
+     "priority": "★"
+    },
+    {
+     "id": "31-2",
+     "parts": [
+      "31.3",
+      "31.4",
+      "31.5"
+     ],
+     "ko": "교류 phasor, 공명, 역률",
+     "priority": "★"
+    },
+    {
+     "id": "31-3",
+     "parts": [
+      "31.6"
+     ],
+     "ko": "변압기",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 32,
+   "title": "Maxwell's Equations – Magnetism of Matter",
+   "course": "II",
+   "modules": [
+    {
+     "id": "32.1",
+     "title": "Gauss' Law for Magnetic Fields"
+    },
+    {
+     "id": "32.2",
+     "title": "Induced Magnetic Fields"
+    },
+    {
+     "id": "32.3",
+     "title": "Displacement Current"
+    },
+    {
+     "id": "32.4",
+     "title": "Magnets"
+    },
+    {
+     "id": "32.5",
+     "title": "Magnetism and Electrons"
+    },
+    {
+     "id": "32.6",
+     "title": "Diamagnetism"
+    },
+    {
+     "id": "32.7",
+     "title": "Paramagnetism"
+    },
+    {
+     "id": "32.8",
+     "title": "Ferromagnetism"
+    }
+   ],
+   "screens": [
+    {
+     "id": "32-1",
+     "parts": [
+      "32.2",
+      "32.3"
+     ],
+     "ko": "충전 중 축전기의 변위 전류와 유도 자기장",
+     "priority": "★"
+    },
+    {
+     "id": "32-2",
+     "parts": [
+      "32.8"
+     ],
+     "ko": "hysteresis 곡선",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 33,
+   "title": "Electromagnetic Waves",
+   "course": "II",
+   "modules": [
+    {
+     "id": "33.1",
+     "title": "Electromagnetic Waves"
+    },
+    {
+     "id": "33.2",
+     "title": "Energy Transport and the Poynting Vector"
+    },
+    {
+     "id": "33.3",
+     "title": "Radiation Pressure"
+    },
+    {
+     "id": "33.4",
+     "title": "Polarization"
+    },
+    {
+     "id": "33.5",
+     "title": "Reflection and Refraction"
+    },
+    {
+     "id": "33.6",
+     "title": "Total Internal Reflection"
+    },
+    {
+     "id": "33.7",
+     "title": "Polarization by Reflection"
+    }
+   ],
+   "screens": [
+    {
+     "id": "33-1",
+     "parts": [
+      "33.1"
+     ],
+     "ko": "E와 B의 진행",
+     "priority": "★"
+    },
+    {
+     "id": "33-2",
+     "parts": [
+      "33.4"
+     ],
+     "ko": "Malus 법칙",
+     "priority": "★"
+    },
+    {
+     "id": "33-3",
+     "parts": [
+      "33.5",
+      "33.6",
+      "33.7"
+     ],
+     "ko": "Snell 법칙, 전반사, Brewster 각",
+     "priority": "★"
+    }
+   ]
+  },
+  {
+   "chapter": 34,
+   "title": "Images",
+   "course": "II",
+   "modules": [
+    {
+     "id": "34.1",
+     "title": "Images and Plane Mirrors"
+    },
+    {
+     "id": "34.2",
+     "title": "Spherical Mirrors"
+    },
+    {
+     "id": "34.3",
+     "title": "Spherical Refracting Surfaces"
+    },
+    {
+     "id": "34.4",
+     "title": "Thin Lenses"
+    },
+    {
+     "id": "34.5",
+     "title": "Optical Instruments"
+    },
+    {
+     "id": "34.6",
+     "title": "Three Proofs"
+    }
+   ],
+   "screens": [
+    {
+     "id": "34-1",
+     "parts": [
+      "34.2"
+     ],
+     "ko": "구면 거울 광선 추적",
+     "priority": "★"
+    },
+    {
+     "id": "34-2",
+     "parts": [
+      "34.4"
+     ],
+     "ko": "얇은 렌즈 광선 추적",
+     "priority": "★"
+    },
+    {
+     "id": "34-3",
+     "parts": [
+      "34.5"
+     ],
+     "ko": "두 렌즈 조합(현미경, 망원경)",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 35,
+   "title": "Interference",
+   "course": "II",
+   "modules": [
+    {
+     "id": "35.1",
+     "title": "Light as a Wave"
+    },
+    {
+     "id": "35.2",
+     "title": "Young's Interference Experiment"
+    },
+    {
+     "id": "35.3",
+     "title": "Interference and Double-Slit Intensity"
+    },
+    {
+     "id": "35.4",
+     "title": "Interference from Thin Films"
+    },
+    {
+     "id": "35.5",
+     "title": "Michelson's Interferometer"
+    }
+   ],
+   "screens": [
+    {
+     "id": "35-1",
+     "parts": [
+      "35.2",
+      "35.3"
+     ],
+     "ko": "이중 슬릿 세기 분포",
+     "priority": "★"
+    },
+    {
+     "id": "35-2",
+     "parts": [
+      "35.4"
+     ],
+     "ko": "얇은 막 간섭",
+     "priority": "★"
+    },
+    {
+     "id": "35-3",
+     "parts": [
+      "35.5"
+     ],
+     "ko": "Michelson 간섭계",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 36,
+   "title": "Diffraction",
+   "course": "II",
+   "modules": [
+    {
+     "id": "36.1",
+     "title": "Single-Slit Diffraction"
+    },
+    {
+     "id": "36.2",
+     "title": "Intensity in Single-Slit Diffraction"
+    },
+    {
+     "id": "36.3",
+     "title": "Diffraction by a Circular Aperture"
+    },
+    {
+     "id": "36.4",
+     "title": "Diffraction by a Double Slit"
+    },
+    {
+     "id": "36.5",
+     "title": "Diffraction Gratings"
+    },
+    {
+     "id": "36.6",
+     "title": "Gratings – Dispersion and Resolving Power"
+    },
+    {
+     "id": "36.7",
+     "title": "X-Ray Diffraction"
+    }
+   ],
+   "screens": [
+    {
+     "id": "36-1",
+     "parts": [
+      "36.1",
+      "36.2"
+     ],
+     "ko": "단일 슬릿 회절 세기",
+     "priority": "★"
+    },
+    {
+     "id": "36-2",
+     "parts": [
+      "36.3"
+     ],
+     "ko": "Rayleigh 기준",
+     "priority": "○"
+    },
+    {
+     "id": "36-3",
+     "parts": [
+      "36.4",
+      "36.5"
+     ],
+     "ko": "회절 포락선 안의 간섭, 회절격자",
+     "priority": "★"
+    },
+    {
+     "id": "36-4",
+     "parts": [
+      "36.7"
+     ],
+     "ko": "Bragg 법칙",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 37,
+   "title": "Relativity",
+   "course": "II",
+   "modules": [
+    {
+     "id": "37.1",
+     "title": "Simultaneity and Time Dilation"
+    },
+    {
+     "id": "37.2",
+     "title": "The Relativity of Length"
+    },
+    {
+     "id": "37.3",
+     "title": "The Lorentz Transformation"
+    },
+    {
+     "id": "37.4",
+     "title": "The Relativity of Velocities"
+    },
+    {
+     "id": "37.5",
+     "title": "Doppler Effect for Light"
+    },
+    {
+     "id": "37.6",
+     "title": "Momentum and Energy"
+    }
+   ],
+   "screens": [
+    {
+     "id": "37-1",
+     "parts": [
+      "37.1"
+     ],
+     "ko": "빛 시계의 시간 지연",
+     "priority": "★"
+    },
+    {
+     "id": "37-2",
+     "parts": [
+      "37.2",
+      "37.3"
+     ],
+     "ko": "길이 수축, 시공간 도표",
+     "priority": "★"
+    },
+    {
+     "id": "37-3",
+     "parts": [
+      "37.4",
+      "37.5",
+      "37.6"
+     ],
+     "ko": "속도 덧셈, 빛의 도플러 효과, 상대론적 에너지",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 38,
+   "title": "Photons and Matter Waves",
+   "course": "II",
+   "modules": [
+    {
+     "id": "38.1",
+     "title": "The Photon, the Quantum of Light"
+    },
+    {
+     "id": "38.2",
+     "title": "The Photoelectric Effect"
+    },
+    {
+     "id": "38.3",
+     "title": "Photons, Momentum, Compton Scattering, Light Interference"
+    },
+    {
+     "id": "38.4",
+     "title": "The Birth of Quantum Physics"
+    },
+    {
+     "id": "38.5",
+     "title": "Electrons and Matter Waves"
+    },
+    {
+     "id": "38.6",
+     "title": "Schrödinger's Equation"
+    },
+    {
+     "id": "38.7",
+     "title": "Heisenberg's Uncertainty Principle"
+    },
+    {
+     "id": "38.8",
+     "title": "Reflection from a Potential Step"
+    },
+    {
+     "id": "38.9",
+     "title": "Tunneling Through a Potential Barrier"
+    }
+   ],
+   "screens": [
+    {
+     "id": "38-1",
+     "parts": [
+      "38.2"
+     ],
+     "ko": "정지 전압과 진동수",
+     "priority": "★"
+    },
+    {
+     "id": "38-2",
+     "parts": [
+      "38.3"
+     ],
+     "ko": "Compton 산란",
+     "priority": "○"
+    },
+    {
+     "id": "38-3",
+     "parts": [
+      "38.5"
+     ],
+     "ko": "de Broglie 파장과 전자 간섭",
+     "priority": "○"
+    },
+    {
+     "id": "38-4",
+     "parts": [
+      "38.7"
+     ],
+     "ko": "파동 묶음의 폭",
+     "priority": "○"
+    },
+    {
+     "id": "38-5",
+     "parts": [
+      "38.8",
+      "38.9"
+     ],
+     "ko": "계단 반사와 장벽 투과",
+     "priority": "★"
+    }
+   ]
+  },
+  {
+   "chapter": 39,
+   "title": "More About Matter Waves",
+   "course": "II",
+   "modules": [
+    {
+     "id": "39.1",
+     "title": "Energies of a Trapped Electron"
+    },
+    {
+     "id": "39.2",
+     "title": "Wave Functions of a Trapped Electron"
+    },
+    {
+     "id": "39.3",
+     "title": "An Electron in a Finite Well"
+    },
+    {
+     "id": "39.4",
+     "title": "Two- and Three-Dimensional Electron Traps"
+    },
+    {
+     "id": "39.5",
+     "title": "The Hydrogen Atom"
+    }
+   ],
+   "screens": [
+    {
+     "id": "39-1",
+     "parts": [
+      "39.1",
+      "39.2"
+     ],
+     "ko": "무한 우물의 준위와 파동함수",
+     "priority": "★"
+    },
+    {
+     "id": "39-2",
+     "parts": [
+      "39.3"
+     ],
+     "ko": "유한 우물",
+     "priority": "○"
+    },
+    {
+     "id": "39-3",
+     "parts": [
+      "39.5"
+     ],
+     "ko": "수소 원자 준위, 전이, 스펙트럼 계열",
+     "priority": "★"
+    }
+   ]
+  },
+  {
+   "chapter": 40,
+   "title": "All About Atoms",
+   "course": "II",
+   "modules": [
+    {
+     "id": "40.1",
+     "title": "Properties of Atoms"
+    },
+    {
+     "id": "40.2",
+     "title": "The Stern–Gerlach Experiment"
+    },
+    {
+     "id": "40.3",
+     "title": "Magnetic Resonance"
+    },
+    {
+     "id": "40.4",
+     "title": "Exclusion Principle and Multiple Electrons in a Trap"
+    },
+    {
+     "id": "40.5",
+     "title": "Building the Periodic Table"
+    },
+    {
+     "id": "40.6",
+     "title": "X Rays and the Ordering of the Elements"
+    },
+    {
+     "id": "40.7",
+     "title": "Lasers"
+    }
+   ],
+   "screens": [
+    {
+     "id": "40-1",
+     "parts": [
+      "40.2"
+     ],
+     "ko": "스핀에 따른 빔 분리",
+     "priority": "○"
+    },
+    {
+     "id": "40-2",
+     "parts": [
+      "40.4",
+      "40.5"
+     ],
+     "ko": "배타 원리와 준위 채우기",
+     "priority": "★"
+    },
+    {
+     "id": "40-3",
+     "parts": [
+      "40.6"
+     ],
+     "ko": "X선 스펙트럼, Moseley 그림",
+     "priority": "○"
+    },
+    {
+     "id": "40-4",
+     "parts": [
+      "40.7"
+     ],
+     "ko": "population inversion",
+     "priority": "○"
+    }
+   ]
+  },
+  {
+   "chapter": 41,
+   "title": "Conduction of Electricity in Solids",
+   "course": "II",
+   "modules": [
+    {
+     "id": "41.1",
+     "title": "The Electrical Properties of Metals"
+    },
+    {
+     "id": "41.2",
+     "title": "Semiconductors and Doping"
+    },
+    {
+     "id": "41.3",
+     "title": "The p-n Junction and the Transistor"
+    }
+   ],
+   "screens": [
+    {
+     "id": "41-1",
+     "parts": [
+      "41.1"
+     ],
+     "ko": "에너지 띠와 Fermi–Dirac 점유",
+     "priority": "★"
+    },
+    {
+     "id": "41-2",
+     "parts": [
+      "41.2",
+      "41.3"
+     ],
+     "ko": "도핑과 p–n 접합",
+     "priority": "○"
+    }
+   ]
+  }
+ ],
+ "out_of_scope": [
+  {
+   "chapter": 42,
+   "title": "Nuclear Physics",
+   "modules": 8
+  },
+  {
+   "chapter": 43,
+   "title": "Energy from the Nucleus",
+   "modules": 6
+  },
+  {
+   "chapter": 44,
+   "title": "Quarks, Leptons, and the Big Bang",
+   "modules": 4
+  }
+ ]
+}

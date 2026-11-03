@@ -1,45 +1,88 @@
-# 1-1 Length, Time, and Mass in SI Units
+# 1-1 길이·시간·질량과 SI 단위
 
-Screen for Principles of Physics 12e, Chapter 1, Modules 1.1–1.3 (Learning Objectives 1.1.1–1.1.4, 1.2.1–1.2.2, 1.3.1–1.3.2).
+교재 Principles of Physics 12e, Chapter 1, Module 1.1–1.3 (Learning Objectives 1.1.1–1.1.4, 1.2.1–1.2.2, 1.3.1–1.3.2) 화면이다. 활동은 셋이다.
 
-## Model
+| 활동 | 학생이 하는 일 | 교재 대응 |
+|---|---|---|
+| 크기 비교 (order of magnitude) | slider나 재생으로 10ⁿ을 바꾸며 겹친 정육면체 안의 물체를 실제 크기 비로 본다. 시간은 빛이 가는 거리 ct, 질량은 같은 질량의 물 정육면체로 그린다 | LO 1.1.1, 1.1.2, 1.1.4, 1.2.2, 1.3.1, Table 1.1.2 |
+| 단위 변환 (changing units) | 1 m, 1 m², 1 m³이 cm·mm 칸으로 나뉘는 것을 보고 확인 문제를 푼다. 인자를 한 번만 곱한 답과 뒤집은 답은 따로 알려 준다 | LO 1.1.3, Eq. (1.1.6) 사슬 변환 |
+| 밀도 (density) | 두 물질 정육면체를 저울에 올리고 한 변을 바꿔 수평을 만든다 | LO 1.3.2, Eq. (1.3.2) |
 
-| Item | Content |
+## 모델
+
+| 항목 | 내용 |
 |---|---|
-| Inputs | base quantity (length, time, mass) and the power of ten *n* |
-| Prefix rule | largest SI prefix that is a multiple of 3 and not above the exponent, so the number in front is 1, 10, or 100. Prefixes for mass attach to the gram (10<sup>*n*</sup> kg = 10<sup>*n*+3</sup> g) |
-| Prefix table | the 20 prefixes of textbook Table 1.1.2 (10<sup>24</sup> to 10<sup>−24</sup>). Values outside the table show "outside Table 1.1.2" |
-| Conversion | chain-link conversion written with factors equal to unity, as in textbook Eq. (1.1.6) |
-| Integrator | none (no time evolution) |
-| Tests | `model.test.js`, 6 tests (prefix table, length and mass prefixes, conversion text, closest reference, reference values against sources) |
+| 장면 길이 | 길이 L = 10ⁿ m, 시간 L = c·10ⁿ s, 질량 L = (10ⁿ kg / ρ)^(1/3), ρ = 1000 kg/m³ |
+| 접두어 | 지수 이하의 가장 큰 3의 배수 접두어(앞수 1–999). 질량은 gram에 붙인다. 표 1.1.2 밖(10²⁶ 초과, 10⁻²⁴ 미만)은 "범위 밖" |
+| 확인 문제 | 값 8개를 차례로 쓰는 결정적 목록, 홀수 번째는 작은 단위에서 m로 되돌리는 문제. 상대 오차 10⁻⁶ 안이면 정답 |
+| 저울 | m = ρa³. 질량 차가 큰 쪽의 2% 안이면 수평. slider 간격 0.01 cm |
+| 시험 | `model.test.js` 8개(접두어 표, 접두어 표기, ct와 물 정육면체, 가장 가까운 물체, 변환 인자, 문제 채점과 흔한 실수 2종, 저울, 출처 대조) |
 
-## Reference values
+## 기준 물체
 
-Values are rounded to three significant figures. None is copied from the textbook tables.
+값은 유효숫자 3자리로 반올림했다. 교재 표(Table 1.1.3, 1.2.1, 1.3.1)에서 옮기지 않았다. "약"은 대략적인 전형값이다.
 
-| Object | Value used | Source value | Source |
-|---|---|---|---|
-| Proton charge radius | 8.41 × 10⁻¹⁶ m | 0.8414 fm | CODATA 2018, Rev. Mod. Phys. 93, 025010 (2021) |
-| Bohr radius | 5.29 × 10⁻¹¹ m | 5.291 772 109 03 × 10⁻¹¹ m | CODATA 2018 |
-| Helium–neon laser wavelength | 6.33 × 10⁻⁷ m | 632.8 nm | standard He–Ne line |
-| Height of Mount Everest | 8.85 × 10³ m | 8848.86 m | China–Nepal joint survey, announced 2020-12-08 |
-| Mean radius of Earth | 6.37 × 10⁶ m | 6371.0 km | IUGG mean radius, Moritz, J. Geodesy 74, 128 (2000) |
-| Earth–Sun distance (1 au) | 1.50 × 10¹¹ m | 149 597 870 700 m (exact) | IAU 2012 Resolution B2 |
-| Distance to Proxima Centauri | 4.02 × 10¹⁶ m | 1.302 pc | Gaia DR3 parallax 768.07 mas |
-| One period of the cesium-133 clock radiation | 1.09 × 10⁻¹⁰ s | 1/9 192 631 770 s (exact) | SI Brochure, 9th ed. (BIPM 2019) |
-| Light travel time over 1 m | 3.34 × 10⁻⁹ s | 1/299 792 458 s (exact) | SI Brochure, 9th ed. |
-| Mean lifetime of the muon | 2.20 × 10⁻⁶ s | 2.196 981 1 μs | Particle Data Group 2022 |
-| One minute, one day | 60 s, 86 400 s | exact | definition |
-| One year (365.25 days) | 3.16 × 10⁷ s | 31 557 600 s | Julian year, IAU |
-| Age of the universe | 4.35 × 10¹⁷ s | 13.787 Gyr | Planck 2018 results VI, A&A 641, A6 (2020) |
-| Electron | 9.11 × 10⁻³¹ kg | 9.109 383 701 5 × 10⁻³¹ kg | CODATA 2018 |
-| Atomic mass unit (1 u) | 1.66 × 10⁻²⁷ kg | 1.660 538 86 × 10⁻²⁷ kg | textbook Eq. (1.3.1) |
-| Proton | 1.67 × 10⁻²⁷ kg | 1.672 621 923 69 × 10⁻²⁷ kg | CODATA 2018 |
-| One liter of water | 1.00 kg | density 1.00 g/cm³ | textbook Module 1.3 |
-| The Moon | 7.35 × 10²² kg | 7.346 × 10²² kg | NASA Moon Fact Sheet |
-| Earth | 5.97 × 10²⁴ kg | 5.9722 × 10²⁴ kg | IAU 2015 Resolution B3 nominal GM with CODATA 2018 G |
-| The Sun | 1.99 × 10³⁰ kg | 1.9884 × 10³⁰ kg | IAU 2015 Resolution B3 nominal GM with CODATA 2018 G |
+| 물체 | 쓴 값 | 출처 |
+|---|---|---|
+| 양성자 지름 | 1.68 × 10⁻¹⁵ m | CODATA 2018 양성자 전하 반지름 0.8414 fm의 2배 |
+| 수소 원자 지름 | 1.06 × 10⁻¹⁰ m | CODATA 2018 Bohr 반지름의 2배 |
+| DNA 이중나선 지름 | 약 2 × 10⁻⁹ m | The Physics Factbook (hypertextbook.com/facts) |
+| 독감 바이러스 | 약 1 × 10⁻⁷ m | 지름 80–120 nm, The Physics Factbook |
+| 헬륨–네온 레이저 빛의 파장 | 6.33 × 10⁻⁷ m | 632.8 nm 표준선 |
+| 적혈구 지름 | 약 7.5 × 10⁻⁶ m | The Physics Factbook |
+| 머리카락 굵기 | 약 7 × 10⁻⁵ m | 17–181 μm, The Physics Factbook |
+| 100원 동전 지름, 질량 | 2.40 × 10⁻² m, 5.42 × 10⁻³ kg | 한국은행 주화 규격 24.0 mm, 5.42 g |
+| 성인 키 | 약 1.7 m | 국가기술표준원 Size Korea 8차(2021) |
+| 축구장 길이 | 105 m | FIFA 경기장 권장 규격 105 m × 68 m |
+| 에베레스트산 높이 | 8.85 × 10³ m | 8848.86 m, 중국–네팔 공동 측량(2020-12-08 발표) |
+| 서울–부산 직선거리 | 3.25 × 10⁵ m | 두 시청 좌표(37.5665N 126.9780E, 35.1796N 129.0756E)와 R = 6371.0 km로 계산 |
+| 지구 지름 | 1.27 × 10⁷ m | IUGG 평균 반지름 6371.0 km의 2배 |
+| 지구–달 거리 | 3.84 × 10⁸ m | NASA Moon Fact Sheet 384 400 km |
+| 태양 지름 | 1.39 × 10⁹ m | IAU 2015 Resolution B3 공칭 반지름 695 700 km의 2배 |
+| 지구–태양 거리 (1 au) | 1.50 × 10¹¹ m | IAU 2012 Resolution B2, 149 597 870 700 m |
+| 해왕성 궤도 반지름 | 4.50 × 10¹² m | JPL 행성 평균 궤도 요소 a = 30.07 au |
+| 1광년 | 9.46 × 10¹⁵ m | Julian year × c |
+| 프록시마 센타우리까지 | 4.02 × 10¹⁶ m | Gaia DR3 연주 시차 768.07 mas |
+| 우리 은하 지름 | 약 9.5 × 10²⁰ m | 약 10만 광년 |
+| 안드로메다은하까지 | 2.4 × 10²² m | 785 kpc, McConnachie et al., MNRAS 356, 979 (2005) |
+| 관측 가능한 우주 지름 | 8.8 × 10²⁶ m | 공동 반지름 46.5 Gly(Planck 2018 우주론 변수)의 2배 |
+| 빛이 양성자 지름을 지나는 시간 | 5.6 × 10⁻²⁴ s | 위 양성자 지름 / c |
+| 세슘-133 시계 빛의 한 주기 | 1.09 × 10⁻¹⁰ s | SI Brochure 9판(BIPM 2019), 1/9 192 631 770 s |
+| 3 GHz 컴퓨터 클럭 한 주기 | 3.33 × 10⁻¹⁰ s | 정의 1/(3 × 10⁹ Hz) |
+| 빛이 1 m 가는 시간 | 3.34 × 10⁻⁹ s | 1/299 792 458 s, SI 정의 |
+| 뮤온 평균 수명 | 2.20 × 10⁻⁶ s | Particle Data Group 2022, 2.196 981 1 μs |
+| 빛이 서울–부산 가는 시간 | 1.08 × 10⁻³ s | 위 직선거리 / c |
+| 심장 박동 한 번 | 약 0.8 s | 안정 시 분당 75회 |
+| 1분, 1일 | 60 s, 86 400 s | 정의 |
+| 빛이 태양에서 지구까지 | 499 s | 1 au / c |
+| 1년 (365.25일) | 3.16 × 10⁷ s | Julian year, IAU |
+| 사람 기대 수명 (82.7년) | 2.61 × 10⁹ s | 통계청 2022년 생명표 기대수명 82.7년 |
+| 피라미드의 나이 | 약 1.4 × 10¹¹ s | 기자 대피라미드 건설 약 4500년 전 |
+| 지구의 나이 | 1.43 × 10¹⁷ s | 4.54 Gyr, Dalrymple, Geol. Soc. London Spec. Publ. 190, 205 (2001) |
+| 우주의 나이 | 4.35 × 10¹⁷ s | 13.787 Gyr, Planck 2018 results VI, A&A 641, A6 (2020) |
+| 전자 | 9.11 × 10⁻³¹ kg | CODATA 2018 |
+| 양성자 | 1.67 × 10⁻²⁷ kg | CODATA 2018 |
+| 물 분자 | 2.99 × 10⁻²⁶ kg | 18.015 u × CODATA 2018 u |
+| 대장균 한 마리 | 약 1 × 10⁻¹⁵ kg | 약 1 pg, The Physics Factbook |
+| 모기 한 마리 | 약 2.5 × 10⁻⁶ kg | 약 2.5 mg, The Physics Factbook |
+| 물 1 L | 1.00 kg | 교재 Module 1.3, 물의 밀도 1.00 g/cm³ |
+| 성인 | 약 70 kg | 전형값 |
+| 승용차 | 약 1.5 × 10³ kg | 전형값 |
+| A380 여객기 최대 이륙 질량 | 5.75 × 10⁵ kg | Airbus A380 제원 575 t |
+| 지구 대기 전체 | 5.15 × 10¹⁸ kg | Trenberth & Smith, J. Climate 18, 864 (2005) |
+| 달 | 7.35 × 10²² kg | NASA Moon Fact Sheet |
+| 지구 | 5.97 × 10²⁴ kg | IAU 2015 B3 공칭 GM과 CODATA 2018 G |
+| 태양 | 1.99 × 10³⁰ kg | IAU 2015 B3 공칭 GM과 CODATA 2018 G |
+| 우리 은하 (암흑 물질 포함) | 약 3.1 × 10⁴² kg | 1.54 × 10¹² 태양 질량, Watkins et al., ApJ 873, 118 (2019) |
 
-## Known limits
+## 물질 밀도
 
-The prefix shown is always a multiple of 3, so 10⁻² m appears as 10 mm rather than 1 cm. Both are correct. The textbook uses centimeter often.
+| 물질 | ρ | 출처 |
+|---|---|---|
+| 물 (water) | 1.00 g/cm³ | 교재 Module 1.3 |
+| 알루미늄 (aluminum) | 2.70 g/cm³ | CRC Handbook of Chemistry and Physics |
+| 철 (iron) | 7.87 g/cm³ | CRC Handbook, 교재 Chapter 1 문제의 값과 같다 |
+| 금 (gold) | 19.3 g/cm³ | CRC Handbook |
+| 백금 (platinum) | 21.4 g/cm³ | CRC Handbook. 교재는 "물의 약 21배"로 적는다 |
+
+Still open: "약" 값 가운데 성인·승용차·심장 박동은 전형값이라 출처 문헌이 없다. 검토 때 빼거나 문헌값으로 바꿀지 정한다.

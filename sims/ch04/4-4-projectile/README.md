@@ -15,4 +15,4 @@ Screen for Principles of Physics 12e, Module 4.4 (Learning Objectives 4.4.1–4.
 
 ## Origin
 
-The scene layout comes from the Codex 3D preview `93_Codex/3D_시안/3d_quality.html` that the user approved on 2026-11-03. Changes from that preview are the board top at *y* = 0 (the dashed height line now equals *y*), default φ = 0, English text, three significant figures with the U+2212 minus sign, and the horizontal range *R* in place of mechanical energy per mass (energy is Chapter 8).
+The scene layout comes from the Codex 3D preview `93_Codex/3D_시안/3d_quality.html` that the user approved on 2026-11-03. Changes from that preview are the board top at *y* = 0 (the dashed height line now equals *y*), default φ = 0, Korean text with textbook English terms, three significant figures with the U+2212 minus sign, and the horizontal range *R* in place of mechanical energy per mass (energy is Chapter 8).

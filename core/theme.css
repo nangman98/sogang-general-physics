@@ -117,3 +117,23 @@ footer.page { max-width: var(--max-width); padding: 0 32px 22px; margin: auto; f
   .readings { padding: 14px 0; } .reading strong { font-size: 14px; }
   .objectives, footer.page { padding-left: 16px; padding-right: 16px; }
 }
+
+/* Activity tabs (segmented control) and activity panel (quiz, status badge). */
+.tabs { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 4px; margin: 0 0 20px; background: #eef1f5; padding: 4px; border-radius: 9px; }
+.tabs button { border: 0; background: transparent; padding: 8px 4px; font-size: 13px; font-weight: 600; color: var(--ink-2); border-radius: 6px; }
+.tabs button[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px #26354a1a; }
+.activity-panel:empty { display: none; }
+.activity-panel { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line-2); font-size: 13px; line-height: 1.6; }
+.activity-panel h3 { font-size: 13px; margin: 0 0 6px; }
+.activity-panel .question { font-size: 15px; margin: 4px 0 8px; }
+.activity-panel .answer { display: grid; grid-template-columns: 1fr auto; gap: 6px; }
+.activity-panel input[type=text] { min-width: 0; padding: 9px 10px; border: 1px solid #d5dce5; border-radius: 7px; font-variant-numeric: tabular-nums; }
+.activity-panel .row { display: flex; gap: 6px; margin-top: 8px; }
+.feedback { margin-top: 8px; padding: 8px 10px; border-radius: 7px; background: #f3f6f9; }
+.feedback.ok { background: #e7f4ee; color: #0b5d3f; }
+.feedback.no { background: #fbeee8; color: #8a3200; }
+.badge { display: block; text-align: center; padding: 9px; border-radius: 8px; background: #eaf1f8; color: #1d4f7a; font-weight: 650; margin-top: 4px; }
+.badge.level { background: #e7f4ee; color: #0b5d3f; }
+.equations .katex { font-size: 1.08em; }
+.reading strong .katex { font-size: 1.05em; font-weight: 400; }
+.legend { display: inline-flex; gap: 14px; margin-right: 6px; }

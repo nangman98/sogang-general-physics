@@ -13,12 +13,12 @@ function minus(s) {
   return s.replace(/^-/, MINUS);
 }
 
-// fmt(x, {sig, zero}) -> string. zero: values with |x| < zero print as 0.
+// fmt(x, {sig, zero}) -> string. zero: values with |x| < zero print as 0 (default 0, so 1e-15 m stays visible).
 // sci: true forces scientific notation (used where the notation itself is the lesson, e.g. 1-1).
-export function fmt(x, { sig = 3, zero = 1e-12, sci = false } = {}) {
+export function fmt(x, { sig = 3, zero = 0, sci = false } = {}) {
   if (x === null || x === undefined || Number.isNaN(x)) return '—';
   if (!Number.isFinite(x)) return x > 0 ? '∞' : MINUS + '∞';
-  if (Math.abs(x) < zero) return '0';
+  if (x === 0 || Math.abs(x) < zero) return '0';
   const a = Math.abs(x);
   // From 10^sig up, trailing zeros would hide the number of significant figures (5330 vs 5.33 × 10³).
   if (sci || a >= 10 ** sig || a < 1e-2) {

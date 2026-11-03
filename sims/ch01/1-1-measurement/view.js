@@ -5,10 +5,9 @@
 import { fmt, superscript } from '../../../core/format.js';
 import * as M from './model.js';
 import { texNum } from './spec.js';
+import { createModels } from './objects3d.js';
 
 const S0 = 3;                     // world size of the current-size cube (edge = 10^n of the shown quantity)
-const BAR = /(거리|까지|길이|파장|반지름|1광년)/;   // length objects drawn as horizontal bars
-const TALL = /(키|높이)/;                         // heights drawn as vertical bars; the rest as balls
 
 export function view(stage, ctx) {
   const { THREE, v3 } = stage;
@@ -28,8 +27,25 @@ export function view(stage, ctx) {
   };
 
   // ---------------- scale ----------------
+  // Look of each reference object. length: model at true size. mass: water cube of the same mass next to the object
+  // at its true size (size in m, null = point particle). time: light bar ct with the object drawn to scale when ct is
+  // its size, otherwise an icon drawn at a fixed fraction of the bar (not to scale).
+  const LOOK = {
+    length: { '양성자 지름': 'proton', '수소 원자 지름': 'hydrogen', 'DNA 이중나선 지름': 'dna', '독감 바이러스': 'virus', '헬륨–네온 레이저 빛의 파장': 'wave',
+      '적혈구 지름': 'rbc', '머리카락 굵기': 'hair', '100원 동전 지름': 'coin', '성인 키': 'person', '축구장 길이': 'field', '에베레스트산 높이': 'everest',
+      '서울–부산 직선거리': 'cities', '지구 지름': 'earth', '지구–달 거리': 'earthMoon', '태양 지름': 'sun', '지구–태양 거리 (1 au)': 'au',
+      '해왕성 궤도 반지름': 'planets', '1광년': 'lightyear', '프록시마 센타우리까지': 'proxima', '우리 은하 지름': 'galaxy', '안드로메다은하까지': 'localGroup', '관측 가능한 우주 지름': 'universe' },
+    mass: { '전자': ['electron', null], '양성자': ['proton', 1.68e-15], '물 분자': ['water', 2.8e-10], '대장균 한 마리': ['ecoli', 2e-6], '모기 한 마리': ['mosquito', 5e-3],
+      '100원 동전': ['coin', 2.40e-2], '물 1 L': ['bottle', 0.3], '성인': ['person', 1.7], '승용차': ['car', 4.5], 'A380 여객기 최대 이륙 질량': ['plane', 72.7],
+      '지구 대기 전체': ['atmosphere', 1.27e7], '달': ['moon', 3.47e6], '지구': ['earth', 1.27e7], '태양': ['sun', 1.39e9], '우리 은하 (암흑 물질 포함)': ['galaxy', 9.5e20] },
+    time: { '빛이 양성자 지름을 지나는 시간': ['proton', true], '세슘-133 시계 빛의 한 주기': ['atom'], '3 GHz 컴퓨터 클럭 한 주기': ['chip'], '빛이 1 m 가는 시간': [null],
+      '뮤온 평균 수명': ['particle'], '빛이 서울–부산 가는 시간': ['cities', true], '심장 박동 한 번': ['heart'], '1분': ['clock'], '빛이 태양에서 지구까지': ['au', true],
+      '1일': ['clock'], '1년 (365.25일)': ['au'], '사람 기대 수명 (82.7년)': ['lifespan'], '피라미드의 나이': ['pyramid'], '지구의 나이': ['earth'], '우주의 나이': ['universe'] },
+  };
+
   function buildScale(p) {
     const q = M.QUANTITIES[p.quantity];
+    const build = createModels(stage);
     stage.board(stage.group, -3, 11, 14, 0);
     stage.floorPlane(-1.45);
     const kMin = Math.floor(M.sceneLog(p.quantity, q.min)) - 2, kMax = Math.ceil(M.sceneLog(p.quantity, q.max)) + 2;
@@ -39,56 +55,73 @@ export function view(stage, ctx) {
       const tag = stage.label(`10${superscript(k)} m`, [0, 0, 0], 'station', { dy: -10 });
       cubes.push({ k, box, tag });
     }
-    const here = stage.mesh(stage.group, new THREE.BoxGeometry(S0, S0, S0), stage.flat(0x0072b2, { transparent: true, opacity: 0.1, depthWrite: false }), [S0 / 2, S0 / 2, -S0 / 2], [0, 0, 0], false);
+    const here = stage.mesh(stage.group, new THREE.BoxGeometry(S0, S0, S0), stage.flat(0x0072b2, { transparent: true, opacity: 0.07, depthWrite: false }), [S0 / 2, S0 / 2, -S0 / 2], [0, 0, 0], false);
     here.renderOrder = 3;
     const hereEdges = cubeEdges(0x0072b2, 0.9); hereEdges.scale.setScalar(S0);
     const hereTag = stage.label('', [S0 / 2, S0 + 0.1, -S0 / 2], 'apex', { dy: -16 });
 
+    const part = (name, sizeM, role) => {
+      const m = name ? build(name) : null;
+      if (!m) return null;
+      stage.group.add(m.group);
+      return { g: m.group, depth: m.depth, sizeM, role };
+    };
     const objs = M.OBJECTS[p.quantity].map((o, i) => {
-      const L = M.sceneLength(p.quantity, o.value);
-      const kind = p.quantity === 'mass' ? 'cube' : p.quantity === 'time' || BAR.test(o.name) ? 'bar' : TALL.test(o.name) ? 'tall' : 'ball';
-      const g = new THREE.Group(); stage.group.add(g);
-      if (kind === 'ball') stage.mesh(g, new THREE.SphereGeometry(0.5, 32, 20), stage.lit(0xe69f00, 0.2, 0.45), [0.5, 0.5, 0.5]);
-      else if (kind === 'cube') stage.mesh(g, new THREE.BoxGeometry(1, 1, 1), new THREE.MeshStandardMaterial({ color: 0x56b4e9, transparent: true, opacity: 0.55, roughness: 0.2 }), [0.5, 0.5, 0.5]);
-      else if (kind === 'tall') stage.mesh(g, new THREE.BoxGeometry(0.06, 1, 0.06), stage.lit(0xe69f00, 0.2, 0.45), [0.03, 0.5, 0.03]);
-      else stage.mesh(g, new THREE.BoxGeometry(1, 0.025, 0.025), p.quantity === 'time' ? stage.flat(0xd8a400) : stage.lit(0xe69f00, 0.2, 0.45), [0.5, 0.0125, 0.0125]);
-      const value = p.quantity === 'time' ? `${M.QUANTITIES.time.symbol} = ${o.approx ? '약 ' : ''}${fmt(o.value)} s` : `${o.approx ? '약 ' : ''}${fmt(o.value)} ${q.unit}`;
+      const parts = [];
+      if (p.quantity === 'length') parts.push(part(LOOK.length[o.name], o.value, 'main'));
+      if (p.quantity === 'mass') {
+        const cube = new THREE.Group();
+        stage.mesh(cube, new THREE.BoxGeometry(1, 1, 1), new THREE.MeshStandardMaterial({ color: 0x56b4e9, transparent: true, opacity: 0.45, roughness: 0.15, depthWrite: false }), [0.5, 0.5, 0]);
+        stage.group.add(cube);
+        parts.push({ g: cube, depth: 1, sizeM: M.sceneLength('mass', o.value), role: 'main' });
+        const [name, size] = LOOK.mass[o.name] ?? [];
+        parts.push(part(name, size ?? M.sceneLength('mass', o.value) * 0.12, 'beside'));
+      }
+      if (p.quantity === 'time') {
+        const L = M.sceneLength('time', o.value), bar = new THREE.Group();
+        stage.mesh(bar, new THREE.BoxGeometry(1, 1, 1), stage.flat(0xffc21a), [0.5, 0.5, 0], [0, 0, 0], false);
+        stage.group.add(bar);
+        parts.push({ g: bar, depth: 0.02, sizeM: L, role: 'bar' });
+        const [name, toScale] = LOOK.time[o.name] ?? [];
+        parts.push(part(name, toScale ? L : L * 0.16, toScale ? 'scaled' : 'icon'));
+      }
+      const value = `${o.approx ? '약 ' : ''}${fmt(o.value)} ${q.unit}`;
       const tag = stage.label(`${o.name}<br><span style="font-weight:500">${value}</span>`, [0, 0, 0], 'tag', { dy: -14 });
-      return { o, L, kind, g, tag, z: 0.15 + (i % 3) * 0.05 };
+      return { o, parts: parts.filter(Boolean), tag, lane: 0.2 + (i % 3) * 0.35 };
     });
 
     stage.setHome({ target: [1.6, 1.3, -1.2], direction: [-0.45, 0.5, 1], distance: 11.5, minDistance: 5, maxDistance: 30 });
     cur = {
       render(o) {
-        const nL = o.nL;
+        const nL = o.nL, k = 10 ** (-nL) * S0;
         hereTag.move([S0 / 2, S0 + 0.1, -S0 / 2]);
         hereTag.set(`${o.prefix ? o.prefix.text : fmt(o.value, { sci: true }) + ' ' + q.unit}`);
         for (const c of cubes) {
-          const s = 10 ** (c.k - nL) * S0;
-          const show = s > 0.05 && s < 80;
+          const s = 10 ** (c.k - nL) * S0, show = s > 0.05 && s < 80;
           c.box.visible = show;
           if (show) { c.box.scale.setScalar(s); c.box.material.opacity = s > 12 ? Math.max(0, 0.8 * (1 - (s - 12) / 68)) : 0.8; }
           c.tag.node.dataset.off = show && s > 0.6 && s < 16 ? '0' : '1';
           c.tag.move([s, s, 0]);
         }
         for (const it of objs) {
-          const s = it.L * 10 ** (-nL) * S0;
-          const show = s > 0.02 && s < 60;
-          it.g.visible = show;
-          if (show) {
-            if (it.kind === 'bar') it.g.scale.set(s, Math.max(s, 0.6), Math.max(s, 0.6));
-            else if (it.kind === 'tall') it.g.scale.set(Math.max(s, 0.6), s, Math.max(s, 0.6));
-            else it.g.scale.setScalar(s);
-            it.g.position.set(it.kind === 'bar' ? 0 : it.kind === 'tall' ? 0.3 : 0.05, 0, it.kind === 'bar' ? it.z * 4 : it.kind === 'tall' ? 0.5 : 0.1);
+          let anchor = null, xNext = 0.05;
+          for (const pt of it.parts) {
+            const s = pt.sizeM * k, show = s > 0.015 && s < (p.quantity === 'mass' && pt.role === 'main' ? 9 : 60);
+            pt.g.visible = show;
+            if (!show) continue;
+            if (pt.role === 'bar') { pt.g.scale.set(s, Math.max(0.03, Math.min(s * 0.02, 0.08)), Math.max(0.03, Math.min(s * 0.02, 0.08))); pt.g.position.set(0, 0.02, it.lane + 0.6); }
+            else if (pt.role === 'icon') { const si = Math.min(s, 1.2); pt.g.scale.setScalar(si); pt.g.position.set(-si - 0.1, 0, it.lane + 0.6); }
+            else if (pt.role === 'scaled') { pt.g.scale.setScalar(s); pt.g.position.set(0, 0.05, it.lane + 0.6 + pt.depth * s / 2 + 0.1); }
+            else { pt.g.scale.setScalar(s); pt.g.position.set(xNext, 0, it.lane + pt.depth * s / 2); xNext += s * (pt.role === 'main' && p.quantity === 'mass' ? 1 : 0) + 0.15; }
+            if (!anchor) anchor = { s, depth: pt.depth, role: pt.role, z: pt.g.position.z };
           }
-          it.tag.node.dataset.off = show && s > 0.15 && s < 20 ? '0' : '1';
-          const top = it.kind === 'bar' ? 0.08 : s;
-          if (it.kind === 'tall') { it.tag.move([0.3, s, 0.5]); continue; }
-          it.tag.move([it.kind === 'bar' ? Math.min(s, 6) / 2 : s / 2 + 0.05, top, it.kind === 'bar' ? it.z * 4 : 0.1 + s / 2]);
+          const main = it.parts[0], s = main ? main.sizeM * k : 0;
+          it.tag.node.dataset.off = anchor && s > 0.12 && s < 25 ? '0' : '1';
+          if (anchor) it.tag.move(p.quantity === 'time' ? [Math.min(s, 6) / 2, 0.15, it.lane + 0.6] : [Math.min(s, 6) / 2 + 0.05, Math.min(s, 6) + 0.05, anchor.z]);
         }
       },
     };
-    return { legend: [{ label: '지금 크기', color: '#0072b2' }, { label: p.quantity === 'time' ? '빛이 가는 거리' : p.quantity === 'mass' ? '같은 질량의 물' : '물체', color: p.quantity === 'mass' ? '#56b4e9' : '#e69f00' }] };
+    return { legend: [{ label: '지금 크기', color: '#0072b2' }, ...(p.quantity === 'time' ? [{ label: '빛이 가는 거리 ct', color: '#ffc21a' }] : p.quantity === 'mass' ? [{ label: '같은 질량의 물', color: '#56b4e9' }] : [])] };
   }
 
   // ---------------- convert ----------------

@@ -24,6 +24,8 @@ header.page { max-width: var(--max-width); margin: auto; padding: 24px 32px 20px
 .crumb { font-size: 12px; letter-spacing: .04em; color: var(--ink-2); font-weight: 600; }
 .crumb a { text-decoration: none; }
 .crumb a:hover { text-decoration: underline; }
+.back { display: inline-block; margin-bottom: 10px; padding: 5px 10px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface); color: var(--ink); font-size: 13px; font-weight: 600; text-decoration: none; }
+.back:hover { background: #eef1f5; }
 h1 { font-size: 25px; letter-spacing: -.02em; margin: 6px 0 0; font-weight: 700; }
 .header-note { color: var(--ink-2); font-size: 12px; line-height: 1.6; text-align: right; margin: 0; }
 
@@ -43,7 +45,8 @@ input[type=range] { display: block; width: 100%; margin: 12px 0 0; height: 4px; 
 button { border: 1px solid #d5dce5; background: var(--surface); color: var(--ink); border-radius: 7px; padding: 9px 12px; }
 button:hover { background: #f0f5f9; }
 button:focus-visible, input:focus-visible, select:focus-visible, canvas:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
-.run { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+.run { display: grid; grid-template-columns: 1fr auto auto; gap: 8px; }
+.run .speed { padding: 0 8px; background: #f8fafc; color: var(--ink); border: 1px solid #d5dce5; border-radius: 7px; font-size: 13px; font-variant-numeric: tabular-nums; }
 .run .primary { background: var(--accent); border-color: var(--accent); color: white; font-weight: 600; padding: 11px; }
 .run .primary:hover { background: var(--accent-hover); }
 .note { font-size: 12px; color: var(--ink-2); line-height: 1.7; margin: 16px 0 0; }
@@ -61,7 +64,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, canvas:focus-vi
 .scene-heading strong { display: block; margin-top: 4px; font-size: 18px; font-weight: 650; letter-spacing: -.01em; }
 .scene-actions { position: absolute; right: 18px; top: 18px; display: flex; gap: 6px; }
 .scene-actions button { font-size: 12px; background: #ffffffe6; border-color: #d8e0e8; }
-.scene-footer { position: absolute; bottom: 16px; left: 22px; pointer-events: none; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; font-size: 12px; color: var(--ink-2); max-width: calc(100% - 120px); }
+.scene-footer { position: absolute; bottom: 14px; left: 18px; pointer-events: none; display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; font-size: 12px; color: var(--ink-2); max-width: calc(100% - 120px); padding: 6px 10px; border-radius: 8px; background: #f4f6f8e6; }
 .key { display: inline-flex; align-items: center; gap: 6px; }
 .key i { width: 16px; height: 3px; border-radius: 3px; background: var(--color); }
 .hint { color: var(--ink-3); font-size: 12px; }
@@ -72,6 +75,8 @@ button:focus-visible, input:focus-visible, select:focus-visible, canvas:focus-vi
 .world-labels { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 .world-label { position: absolute; transform: translate(-50%, -50%); white-space: nowrap; line-height: 1.4; font-variant-numeric: tabular-nums; font-weight: 600; pointer-events: none; }
 .world-label i { font-family: var(--math); font-weight: 400; font-style: italic; }
+/* Value after a name on an arrow, e.g. v⃗ 10.0 m/s (department's earlier labs). */
+.world-label .val { font-family: var(--font); font-weight: 700; font-size: 12.5px; font-style: normal; font-variant-numeric: tabular-nums; margin-left: 2px; }
 .world-label.apex { font-size: 14px; color: #40546a; background: #fffffff2; border: 1px solid #d5dde5; padding: 5px 9px; border-radius: 5px; box-shadow: 0 2px 5px #213b4c0b; }
 .world-label.measure { font-size: 12px; color: #f8fafc; background: #263e50e8; padding: 2px 5px; border-radius: 3px; }
 .world-label.station { font-size: 12px; background: #fffffff0; color: #435466; border: 1px solid #dbe2e8; padding: 3px 8px; border-radius: 4px; }
@@ -85,7 +90,9 @@ button:focus-visible, input:focus-visible, select:focus-visible, canvas:focus-vi
 .reading small { display: block; color: var(--ink-2); font-size: 12px; line-height: 1.5; margin-bottom: 6px; }
 .reading small i { font-family: var(--math); font-size: 14px; }
 .reading strong i { font-family: var(--math); font-weight: 400; font-size: 17px; }
-.reading strong { display: block; font-weight: 600; font-size: 16px; line-height: 1.5; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.reading strong { display: block; font-weight: 700; font-size: 18px; line-height: 1.45; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+/* Unit after a number in a readout, smaller and grey as in the department's earlier labs (user 2026-11-04). */
+.reading strong .u { font-size: 0.72em; font-weight: 500; color: var(--ink-2); margin-left: 1px; }
 .below-note { padding: 0 3px; font-size: 12px; line-height: 1.7; margin: 10px 0 0; color: var(--ink-2); }
 .graphs { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 14px; }
 .graph { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px 8px; }
@@ -136,4 +143,32 @@ footer.page { max-width: var(--max-width); padding: 0 32px 22px; margin: auto; f
 .badge.level { background: #e7f4ee; color: #0b5d3f; }
 .equations .katex { font-size: 1.08em; }
 .reading strong .katex { font-size: 1.05em; font-weight: 400; }
-.legend { display: inline-flex; gap: 14px; margin-right: 6px; }
+.legend { display: inline-flex; flex-wrap: wrap; gap: 4px 14px; margin-right: 6px; }
+.legend .key { white-space: nowrap; }
+/* Graph boards inside the scene (core/graph3d.js). */
+.world-label.gtick { font-size: 12px; font-weight: 500; color: #435466; }
+.world-label.gtitle { font-size: 13px; font-weight: 600; color: #1a1a1a; }
+.world-label.gtitle i { font-weight: 400; font-size: 15px; }
+.world-label.gval { font-size: 12.5px; font-weight: 700; background: #ffffffe0; padding: 0 5px; border-radius: 4px; font-variant-numeric: tabular-nums; transform: translate(0, -50%); }
+.world-label.gval i { font-family: var(--math); font-weight: 400; }
+/* Prediction and checking panel (core/quiz.js). */
+.quiz .choices { border: 0; margin: 6px 0 4px; padding: 0; }
+.quiz .choices legend { font-size: 12px; color: var(--ink-2); margin-bottom: 2px; padding: 0; }
+.quiz .choices label { display: flex; gap: 8px; align-items: center; padding: 5px 8px; margin-top: 5px; border: 1px solid #dde3ea; border-radius: 7px; cursor: pointer; background: #fff; }
+.quiz .choices label:has(input:checked) { border-color: var(--accent); background: #f3f6f9; }
+.quiz .choices input { margin: 0; flex: none; }
+.quiz .choices .katex { font-size: 1.02em; }
+.quiz .answer.with-unit { grid-template-columns: 1fr auto; align-items: center; margin-top: 8px; }
+.quiz .answer .unit { color: var(--ink-2); }
+.quiz .question .katex { font-size: 1.05em; }
+.quiz .given { margin: 2px 0 6px; line-height: 1.9; }
+.quiz .check { margin: 8px 0 0; }
+.quiz .row .primary { background: var(--accent); border-color: var(--accent); color: white; font-weight: 600; }
+.quiz .row .primary:hover { background: var(--accent-hover); }
+.equations .eq > span:first-child { min-width: 0; }
+.equations small.missing { display: block; font-family: var(--font); font-size: 12px; color: var(--ink-2); line-height: 1.3; margin: -2px 0 6px; }
+.equations small.missing .katex { font-size: 1em; }
+/* Equations with current values: the number sits at the right of the first line, the equation gets the full width. */
+.equations .eq.live { display: flex; flex-direction: column-reverse; gap: 0; margin-bottom: 6px; }
+.equations .eq.live .eqno { align-self: flex-end; margin-bottom: -24px; }
+.equations .eq.live .katex { font-size: 0.9em; }

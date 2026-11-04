@@ -1,6 +1,7 @@
 // Page shell and run loop shared by every screen.
 // A screen supplies: spec (texts, controls, readouts), model (pure physics, no DOM), view (3D drawing).
 // Model contract (02_기본틀_설계.md): params, init(p), step(state, dt, p) or at(t, p), observe(state, p), duration(p).
+// Optional loop(p): true for periodic motion, so playback wraps to t = 0 at the end instead of stopping.
 // Spec fields readouts, equations, assumptions, belowNote, sceneTitle may be values or functions of the parameters p.
 import { createStage } from './stage3d.js';
 import { fmt, fmtFixed } from './format.js';
@@ -18,6 +19,22 @@ const unitSuffix = u => (!u ? '' : u === '°' ? '°' : ' ' + u);
 const decimalsOf = step => (String(step).includes('.') ? String(step).split('.')[1].length : 0);
 const resolve = (v, p) => (typeof v === 'function' ? v(p) : v);
 const eqHtml = e => (e.tex ? tex(e.tex) : e.html);
+// A unit right after a number in a readout gets class u (smaller and grey). KaTeX output keeps numbers and units in separate spans, so it is left alone.
+const UNIT = /(\d)( |\u00a0)(m\/s²|m²\/s²|m\/s|kg|rad\/s|rad|N|m|s)(?=$|[\s<,)·])/g;
+const smallUnits = html => String(html).replace(UNIT, '$1$2<span class="u">$3</span>');
+// A long equation shrinks to the panel width (down to 70 %) instead of scrolling (user 2026-11-04).
+// The room is the row width less the equation number (a live row puts the number above, so it gets the whole row).
+const fitEq = row => {
+  const s = row.firstChild, no = row.lastChild;
+  s.style.fontSize = '';
+  const room = () => row.clientWidth - (row.classList.contains('live') ? 0 : no.offsetWidth + 8);
+  const used = () => { const r = document.createRange(); r.selectNodeContents(s); return r.getBoundingClientRect().width; };
+  let f = 100;
+  for (let i = 0; i < 6 && f > 70 && room() > 0 && used() > room() + 1; i++) {
+    f = Math.max(70, Math.floor(f * room() / used()) - 1);
+    s.style.fontSize = `${f}%`;
+  }
+};
 
 export async function mountScreen({ spec, model, view }) {
   document.title = `${spec.module} ${spec.title} · 서강대 일반물리 시뮬레이션`;
@@ -26,7 +43,8 @@ export async function mountScreen({ spec, model, view }) {
 
   // ---------- header ----------
   const header = el('header', { class: 'page' });
-  header.append(el('div', {}, `<div class="crumb"><a href="${spec.home ?? '../../../index.html'}">${spec.course}</a> · ${spec.chapter}장 ${spec.chapterTitle}</div><h1>${spec.module} ${spec.title}</h1>`));
+  const home = spec.home ?? '../../../index.html';
+  header.append(el('div', {}, `<a class="back" href="${home}">← 목차</a><div class="crumb">${spec.course} · ${spec.chapter}장 ${spec.chapterTitle}</div><h1>${spec.module} ${spec.title}</h1>`));
   header.append(el('p', { class: 'header-note' }, spec.headerNote ?? `교재 Principles of Physics 12e · Module ${spec.module}`));
   body.append(header);
 
@@ -71,19 +89,23 @@ export async function mountScreen({ spec, model, view }) {
     }
     wrappers[c.id] = wrap; controls.append(wrap);
   }
-  let timeInput = null, timeOut = null;
+  let timeInput = null, timeOut = null, timeWrap = null;
   const timed = typeof model.duration === 'function';
   if (timed) {
-    const lab = el('label', { class: 'control', for: 'time' }, `시간 (time)<span class="sym"><i>t</i></span>`);
+    timeWrap = el('label', { class: 'control', for: 'time' }, `시간 (time)<span class="sym"><i>t</i></span>`);
     timeOut = el('output', { for: 'time' });
     timeInput = el('input', { id: 'time', type: 'range', min: 0, max: 1000, step: 1, value: 0 });
-    lab.prepend(timeOut); lab.append(timeInput); controls.append(lab);
+    timeWrap.prepend(timeOut); timeWrap.append(timeInput); controls.append(timeWrap);
   }
   const animated = timed || typeof model.step === 'function';
   const run = el('div', { class: 'run' });
   const play = el('button', { class: 'primary', type: 'button' }, spec.playLabel ?? '재생');
   const reset = el('button', { type: 'button' }, '초기화');
-  run.append(play, reset); controls.append(run);
+  // Playback speed relative to physical time. The time readout always shows physical time.
+  const speed = el('select', { class: 'speed', 'aria-label': '재생 속도' });
+  for (const k of [1, 2, 4]) speed.append(el('option', { value: k }, `${k}×`));
+  speed.value = String(spec.speed ?? 2);
+  run.append(play, reset, speed); controls.append(run);
   const panel = el('div', { class: 'activity-panel' });
   controls.append(panel);
   const notes = el('div', { class: 'note' });
@@ -162,15 +184,17 @@ export async function mountScreen({ spec, model, view }) {
   let state = model.init(p);
   let playing = false, acc = 0;
   const h = spec.dt ?? 1 / 240;
-  let cells = {}, readoutList = [];
+  let cells = {}, readoutList = [], liveEqs = [], lastEq = 0;
 
   // Lets a view or the run loop move a slider without rebuilding the scene.
   const setParam = (id, value) => {
-    const n = inputs[id]; if (!n) return;
+    const n = inputs[id], c = model.params.find(q => q.id === id); if (!n) return;
+    if (c.type === 'check') { n.checked = !!value; p[id] = n.checked; return; }
+    if (c.type === 'tabs' || c.type === 'select') { n.value = String(value); if (n.paint) n.paint(); p[id] = n.value; return; }
     n.value = value; p[id] = +n.value;
     if (n._out) n._out.innerHTML = n._show(+n.value);
   };
-  const ctx = { graphBox, legendBox, belowNote, panel, setParam, tex, fmt, refresh: () => refresh(), get params() { return p; } };
+  const ctx = { graphBox, legendBox, belowNote, panel, setParam, tex, fmt, refresh: () => refresh(), rebuild: () => { stop(); rebuild(); }, get params() { return p; } };
   const v = view(stage, ctx);
 
   function layoutTexts() {
@@ -179,6 +203,7 @@ export async function mountScreen({ spec, model, view }) {
       if (inputs[c.id]._out) inputs[c.id]._out.innerHTML = inputs[c.id]._show(+inputs[c.id].value);
     }
     run.hidden = !(animated && (spec.runIf ? spec.runIf(p) : true));
+    if (timeWrap) timeWrap.hidden = spec.timeIf ? !spec.timeIf(p) : false;
     readoutList = resolve(spec.readouts, p) ?? [];
     readings.replaceChildren(); cells = {};
     for (const r of readoutList) {
@@ -188,9 +213,15 @@ export async function mountScreen({ spec, model, view }) {
     }
     readings.hidden = readoutList.length === 0;
     const eqList = resolve(spec.equations, p) ?? [];
-    eqs.replaceChildren();
-    for (const e of eqList) eqs.append(el('div', { class: 'eq' }, `<span>${eqHtml(e)}</span><span class="eqno">${e.no ? `(${e.no})` : ''}</span>`));
+    eqs.replaceChildren(); liveEqs = [];
+    for (const e of eqList) {
+      const row = el('div', { class: e.live ? 'eq live' : 'eq' }, `<span>${eqHtml(e)}</span><span class="eqno">${e.no ? `(${e.no})` : ''}</span>`);
+      // e.live(obs, p) -> TeX with the current values, redrawn at most every 0.1 s while playing.
+      if (e.live) liveEqs.push({ node: row.firstChild, fn: e.live });
+      eqs.append(row);
+    }
     eqs.hidden = eqList.length === 0;
+    for (const row of eqs.children) fitEq(row);
     const as = resolve(spec.assumptions, p) ?? [];
     notes.innerHTML = as.length ? '<ul>' + as.map(a => `<li>${a}</li>`).join('') + '</ul>' : '';
     belowNote.innerHTML = resolve(spec.belowNote, p) ?? '';
@@ -203,7 +234,12 @@ export async function mountScreen({ spec, model, view }) {
   function refresh() {
     const obs = model.observe(state, p);
     v.render(obs, p);
-    for (const r of readoutList) cells[r.id].innerHTML = r.value(obs, p, fmt, tex);
+    for (const r of readoutList) cells[r.id].innerHTML = smallUnits(r.value(obs, p, fmt, tex));
+    const now = performance.now();
+    if (liveEqs.length && (!playing || now - lastEq > 100)) {
+      for (const q of liveEqs) { q.node.innerHTML = tex(q.fn(obs, p)); fitEq(q.node.parentNode); }
+      lastEq = now;
+    }
     if (timed) {
       const T = model.duration(p);
       timeOut.textContent = fmt(state.t, { sig: 3, zero: 1e-9 }) + ' s';
@@ -240,15 +276,17 @@ export async function mountScreen({ spec, model, view }) {
   });
   reset.addEventListener('click', () => { stop(); rebuild(); });
   resetView.addEventListener('click', () => stage.resetCamera());
+  window.addEventListener('resize', () => { for (const row of eqs.children) fitEq(row); });
 
   stage.onFrame(dt => {
     if (!playing) return;
-    acc += dt * (spec.timeScale ?? 1);
+    acc += dt * (spec.timeScale ?? 1) * +speed.value;
     const T = timed ? model.duration(p) : Infinity;
     while (acc >= h) {
       acc -= h;
       if (model.at) state = model.at(Math.min(state.t + h, T), p);
       else state = model.step(state, h, p);
+      if (state.t >= T - 1e-12 && model.loop && model.loop(p)) { state = model.at ? model.at(0, p) : model.init(p); continue; }
       if (state.t >= T - 1e-12 || (model.atEnd && model.atEnd(state, p))) { stop(); acc = 0; break; }
     }
     if (model.syncParams) for (const [id, value] of Object.entries(model.syncParams(state, p))) setParam(id, value);
@@ -257,6 +295,7 @@ export async function mountScreen({ spec, model, view }) {
 
   rebuild();
   status.hidden = true;
+  window.screenInfo = () => stage.info();          // draw calls and triangles, for checks
   window.screenReady = true;
   return { stage, rebuild, refresh, get params() { return p; }, get state() { return state; }, set state(s) { state = s; refresh(); } };
 }

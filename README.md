@@ -17,9 +17,10 @@ Tests (Node 20 or later)
 npm test
 ```
 
-Rebuild the catalog after adding a screen
+Rebuild the catalog after adding a screen. The first command saves the scene thumbnails in `assets/thumbs/` and needs the local server and Google Chrome.
 
 ```sh
+node tools/make_thumbs.mjs
 python3 tools/build_index.py
 ```
 
@@ -28,6 +29,7 @@ python3 tools/build_index.py
 | Path | Content |
 |---|---|
 | `index.html` | catalog of 126 screens, built from `data/textbook_toc.json` |
+| `assets/thumbs/` | catalog thumbnails, one JPEG per built screen (`tools/make_thumbs.mjs`) |
 | `core/theme.css` | shared look (approved Codex 3D preview, with contrast and size fixes) |
 | `core/format.js` | numbers with 3 significant figures, U+2212 minus, scientific notation from 10³ and below 10⁻² |
 | `core/stage3d.js` | shared 3D stage (lighting, board, fixed-size labels, compass, keyboard orbit) |
@@ -37,7 +39,7 @@ python3 tools/build_index.py
 | `vendor/three/` | three.js 0.187.0 (MIT) |
 | `vendor/katex/` | KaTeX 0.19.0 (MIT) |
 
-A screen folder name starts with its first textbook module, for example `ch04/4-4-projectile` for Module 4.4. The model has no DOM access and is tested with `node --test`.
+A screen folder name starts with its catalog screen id, for example `ch04/4-2-projectile` for screen 4-2 (Module 4.4). The model has no DOM access and is tested with `node --test`.
 
 ## Screen URL options
 

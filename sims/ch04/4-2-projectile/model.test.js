@@ -1,4 +1,4 @@
-// node --test sims/ch04/4-4-projectile/model.test.js
+// node --test sims/ch04/4-2-projectile/model.test.js
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as M from './model.js';

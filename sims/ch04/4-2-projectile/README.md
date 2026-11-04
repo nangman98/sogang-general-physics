@@ -1,6 +1,6 @@
 # 4-2 Projectile Motion
 
-Screen for Principles of Physics 12e, Module 4.4 (Learning Objectives 4.4.1–4.4.3). Folder name uses the module number (4-4), and the catalog screen id is 4-2.
+Screen for Principles of Physics 12e, Module 4.4 (Learning Objectives 4.4.1–4.4.3). Folder name uses the catalog screen id (4-2).
 
 ## Model
 

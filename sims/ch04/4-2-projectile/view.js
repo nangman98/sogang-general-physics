@@ -61,12 +61,6 @@ export function view(stage) {
       stage.ring(root, apex, 0.16, 0x7c8e9e, 0.03, [0, 0, 0]);
       stage.label(`최고 높이 (maximum height) ${fmt(H)} m`, apex, 'apex');
 
-      // World axes at a corner of the board (readouts use these x, y, z).
-      const origin = toWorld([-2.8, 0.05, half - 0.7]);
-      for (const [d, n] of [[[1, 0, 0], 'x'], [[0, 1, 0], 'y'], [[0, 0, 1], 'z']]) {
-        stage.arrow(0x56687a, { radius: 0.045 }).update(origin, d, 2.4);
-        stage.label(`<i>${n}</i>`, origin.map((v, i) => v + d[i] * 2.85), 'axis', { dy: 0 });
-      }
 
       cur = { moving, drop, marker };
       const span = Math.max(R + 10, H * 2.1, 23);

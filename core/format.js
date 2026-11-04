@@ -46,3 +46,36 @@ export function withUnit(x, unit, opts) {
 export function tuple(values, opts) {
   return '(' + values.map(v => fmt(v, opts)).join(', ') + ')';
 }
+
+// Vector in unit-vector notation as the textbook writes it, e.g. (4.33 m)î + (2.00 m)ĵ − (2.50 m)k̂.
+// Components that print as 0 are left out; the zero vector is "0 m".
+export function unitVec(values, unit, opts) {
+  const hats = ['î', 'ĵ', 'k̂'], terms = [];
+  values.forEach((v, i) => {
+    if (fmt(Math.abs(v), opts) === '0') return;
+    const body = `(${fmt(terms.length ? Math.abs(v) : v, opts)}\u00a0${unit})${hats[i]}`;   // no line break inside a term
+    terms.push(terms.length ? `${v < 0 ? '−' : '+'} ${body}` : body);
+  });
+  return terms.length ? terms.join(' ') : `0\u00a0${unit}`;
+}
+
+// Number typed by a student. Accepts 2e6, 2.0E6, 2×10^6, 2*10^6, 2 x 10^6, 2000000, 2,000,000, −3.5.
+export function parseNumber(text) {
+  const s = String(text).trim().replace(/,/g, '').replace(/[−–]/g, '-').replace(/\s+/g, '');
+  const m = s.match(/^([-+]?\d*\.?\d+)(?:(?:[x×*]10\^?|e|E)([-+]?\d+))?$/);
+  if (!m) return NaN;
+  return parseFloat(m[1]) * (m[2] !== undefined ? 10 ** parseInt(m[2], 10) : 1);
+}
+
+// Number for KaTeX with sig significant figures: 4 -> 4.00, -30 -> -30.0, 1.5e4 -> 1.50\times10^{4}.
+export function texNum(x, sig = 3) {
+  if (!Number.isFinite(x)) return '\\infty';
+  if (Math.abs(x) < 1e-9) return '0';
+  const a = Math.abs(x);
+  if (a >= 10 ** sig || a < 1e-2) {
+    let e = Math.floor(Math.log10(a)), m = (x / 10 ** e).toPrecision(sig);
+    if (Math.abs(parseFloat(m)) >= 10) { e += 1; m = (x / 10 ** e).toPrecision(sig); }
+    return `${m}\\times10^{${e}}`;
+  }
+  return x.toPrecision(sig);
+}

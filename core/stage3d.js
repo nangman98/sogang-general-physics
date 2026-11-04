@@ -130,7 +130,8 @@ export function createStage(root, { background = 0xeef1f5, fov = 36 } = {}) {
     labelLayer.append(node);
     const item = { node, position: v3(position), kind, dy, priority };
     labels.push(item);
-    item.set = (h) => { node.innerHTML = h; };
+    item.set = (h) => { if (h !== item.html) { node.innerHTML = h; item.html = h; item.w = 0; } };
+    item.html = html; item.w = 0;
     item.move = (p) => { item.position.set(...p); };
     return item;
   }
@@ -144,7 +145,13 @@ export function createStage(root, { background = 0xeef1f5, fov = 36 } = {}) {
       item.node.hidden = !visible;
       if (!visible) continue;
       const dy = item.dy ?? (item.kind === 'apex' ? -35 : item.kind === 'measure' ? 8 : -8);
-      item.node.style.left = x + 'px'; item.node.style.top = (y + dy) + 'px';
+      // Names and tags stay inside the stage: a label near the edge is pushed in rather than cut (390 px screens).
+      let left = x;
+      if (item.kind !== 'measure' && item.kind !== 'gtick') {
+        if (!item.w) item.w = item.node.offsetWidth;
+        left = item.kind === 'gval' ? Math.min(x, w - item.w - 4) : Math.min(Math.max(x, item.w / 2 + 4), w - item.w / 2 - 4);
+      }
+      item.node.style.left = left + 'px'; item.node.style.top = (y + dy) + 'px';
       if (item.kind === 'measure') measures.push({ item, x });
     }
     // Skip tick labels closer than 49 px instead of shrinking them (Codex 05 기준).

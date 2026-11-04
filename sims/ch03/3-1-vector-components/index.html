@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3.1–3.2 성분 분해와 벡터 덧셈 · 서강대 일반물리 시뮬레이션</title>
+<link rel="stylesheet" href="../../../vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../../../core/theme.css">
+<style>
+/* Screen-local additions (core candidates). Vector symbol in plain HTML labels, vector labels in the scene, quiz rows. */
+.vsym { position: relative; display: inline-block; font-family: var(--math); font-style: italic; font-size: 1.08em; line-height: 1; padding-top: .3em; }
+.vsym::before { content: '\2192'; position: absolute; left: 52%; top: -0.12em; transform: translateX(-50%); font-size: .7em; font-style: normal; }
+.world-label.vlab { font-size: 16px; color: #1a1a1a; text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 5px #fff; }
+.world-label.vlab .katex { font-size: 1.1em; }
+.world-label.tag .katex { font-size: 1em; }
+.world-label.cand { font-size: 20px; font-weight: 700; color: #33475b; text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 5px #fff; }
+.quiz .choices.inline { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.quiz .choices.inline legend { flex-basis: 100%; float: left; width: 100%; }
+.quiz .choices.inline label { margin-top: 0; min-width: 52px; justify-content: center; }
+.quiz .choices.inline label > span { font-size: 15px; }
+.quiz .answer.labeled { grid-template-columns: 58px minmax(0, 1fr) auto; align-items: center; margin-top: 6px; }
+.quiz .field-label { text-align: right; white-space: nowrap; }
+/* A live equation without a textbook number keeps its place (core rule pulls the number row up by 24 px). */
+.equations .eq.live .eqno:empty { margin-bottom: 0; }
+</style>
+<script type="importmap">{ "imports": { "three": "../../../vendor/three/three.module.js" } }</script>
+</head>
+<body>
+<noscript>이 시뮬레이션은 JavaScript와 WebGL이 필요하다.</noscript>
+<script type="module">
+import { mountScreen } from '../../../core/app.js';
+import * as model from './model.js';
+import { view } from './view.js';
+import { spec } from './spec.js';
+mountScreen({ spec, model, view }).catch(e => { document.body.insertAdjacentHTML('beforeend', '<pre>' + e.stack + '</pre>'); window.screenError = String(e.stack || e); });
+</script>
+</body>
+</html>

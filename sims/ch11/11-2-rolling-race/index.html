@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>11.2 빗면 굴림 (Forces and Kinetic Energy of Rolling) · 서강대 일반물리 시뮬레이션</title>
+<link rel="stylesheet" href="../../../vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../../../core/theme.css">
+<style>
+/* Screen-local styles (core candidates, same as the Chapter 5 screens): force symbols in the scene, step titles in the prediction panel. */
+.world-label.qty { font-size: 15px; color: #1a1a1a; font-weight: 400; text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 2px #fff; }
+.world-label.qty .katex { font-size: 1.12em; }
+.world-label.qty.word { font-size: 13px; font-weight: 600; color: #435466; }
+.world-label.qty .val { font-family: var(--font); font-size: 12.5px; font-weight: 700; color: #9c3d00; font-variant-numeric: tabular-nums; }
+.quiz .pred { margin: 10px 0 4px; font-size: 13px; font-weight: 600; }
+.quiz .pred small { display: block; font-size: 12px; font-weight: 400; color: var(--ink-2); }
+.quiz .pred input[type=range] { margin-top: 10px; }
+.quiz .pred + .answer.with-unit { margin-top: 2px; }
+</style>
+<script type="importmap">{ "imports": { "three": "../../../vendor/three/three.module.js" } }</script>
+</head>
+<body>
+<noscript>이 시뮬레이션은 JavaScript와 WebGL이 필요하다.</noscript>
+<script type="module">
+import { mountScreen } from '../../../core/app.js';
+import * as model from './model.js';
+import { view } from './view.js';
+import { spec } from './spec.js';
+mountScreen({ spec, model, view }).catch(e => { document.body.insertAdjacentHTML('beforeend', '<pre>' + e.stack + '</pre>'); window.screenError = String(e.stack || e); });
+</script>
+</body>
+</html>

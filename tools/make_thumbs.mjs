@@ -1,6 +1,7 @@
 // Catalog thumbnails: the 3D scene of every built screen in its first state, saved as assets/thumbs/<screen id>.jpg.
 // Needs the local server at the repository root (python3 -m http.server 8800) and Google Chrome.
 // Run: node tools/make_thumbs.mjs [base url]     Then: python3 tools/build_index.py
+// ONLY=6-1,6-2 node tools/make_thumbs.mjs makes only those screens (the others keep their files).
 import { spawn } from 'node:child_process';
 import { mkdirSync, readdirSync, existsSync, writeFileSync, rmSync } from 'node:fs';
 import { join, dirname } from 'node:path';
@@ -16,6 +17,8 @@ const pages = [];
 for (const ch of readdirSync(join(ROOT, 'sims')).filter(d => d.startsWith('ch')).sort())
   for (const d of readdirSync(join(ROOT, 'sims', ch)).sort())
     if (existsSync(join(ROOT, 'sims', ch, d, 'index.html'))) pages.push({ id: d.split('-').slice(0, 2).join('-'), path: `sims/${ch}/${d}/index.html` });
+const only = process.env.ONLY ? new Set(process.env.ONLY.split(',')) : null;
+if (only) pages.splice(0, pages.length, ...pages.filter(pg => only.has(pg.id)));
 
 const port = 9400 + Math.floor(Math.random() * 400), profile = `/tmp/thumbs_chrome_${port}`;
 const chrome = spawn(CHROME, ['--headless=new', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--hide-scrollbars',

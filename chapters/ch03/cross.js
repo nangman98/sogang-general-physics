@@ -15,7 +15,25 @@ function project([x, y, z]) {
 }
 const axes = ['x', 'y', 'z'].map(n => ({ line: el('line', { stroke: COLOR.grid, 'stroke-width': 1.5 }), text: el('text', { 'font-size': 15, fill: COLOR.gray, 'font-style': 'italic', 'font-family': 'Times New Roman, serif', 'text-anchor': 'middle' }), n }));
 axes.forEach(o => { o.text.textContent = o.n; });
-const area = el('polygon', { fill: '#56B4E9', 'fill-opacity': 0.3, stroke: 'none' });
+const area = el('polygon', { fill: '#56B4E9', 'fill-opacity': 0.3, stroke: 'none' });   // a, b가 놓인 평면 표시
+
+// 오른쪽 그래프: c = ab sin ϕ (ϕ 0–180°). 세로축은 a, b 최대(2.5)일 때의 6.25까지 고정해 크기에 비례하는 것이 보이게 한다.
+const G = { L: 660, T: 70, R: 960, B: 330 }, C_MAX = 6.5;
+const gx = d => G.L + (G.R - G.L) * d / 180, gy = c => G.B - (G.B - G.T) * c / C_MAX;
+el('rect', { x: G.L, y: G.T, width: G.R - G.L, height: G.B - G.T, fill: 'none', stroke: COLOR.ink, 'stroke-width': 1.5 });
+for (const d of [0, 45, 90, 135, 180]) {
+  el('line', { x1: gx(d), y1: G.B, x2: gx(d), y2: G.B + 6, stroke: COLOR.ink });
+  el('text', { x: gx(d), y: G.B + 24, 'text-anchor': 'middle', 'font-size': 14, fill: '#555555' }).textContent = `${d}°`;
+}
+for (const c of [0, 2, 4, 6]) {
+  el('line', { x1: G.L - 6, y1: gy(c), x2: G.L, y2: gy(c), stroke: COLOR.ink });
+  el('text', { x: G.L - 10, y: gy(c) + 5, 'text-anchor': 'end', 'font-size': 14, fill: '#555555' }).textContent = String(c);
+}
+el('text', { x: G.R, y: G.B + 48, 'text-anchor': 'end', 'font-size': 16, 'font-style': 'italic', 'font-family': 'Times New Roman, serif' }).textContent = 'ϕ';
+el('text', { x: G.L, y: G.T - 14, 'font-size': 16, 'font-style': 'italic', 'font-family': 'Times New Roman, serif' }).textContent = 'c';
+const curve = el('polyline', { fill: 'none', stroke: COLOR.c, 'stroke-width': 2.5 });
+const cursor = el('line', { stroke: COLOR.gray, 'stroke-width': 1, 'stroke-dasharray': '4 4' });
+const point = el('circle', { r: 6, fill: COLOR.c });
 const A = arrow('a'), B = arrow('b'), Cc = arrow('c', 3.5);
 const la = label('a', 'a'), lb = label('b', 'b'), lc = label('c', 'c');
 
@@ -33,6 +51,9 @@ function draw() {
   seg(A, O, a); seg(B, O, b); seg(Cc, O, c);
   tag(la, a, 14, 18); tag(lb, b, 14, 18); tag(lc, c, 18, c[2] >= 0 ? 4 : 20);
   Cc.style.display = mag(c) < 0.05 ? 'none' : '';
+  curve.setAttribute('points', Array.from({ length: 181 }, (_, d) => `${gx(d).toFixed(1)},${gy(LA * LB * Math.sin(rad(d))).toFixed(1)}`).join(' '));
+  set(cursor, { x1: gx(phi), y1: G.T, x2: gx(phi), y2: G.B });
+  set(point, { cx: gx(phi), cy: gy(mag(c)) });
   document.getElementById('phival').innerHTML = tex(`${phi}^\\circ`);
   document.getElementById('order').textContent = order === 'ab' ? '순서 바꾸기 (b × a)' : '순서 바꾸기 (a × b)';
   const name = order === 'ab' ? '\\vec a\\times\\vec b' : '\\vec b\\times\\vec a';
@@ -44,7 +65,11 @@ function draw() {
 }
 
 let dragging = null;
-svg.addEventListener('pointerdown', ev => { dragging = [ev.clientX, ev.clientY]; svg.setPointerCapture(ev.pointerId); });
+svg.addEventListener('pointerdown', ev => {   // 왼쪽 3D 그림에서만 돌린다
+  const p = svg.createSVGPoint(); p.x = ev.clientX; p.y = ev.clientY;
+  if (p.matrixTransform(svg.getScreenCTM().inverse()).x > 620) return;
+  dragging = [ev.clientX, ev.clientY]; svg.setPointerCapture(ev.pointerId);
+});
 svg.addEventListener('pointermove', ev => {
   if (!dragging) return;
   yaw += (ev.clientX - dragging[0]) * 0.5;

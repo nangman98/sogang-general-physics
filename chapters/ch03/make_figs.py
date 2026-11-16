@@ -63,12 +63,12 @@ b = [line(O[0] - 20, O[1], 400, O[1], INK, 1.5, 'ink'), line(O[0], O[1] + 20, O[
 svg('f1_components', 440, 290, ''.join(b))
 
 # 2. 머리–꼬리 합과 평행사변형
-O, P, Q = (60, 240), (260, 170), (360, 60)          # a: O->P, b: P->Q, s: O->Q
+O, P, Q = (60, 240), (260, 170), (360, 60)          # a: O->P, b: P->Q, r: O->Q (합 기호는 r로 통일, 2026-11-16)
 R = (O[0] + Q[0] - P[0], O[1] + Q[1] - P[1])         # b를 원점에서 그린 끝
 b = [line(*O, *R, GRAY, 1.5, 'gray', dash='5 4'), line(*R, *Q, GRAY, 1.5, 'gray', dash='5 4'),
      line(*O, *P, A, 3, 'a'), text((O[0] + P[0]) / 2 + 6, (O[1] + P[1]) / 2 + 26, vec('a'), c=A, size=20),
      line(*P, *Q, B, 3, 'b'), text((P[0] + Q[0]) / 2 + 22, (P[1] + Q[1]) / 2 + 6, vec('b'), c=B, size=20),
-     line(*O, *Q, CRIMSON, 3.5, 'c'), text(Q[0] + 12, Q[1] - 4, f'{vec("s")} = {vec("a")} + {vec("b")}', 'start', c=CRIMSON, size=18)]
+     line(*O, *Q, CRIMSON, 3.5, 'c'), text(Q[0] + 12, Q[1] - 4, f'{vec("r")} = {vec("a")} + {vec("b")}', 'start', c=CRIMSON, size=18)]
 svg('f2_head_to_tail', 480, 280, ''.join(b))
 
 # 3. 내적: b 방향으로의 a의 성분 a cos ϕ (a의 성분이라 a와 같은 파랑, 2026-11-16)

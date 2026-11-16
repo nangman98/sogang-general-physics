@@ -17,3 +17,12 @@ function fit() {
 fit();
 document.fonts?.ready.then(fit);
 addEventListener('resize', fit);
+
+// 방향키로 페이지를 넘긴다(사용자 요청 2026-11-16). →는 아래 "다음 →" 링크(이론 → 시뮬레이션),
+// ←는 맨 위 "←" 링크(시뮬레이션 → 이론, 이론 → 목차). slider나 입력 칸을 잡고 있을 때는 그 칸이 키를 쓴다.
+addEventListener('keydown', ev => {
+  if (ev.altKey || ev.ctrlKey || ev.metaKey || ev.shiftKey || ev.defaultPrevented) return;
+  if (ev.target.closest?.('input, select, textarea, [contenteditable]')) return;
+  const link = ev.key === 'ArrowRight' ? document.querySelector('.next a') : ev.key === 'ArrowLeft' ? document.querySelector('a.back') : null;
+  if (link) { ev.preventDefault(); location.href = link.href; }
+});

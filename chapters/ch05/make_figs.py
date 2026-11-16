@@ -50,15 +50,21 @@ b = [floor(20, 420, 200, '마찰 없는 바닥'), box(170, 140, 80, 60),
      line(150, 110, 230, 110, ACC, 2.5, 'acc'), text(140, 115, F('a'), 'end', ACC, 18)]
 svg('f1_fbd', 440, 290, ''.join(b))
 
-# 2. 여러 가지 힘: 탁자 위 상자, 줄에 매달린 상자, 밀리는 상자의 마찰력
-b = [floor(20, 180, 220), box(60, 160, 80, 60), line(100, 190, 100, 110), text(110, 118, F('F', 'N'), 'start', FORCE, 17),
-     line(100, 190, 100, 270), text(110, 268, F('F', 'g'), 'start', FORCE, 17), text(100, 300, '탁자 위', size=14, c='#555555'),
-     line(260, 20, 360, 20, INK, 2, None), line(310, 20, 310, 140, GRAY, 2, None), box(280, 140, 60, 50),
-     line(310, 165, 310, 85), text(320, 92, F('T'), 'start', FORCE, 17),
-     line(310, 165, 310, 245), text(320, 243, F('F', 'g'), 'start', FORCE, 17), text(310, 300, '줄에 매달림', size=14, c='#555555'),
-     floor(420, 600, 220), box(470, 160, 80, 60), line(510, 190, 590, 190), text(592, 182, F('F'), 'start', FORCE, 17),
-     line(510, 214, 450, 214), text(444, 210, F('f'), 'end', FORCE, 17), text(510, 300, '미는 힘과 마찰력', size=14, c='#555555')]
-svg('f2_forces', 640, 320, ''.join(b))
+it = lambda s: f'<tspan {SYM}>{s}</tspan>'                       # 크기(스칼라) 기호
+cord = lambda x1, y1, x2, y2: line(x1, y1, x2, y2, GRAY, 2, None)
+
+
+def pulley(cx, cy, r):
+    return f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="#ffffff" stroke="{INK}" stroke-width="2"/><circle cx="{cx}" cy="{cy}" r="3" fill="{INK}"/>'
+
+
+# 2. 수직항력: 위로 가속하는 탁자 위 블록(교재 그림 5.2.3). a_y > 0이라 F_N이 F_g보다 길다.
+b = [line(40, 200, 300, 200, INK, 2, None), line(60, 200, 60, 290, GRAY, 2, None), line(280, 200, 280, 290, GRAY, 2, None),
+     box(120, 140, 100, 60), f'<circle cx="170" cy="170" r="4" fill="{INK}"/>',
+     line(170, 170, 170, 46), text(182, 58, F('F', 'N'), 'start', FORCE, 18),
+     line(170, 170, 170, 270), text(182, 266, F('F', 'g'), 'start', FORCE, 18),
+     line(340, 200, 340, 120, ACC, 2.5, 'acc'), text(352, 140, F('a', 'y'), 'start', ACC, 18)]
+svg('f2_normal', 400, 300, ''.join(b))
 
 # 3. 제3법칙: 맞닿은 두 상자 A, B가 서로 주고받는 힘
 b = [floor(20, 560, 200, '마찰 없는 바닥'), box(180, 130, 100, 70, 'A'), box(280, 140, 80, 60, 'B'),
@@ -66,3 +72,16 @@ b = [floor(20, 560, 200, '마찰 없는 바닥'), box(180, 130, 100, 70, 'A'), b
      line(280, 150, 220, 150, CRIMSON, 3, 'c'), text(214, 122, F('F', 'AB'), 'end', CRIMSON, 17),
      line(280, 185, 340, 185, CRIMSON, 3, 'c'), text(346, 236, F('F', 'BA'), 'start', CRIMSON, 17)]
 svg('f3_third', 580, 260, ''.join(b))
+
+# 4. 도르래로 연결된 두 블록(교재 예제 5.3.1, 그림 5.3.3). 마찰 없는 탁자 위 블록(질량 M)과 매달린 블록(질량 m).
+b = [line(20, 150, 372, 150, INK, 2, None), text(90, 174, '마찰 없는 탁자', size=13, c='#555555'),
+     box(150, 90, 80, 60), text(190, 127, it('M'), size=18),
+     cord(372, 150, 392, 132), cord(230, 114, 392, 114),
+     f'<path d="M392,114 A18,18 0 0 1 410,132" fill="none" stroke="{GRAY}" stroke-width="2"/>', cord(410, 132, 410, 230), pulley(392, 132, 18),
+     box(385, 230, 50, 50), text(410, 261, it('m'), size=18),
+     line(230, 114, 300, 114), text(292, 102, F('T'), 'middle', FORCE, 18),
+     line(410, 230, 410, 172), text(398, 190, F('T'), 'end', FORCE, 18),
+     line(410, 280, 410, 340), text(422, 334, it('mg'), 'start', FORCE, 18),
+     line(160, 66, 222, 66, ACC, 2.5, 'acc'), text(150, 72, F('a'), 'end', ACC, 18),
+     line(462, 240, 462, 300, ACC, 2.5, 'acc'), text(474, 280, F('a'), 'start', ACC, 18)]
+svg('f3_pulley', 520, 360, ''.join(b))

@@ -1,4 +1,5 @@
-// 3장 "외적" 시뮬레이션. a는 x축 방향, b는 xy 평면에서 x축과 ϕ를 이룬다. 크기 a, b와 ϕ는 slider로 정한다. c = a × b 또는 b × a는 z축 방향이다.
+// 3장 "외적" 시뮬레이션. a는 x축 방향, b는 xy 평면에서 a로부터 반시계 방향(+z 쪽에서 볼 때)으로 ϕ(0–360°) 돌아간 방향이다.
+// 크기 a, b와 ϕ는 slider로 정한다. c = a × b 또는 b × a는 z축 방향이고 c_z = ±ab sin ϕ다(ϕ를 0–360°로 넓힌 것은 사용자 결정 2026-11-16).
 // 3D는 회전한 점을 직접 화면에 투영해 SVG로 그린다. 화면을 끌면 돈다.
 import { cross, mag, rad } from './vec.js';
 import { COLOR, tex, fmt, svgKit } from '../../core/simkit.js';
@@ -17,20 +18,21 @@ const axes = ['x', 'y', 'z'].map(n => ({ line: el('line', { stroke: COLOR.grid, 
 axes.forEach(o => { o.text.textContent = o.n; });
 const area = el('polygon', { fill: '#56B4E9', 'fill-opacity': 0.3, stroke: 'none' });   // a, b가 놓인 평면 표시
 
-// 오른쪽 그래프: c = ab sin ϕ (ϕ 0–180°). 세로축은 a, b 최대(2.5)일 때의 6.25까지 고정해 크기에 비례하는 것이 보이게 한다.
-const G = { L: 660, T: 70, R: 960, B: 330 }, C_MAX = 6.5;
-const gx = d => G.L + (G.R - G.L) * d / 180, gy = c => G.B - (G.B - G.T) * c / C_MAX;
+// 오른쪽 그래프: c_z (ϕ 0–360°). 세로축은 a, b 최대(2.5)일 때의 ±6.25까지 고정해 크기에 비례하는 것이 보이게 한다.
+const G = { L: 660, T: 60, R: 960, B: 420 }, C_MAX = 6.5;
+const gx = d => G.L + (G.R - G.L) * d / 360, gy = c => (G.T + G.B) / 2 - (G.B - G.T) / 2 * c / C_MAX;
 el('rect', { x: G.L, y: G.T, width: G.R - G.L, height: G.B - G.T, fill: 'none', stroke: COLOR.ink, 'stroke-width': 1.5 });
-for (const d of [0, 45, 90, 135, 180]) {
+el('line', { x1: G.L, y1: gy(0), x2: G.R, y2: gy(0), stroke: COLOR.gray, 'stroke-width': 1 });
+for (const d of [0, 90, 180, 270, 360]) {
   el('line', { x1: gx(d), y1: G.B, x2: gx(d), y2: G.B + 6, stroke: COLOR.ink });
   el('text', { x: gx(d), y: G.B + 24, 'text-anchor': 'middle', 'font-size': 14, fill: '#555555' }).textContent = `${d}°`;
 }
-for (const c of [0, 2, 4, 6]) {
+for (const c of [-6, -4, -2, 0, 2, 4, 6]) {
   el('line', { x1: G.L - 6, y1: gy(c), x2: G.L, y2: gy(c), stroke: COLOR.ink });
-  el('text', { x: G.L - 10, y: gy(c) + 5, 'text-anchor': 'end', 'font-size': 14, fill: '#555555' }).textContent = String(c);
+  el('text', { x: G.L - 10, y: gy(c) + 5, 'text-anchor': 'end', 'font-size': 14, fill: '#555555' }).textContent = String(c).replace('-', '−');
 }
 el('text', { x: G.R, y: G.B + 48, 'text-anchor': 'end', 'font-size': 16, 'font-style': 'italic', 'font-family': 'Times New Roman, serif' }).textContent = 'ϕ';
-el('text', { x: G.L, y: G.T - 14, 'font-size': 16, 'font-style': 'italic', 'font-family': 'Times New Roman, serif' }).textContent = 'c';
+el('text', { x: G.L, y: G.T - 14, 'font-size': 16, 'font-style': 'italic', 'font-family': 'Times New Roman, serif' }).innerHTML = 'c<tspan dy="4" font-size="12">z</tspan>';
 const curve = el('polyline', { fill: 'none', stroke: COLOR.c, 'stroke-width': 2.5 });
 const cursor = el('line', { stroke: COLOR.gray, 'stroke-width': 1, 'stroke-dasharray': '4 4' });
 const point = el('circle', { r: 6, fill: COLOR.c });
@@ -51,15 +53,16 @@ function draw() {
   seg(A, O, a); seg(B, O, b); seg(Cc, O, c);
   tag(la, a, 14, 18); tag(lb, b, 14, 18); tag(lc, c, 18, c[2] >= 0 ? 4 : 20);
   Cc.style.display = mag(c) < 0.05 ? 'none' : '';
-  curve.setAttribute('points', Array.from({ length: 181 }, (_, d) => `${gx(d).toFixed(1)},${gy(LA * LB * Math.sin(rad(d))).toFixed(1)}`).join(' '));
+  const sign = order === 'ab' ? 1 : -1;   // b × a = −(a × b) (3.3.6)
+  curve.setAttribute('points', Array.from({ length: 361 }, (_, d) => `${gx(d).toFixed(1)},${gy(sign * LA * LB * Math.sin(rad(d))).toFixed(1)}`).join(' '));
   set(cursor, { x1: gx(phi), y1: G.T, x2: gx(phi), y2: G.B });
-  set(point, { cx: gx(phi), cy: gy(mag(c)) });
+  set(point, { cx: gx(phi), cy: gy(c[2]) });
   document.getElementById('phival').innerHTML = tex(`${phi}^\\circ`);
   document.getElementById('order').textContent = order === 'ab' ? '순서 바꾸기 (b × a)' : '순서 바꾸기 (a × b)';
   const name = order === 'ab' ? '\\vec a\\times\\vec b' : '\\vec b\\times\\vec a';
   document.getElementById('read').innerHTML = [
     tex(`\\vec c = ${name}`),
-    tex(`\\textcolor{#840025}{c = ab\\sin\\phi = (${fmt(LA)})(${fmt(LB)})\\sin ${phi}^\\circ = ${fmt(mag(c), 2)}}`),
+    tex(`\\textcolor{#840025}{c_z = ${sign > 0 ? '' : '-'}ab\\sin\\phi = ${sign > 0 ? '' : '-'}(${fmt(LA)})(${fmt(LB)})\\sin ${phi}^\\circ = ${fmt(c[2], 2)}}`),
     `방향 ${c[2] > 0.005 ? tex('+z') : c[2] < -0.005 ? tex('-z') : '없음'}`,
   ].join('<br>');
 }

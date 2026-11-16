@@ -9,23 +9,21 @@
 <link rel="stylesheet" href="../../core/chapter.css">
 </head>
 <body>
-<div class="page">
+<div class="page two">
 <a class="back" href="../../index.html">← 목차</a>
 <h1>포물선 운동 (projectile motion)</h1>
-<p>공중에 던진 물체는 공기를 무시하면 수평 방향으로는 가속도가 0이고 수직 방향으로는 아래로 크기 <span data-tex="g"></span>인 가속도를 받는다. <b class="k">수평 운동과 수직 운동은 서로 독립이다.</b></p>
-<div class="fig"><img src="fig/f1_projectile.svg" alt="발사각 θ0로 던진 물체의 포물선 궤적과 다섯 순간의 속도, 수평 성분은 일정하고 최고점에서 v_y = 0"></div>
-<div class="eq"><div class="eq-tex" data-tex="v_{0x} = v_0\cos\theta_0 \qquad v_{0y} = v_0\sin\theta_0"></div><span class="eq-no">(4.4.2)</span></div>
-<div class="eq"><div class="eq-tex" data-tex="x - x_0 = (v_0\cos\theta_0)\,t"></div><span class="eq-no">(4.4.3)</span></div>
-<div class="eq"><div class="eq-tex" data-tex="y - y_0 = (v_0\sin\theta_0)\,t - \tfrac{1}{2}gt^2 \qquad v_y = v_0\sin\theta_0 - gt"></div><span class="eq-no">(4.4.4), (4.4.5)</span></div>
-<p>(4.4.3)과 (4.4.4)에서 <span data-tex="t"></span>를 지우면 발사점을 원점으로 한 궤적이 된다.</p>
+<div class="cols">
+<div>
+<p>공중에 던진 물체는 공기를 무시하면 수평 방향으로는 가속도가 0이고 수직 방향으로는 아래로 크기 <span data-tex="g"></span>인 가속도를 받는다. 두 방향의 운동은 서로 독립이다. 발사점을 원점으로 잡으면 궤적은 다음과 같다.</p>
 <div class="eq"><div class="eq-tex" data-tex="\textcolor{#840025}{y = (\tan\theta_0)\,x - \frac{g x^2}{2(v_0\cos\theta_0)^2}}"></div><span class="eq-no">(4.4.7)</span></div>
-<div class="eq"><div class="eq-tex" data-tex="R = \frac{v_0^2}{g}\sin 2\theta_0"></div><span class="eq-no">(4.4.8)</span></div>
 <ul class="pts">
-<li>수평 속도 <span data-tex="v_x = v_0\cos\theta_0"></span>는 비행 내내 같다.</li>
+<li>수평 속도 <span data-tex="v_x = v_0\cos\theta_0"></span>는 비행 내내 같고 수직 속도는 <span data-tex="v_y = v_0\sin\theta_0 - gt"></span>다 (4.4.2, 4.4.5).</li>
 <li>가장 높은 곳에서 <span data-tex="v_y = 0"></span>이다.</li>
-<li>궤적은 <span data-tex="x"></span>의 2차식이라 포물선이다.</li>
-<li>같은 높이로 돌아올 때 수평 도달 거리 <span data-tex="R"></span>은 <span data-tex="\theta_0 = 45^\circ"></span>에서 가장 크다.</li>
+<li>같은 높이로 돌아올 때 수평 도달 거리 <span data-tex="R = \frac{v_0^2}{g}\sin 2\theta_0"></span> (4.4.8)은 <span data-tex="\theta_0 = 45^\circ"></span>에서 가장 크다.</li>
 </ul>
+</div>
+<div class="fig"><img src="fig/f1_projectile.svg" alt="발사각 θ0로 던진 물체의 포물선 궤적과 다섯 순간의 속도, 수평 성분은 일정하고 최고점에서 v_y = 0"></div>
+</div>
 <p class="next"><a href="projectile-sim.html">다음 → 포물선 운동 시뮬레이션</a></p>
 </div>
 <script type="module" src="../../core/chapter.js"></script>

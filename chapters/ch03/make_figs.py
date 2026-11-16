@@ -51,17 +51,6 @@ def arc(cx, cy, r, a0, a1, c=INK):
     return f'<path d="M{x0:.1f},{y0:.1f} A{r},{r} 0 {large} 0 {x1:.1f},{y1:.1f}" fill="none" stroke="{c}" stroke-width="1.5"/>'
 
 
-# 1. 벡터와 성분
-O = (60, 250)
-T = (300, 90)
-b = [line(O[0] - 20, O[1], 400, O[1], INK, 1.5, 'ink'), line(O[0], O[1] + 20, O[0], 30, INK, 1.5, 'ink'),
-     text(408, O[1] + 5, sym('x'), 'start'), text(O[0], 22, sym('y')),
-     line(O[0], O[1] + 8, T[0] - 4, O[1] + 8, A, 2, 'a', dash='6 4'), text((O[0] + T[0]) / 2, O[1] + 30, sym('a', 'x'), c=A),
-     line(T[0] + 8, O[1], T[0] + 8, T[1] + 4, A, 2, 'a', dash='6 4'), text(T[0] + 18, (O[1] + T[1]) / 2, sym('a', 'y'), 'start', c=A),
-     line(*O, *T, A, 3, 'a'), text((O[0] + T[0]) / 2 - 12, (O[1] + T[1]) / 2 - 12, vec('a'), c=A, size=20),
-     arc(*O, 46, 0, math.degrees(math.atan2(O[1] - T[1], T[0] - O[0]))), text(O[0] + 58, O[1] - 12, sym('θ'), 'start')]
-svg('f1_components', 440, 290, ''.join(b))
-
 # 2. 머리–꼬리 합과 평행사변형
 O, P, Q = (60, 240), (260, 170), (360, 60)          # a: O->P, b: P->Q, r: O->Q (합 기호는 r로 통일, 2026-11-16)
 R = (O[0] + Q[0] - P[0], O[1] + Q[1] - P[1])         # b를 원점에서 그린 끝

@@ -29,3 +29,13 @@ test('cross product: magnitude ab sin(phi), perpendicular, order flips sign (Eqs
   // Sample Problem 3.3.3: a = 3i - 4j, b = -2i + 3k -> a x b = -12i - 9j - 8k
   assert.deepEqual(cross([3, -4, 0], [-2, 0, 3]), [-12, -9, -8]);
 });
+
+test('cross product z component over phi 0-360 deg: a along x, b turned by phi in the xy plane', () => {
+  for (const phi of [30, 150, 210, 330]) {
+    const b = [2 * Math.cos(rad(phi)), 2 * Math.sin(rad(phi)), 0];
+    const c = cross([2.5, 0, 0], b);
+    assert.ok(Math.abs(c[2] - 2.5 * 2 * Math.sin(rad(phi))) < 1e-12);
+    assert.equal(Math.sign(c[2]), phi < 180 ? 1 : -1);          // -z beyond 180 deg
+    assert.ok(Math.abs(cross(b, [2.5, 0, 0])[2] + c[2]) < 1e-12); // order flips the sign (3.3.6)
+  }
+});

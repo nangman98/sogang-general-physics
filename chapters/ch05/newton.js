@@ -9,3 +9,9 @@ export function contact(F, mA, mB) {
   const a = F / (mA + mB);
   return { a, FBA: mB * a, FAB: -mB * a };
 }
+// 마찰 없는 탁자 위 블록(질량 M)과 도르래를 지나 매달린 블록(질량 m)을 질량 없는 줄로 잇는다(교재 예제 5.3.1).
+// (5.3.7) a = m g/(M + m), (5.3.4) T = M a. 줄과 도르래의 질량, 도르래의 마찰은 무시한다.
+export function pulley(M, m, g = G) {
+  const a = m * g / (M + m);
+  return { a, T: M * a };
+}

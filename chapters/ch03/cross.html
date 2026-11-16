@@ -9,18 +9,21 @@
 <link rel="stylesheet" href="../../core/chapter.css">
 </head>
 <body>
-<div class="page">
+<div class="page two">
 <a class="back" href="../../index.html">← 목차</a>
 <h1>외적 (vector product)</h1>
-<p>두 벡터의 <b class="k">외적 (vector product)</b> <span data-tex="\vec c = \vec a\times\vec b"></span>는 두 벡터에 모두 수직인 벡터다.</p>
-<div class="fig"><img src="fig/f4_cross.svg" alt="한 평면 위의 벡터 a와 b, 그 평면에 수직인 c = a × b"></div>
-<p><span data-tex="\vec c"></span>의 크기 <span data-tex="c"></span>는 다음과 같다. <span data-tex="\phi"></span>는 <span data-tex="\vec a"></span>와 <span data-tex="\vec b"></span> 사이의 두 각 중 작은 각이다.</p>
-<div class="eq"><div class="eq-tex" data-tex="\textcolor{#840025}{c = ab\sin\phi}"></div><span class="eq-no">(3.3.5)</span></div>
-<div class="eq"><div class="eq-tex" data-tex="\vec b\times\vec a = -(\vec a\times\vec b)"></div><span class="eq-no">(3.3.6)</span></div>
+<div class="cols">
+<div>
+<p>두 벡터의 <b class="k">외적 (vector product)</b> <span data-tex="\vec c = \vec a\times\vec b"></span>는 두 벡터에 모두 수직인 벡터다. 두 벡터를 <span data-tex="xy"></span> 평면에 두고 <span data-tex="\phi"></span>를 <span data-tex="\vec a"></span>에서 <span data-tex="\vec b"></span>로 반시계 방향(<span data-tex="+z"></span> 쪽에서 볼 때)으로 잰 각(0°–360°)으로 잡으면 <span data-tex="\vec c"></span>는 <span data-tex="z"></span>축 방향이고 그 성분은 다음과 같다.</p>
+<div class="eq"><div class="eq-tex" data-tex="\textcolor{#840025}{c_z = ab\sin\phi}"></div></div>
 <ul class="pts">
+<li><span data-tex="\phi"></span>가 180°보다 작으면 <span data-tex="c_z"></span>는 교재의 크기 <span data-tex="c = ab\sin\phi"></span> (3.3.5)와 같다. 180°보다 크면 <span data-tex="c_z"></span>는 음수이고 <span data-tex="\vec c"></span>는 <span data-tex="-z"></span> 방향이다.</li>
 <li>방향은 <b class="k">오른손 규칙 (right-hand rule)</b>으로 정한다. <span data-tex="\vec a"></span>에서 <span data-tex="\vec b"></span>로 두 벡터 사이의 작은 각을 따라 손가락을 감으면 엄지가 <span data-tex="\vec c"></span> 방향이다.</li>
-<li>두 벡터가 같은 방향이거나 반대 방향이면 0이고 수직일 때 크기가 가장 크다.</li>
+<li>순서를 바꾸면 방향이 반대가 된다 (<span data-tex="\vec b\times\vec a = -(\vec a\times\vec b)"></span>) (3.3.6).</li>
 </ul>
+</div>
+<div class="fig"><img src="fig/f4_cross.svg" alt="한 평면 위의 벡터 a와 b, 그 평면에 수직인 c = a × b"></div>
+</div>
 <p class="next"><a href="cross-sim.html">다음 → 외적 시뮬레이션</a></p>
 </div>
 <script type="module" src="../../core/chapter.js"></script>

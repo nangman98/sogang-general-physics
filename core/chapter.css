@@ -66,6 +66,21 @@ ul.pts { margin: 8px 0 14px; padding-left: 22px; }
 ul.pts li { margin: 3px 0; }
 .fig { overflow-x: auto; margin: 16px 0; text-align: center; }
 .fig img { width: 100%; max-width: 640px; min-width: 520px; }
+/* 이론 쪽 한 화면 배치(2026-11-16). 왼쪽에 식과 의미, 오른쪽에 그림. 좁은 화면에서는 위아래로 쌓인다.
+   글자·간격·식은 em이라 배율 --s 하나로 함께 커진다. chapter.js가 화면 높이에 맞춰 --s를 정한다. */
+.page.two { max-width: 1180px; padding-block: 28px 32px; min-height: 100vh; display: flex; flex-direction: column; font-size: calc(18px * var(--s, 1)); }
+.page.two h1 { font-size: 1.75em; }
+.page.two p { margin: 0.6em 0; }
+.page.two ul.pts li { margin: 0.3em 0; }
+.page.two .eq { margin: 0.8em 0 0.4em; }
+.page.two .eq-no { font-size: 0.85em; }
+.page.two table { font-size: 0.85em; }
+.page.two .src { font-size: 0.8em; }
+.cols { flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px 48px; align-items: center; margin-top: 8px; }
+.cols .fig { margin: 0; }
+.cols .fig img { min-width: 0; max-width: 100%; max-height: 60vh; }
+.page.two .next { margin-top: 24px; }
+@media (max-width: 860px) { .cols { grid-template-columns: minmax(0, 1fr); } .page.two { min-height: 0; display: block; font-size: inherit; } }
 /* 페이지 안 시뮬레이션 */
 .sim { border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin: 24px 0; }
 .sim svg { display: block; width: 100%; height: auto; max-height: 60vh; }

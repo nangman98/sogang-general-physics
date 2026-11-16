@@ -33,8 +33,6 @@ table.compact td { padding: 6px 12px; }
 .eq-tex .katex-display { margin: 0; }
 .eq-tex .katex { font-size: 1.6em; }
 .eq-no { color: var(--ink-2); font-size: 15px; white-space: nowrap; }
-.meaning { margin: 4px 0 14px; }
-.meaning .lbl { color: var(--crimson); font-weight: 700; margin-right: 8px; }
 /* 장 시뮬레이션 쪽 */
 .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin: 20px 0 8px; }
 .tabs button { font: inherit; font-size: 15px; background: none; border: 0; border-bottom: 2px solid transparent; padding: 8px 12px; color: var(--ink-2); cursor: pointer; }

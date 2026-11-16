@@ -2,7 +2,7 @@
 
 값의 출처
 - 위치 그림은 원점 O와 x = 3 m의 물체다(사용자가 보여 준 예시 그림과 같은 꼴, 2026-11-16).
-- 자유 낙하 그림은 교재 Sample Problem 2.5.1(정지 상태에서 48 m 낙하, g = 9.8 m/s^2)의 t = 0, 1, 2, 3 s 위치와 속도다.
+- 자유 낙하 그림은 정지 상태에서 떨어지는 물체(g = 9.8 m/s^2)의 t = 0, 1, 2, 3 s 위치와 속도다(값은 교재 Sample Problem 2.5.1과 같고, 수면 표시는 2026-11-16 사용자 결정으로 뺐다).
 색은 05_디자인_기준.md를 따른다. 축과 글자 검정, 위치 진한 빨강, 속도 #0072B2, 가속도 #CC79A7.
 """
 import pathlib
@@ -65,16 +65,15 @@ b += [text(x0, y + 44, '원점 O', size=14, c='#555555'),
       text(x0 + 4.4 * u, 84, '양의 방향 →', size=14, c='#555555')]
 svg('f1_position', 660, 160, ''.join(b))
 
-# 6. 자유 낙하: Sample Problem 2.5.1
+# 6. 자유 낙하: 정지 상태에서 떨어지는 물체
 g, Y0, s, VS = 9.8, 60, 6.25, 2.4   # y = 0 at pixel Y0, 6.25 px per m, velocity arrow 2.4 px per m/s
 yp = lambda y: Y0 - s * y
 AX, BX = 110, 190
 num = lambda z: f'{z:.1f}'.replace('-', '−') if abs(z) > 1e-9 else '0'
 b = [line(AX, yp(-52), AX, yp(4), INK, 2, 'ink'),
      text(AX, yp(4) - 12, f'{sym("y")} (m)', size=14),
-     line(AX - 6, yp(0), AX + 6, yp(0), INK, 1.5), text(AX - 12, yp(0) + 5, '0', 'end', size=13, c='#555555'),
-     line(60, yp(-48), 500, yp(-48), VEL, 1.2, dash='4 4'),
-     text(AX - 12, yp(-48) + 5, '−48', 'end', size=13, c='#555555'), text(AX + 14, yp(-48) + 20, '수면', 'start', size=14, c='#555555'),
+     *[e for y in (0, -10, -20, -30, -40) for e in (line(AX - 6, yp(y), AX + 6, yp(y), INK, 1.5),
+                                                    text(AX - 12, yp(y) + 5, str(y).replace('-', '−'), 'end', size=13, c='#555555'))],
      line(330, 22, 330, 46, ACC, 2.5, 'acc'), text(340, 40, f'{sym("a")} = −{sym("g")}', 'start', size=14, c=ACC, weight=600),
      line(430, 22, 430, 46, VEL, 2.5, 'vel'), text(440, 40, sym('v'), 'start', size=14, c=VEL, weight=600)]
 for t in (0, 1, 2, 3):

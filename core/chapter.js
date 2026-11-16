@@ -11,7 +11,7 @@ function fit() {
     const k = el.querySelector('.katex');
     k.style.fontSize = '';
     const need = k.scrollWidth, room = el.clientWidth;
-    if (need > room) k.style.fontSize = `${(1.21 * room / need).toFixed(3)}em`;
+    if (need > room) k.style.fontSize = `${(1.6 * room / need).toFixed(3)}em`;  // 1.6em은 chapter.css의 가운데 식 크기
   }
 }
 fit();

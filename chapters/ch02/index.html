@@ -3,57 +3,42 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>2장 직선 운동 · 서강대 일반물리</title>
+<meta name="card-title" content="등속도 운동">
+<title>등속도 운동 · 서강대 일반물리</title>
 <link rel="stylesheet" href="../../vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../../core/chapter.css">
 </head>
 <body>
 <div class="page">
 <a class="back" href="../../index.html">← 목차</a>
-<h1>2장 직선 운동 (Motion Along a Straight Line)</h1>
+<h1>등속도 운동 (constant velocity)</h1>
+<p>직선 운동은 먼저 <b class="k">좌표축</b>을 정하고 물체의 자리를 <b class="k">위치 (position)</b> <span data-tex="x"></span>로 나타낸다.</p>
+<div class="fig"><img src="fig/f1_position.svg" alt="x축 위 원점 O와 x = 3 m에 있는 물체, 원점에서 물체까지의 위치 화살표"></div>
 
-<h2>위치와 변위</h2>
-<p>직선 위의 물체는 <b class="k">위치 (position)</b> <span data-tex="x"></span>를 축의 눈금으로 읽는다. 위치가 바뀐 양이 <b class="k">변위 (displacement)</b>다.</p>
-<div class="eq"><div class="eq-tex" data-tex="\Delta x = x_2 - x_1"></div><span class="eq-no">(2.1.1)</span></div>
-<p class="meaning"><span class="lbl">식의 뜻</span>변위는 처음 위치 <span data-tex="x_1"></span>과 나중 위치 <span data-tex="x_2"></span>만으로 정해지고 그 사이의 경로와는 상관없다. 부호가 움직인 방향이다.</p>
+<div class="eq"><div class="eq-tex" data-tex="\Delta x = x_2 - x_1 \qquad v_{\text{avg}} = \frac{\Delta x}{\Delta t}"></div><span class="eq-no">(2.1.1), (2.1.2)</span></div>
+<ul class="pts">
+<li><b class="k">변위 (displacement)</b>는 처음과 나중 위치만으로 정해지고 부호가 방향이다.</li>
+<li><b class="k">평균 속도 (average velocity)</b>는 <span data-tex="x"></span>–<span data-tex="t"></span> 그래프에서 두 점을 잇는 직선의 기울기다.</li>
+</ul>
 
-<h2>평균 속도와 평균 속력</h2>
-<div class="eq"><div class="eq-tex" data-tex="v_{\text{avg}} = \frac{\Delta x}{\Delta t} = \frac{x_2 - x_1}{t_2 - t_1}"></div><span class="eq-no">(2.1.2)</span></div>
-<div class="eq"><div class="eq-tex" data-tex="s_{\text{avg}} = \frac{\text{total distance}}{\Delta t}"></div><span class="eq-no">(2.1.3)</span></div>
-<p class="meaning"><span class="lbl">식의 뜻</span><b class="k">평균 속도 (average velocity)</b>는 변위를 걸린 시간으로 나눈 값이고 <span data-tex="x"></span>–<span data-tex="t"></span> 그래프에서 두 점을 잇는 직선의 기울기다. <b class="k">평균 속력 (average speed)</b>은 실제로 움직인 총 거리를 쓰므로 방향이 없다. 되돌아오는 운동에서는 평균 속도의 크기와 다르다.</p>
+<p>속도가 일정하면 어느 구간을 골라도 평균 속도가 같은 값 <span data-tex="v"></span>이다.</p>
+<div class="eq"><div class="eq-tex" data-tex="x = x_0 + vt"></div><span class="eq-no">(2.4.5에서 <span data-tex="a = 0"></span>)</span></div>
+<ul class="pts">
+<li><span data-tex="x"></span>–<span data-tex="t"></span> 그래프는 기울기가 <span data-tex="v"></span>인 직선이다.</li>
+<li><span data-tex="v"></span>가 음수이면 음의 방향으로 움직인다.</li>
+</ul>
 
-<h2>순간 속도와 속력</h2>
-<div class="eq"><div class="eq-tex" data-tex="v = \lim_{\Delta t\to 0}\frac{\Delta x}{\Delta t} = \frac{dx}{dt}"></div><span class="eq-no">(2.2.1)</span></div>
-<p class="meaning"><span class="lbl">식의 뜻</span><b class="k">순간 속도 (instantaneous velocity)</b>는 시간 간격을 0으로 줄인 평균 속도이고 <span data-tex="x"></span>–<span data-tex="t"></span> 그래프 접선의 기울기다. <b class="k">속력 (speed)</b>은 순간 속도의 크기다.</p>
-
-<h2>가속도</h2>
-<div class="eq"><div class="eq-tex" data-tex="a_{\text{avg}} = \frac{v_2 - v_1}{t_2 - t_1} = \frac{\Delta v}{\Delta t}"></div><span class="eq-no">(2.3.1)</span></div>
-<div class="eq"><div class="eq-tex" data-tex="a = \frac{dv}{dt} = \frac{d^2x}{dt^2}"></div><span class="eq-no">(2.3.2), (2.3.3)</span></div>
-<p class="meaning"><span class="lbl">식의 뜻</span><b class="k">가속도 (acceleration)</b>는 속도가 바뀌는 빠르기이고 <span data-tex="v"></span>–<span data-tex="t"></span> 그래프 접선의 기울기다. 속도와 가속도의 부호가 같으면 속력이 커지고 다르면 작아진다.</p>
-
-<h2>등가속도 운동</h2>
-<p>가속도가 일정할 때만 쓰는 다섯 식이다 (교재 표 2.4.1).</p>
-<div class="tbl"><table>
-<thead><tr><th>식 번호</th><th>식</th><th>빠진 양</th></tr></thead>
-<tbody>
-<tr><td class="num">2.4.1</td><td><span data-tex="v = v_0 + at"></span></td><td><span data-tex="x - x_0"></span></td></tr>
-<tr><td class="num">2.4.5</td><td><span data-tex="x - x_0 = v_0 t + \tfrac{1}{2}at^2"></span></td><td><span data-tex="v"></span></td></tr>
-<tr><td class="num">2.4.6</td><td><span data-tex="v^2 = v_0^2 + 2a(x - x_0)"></span></td><td><span data-tex="t"></span></td></tr>
-<tr><td class="num">2.4.7</td><td><span data-tex="x - x_0 = \tfrac{1}{2}(v_0 + v)t"></span></td><td><span data-tex="a"></span></td></tr>
-<tr><td class="num">2.4.8</td><td><span data-tex="x - x_0 = vt - \tfrac{1}{2}at^2"></span></td><td><span data-tex="v_0"></span></td></tr>
-</tbody></table></div>
-<p class="meaning"><span class="lbl">식의 뜻</span>다섯 식은 다섯 양 <span data-tex="x - x_0,\ v,\ t,\ a,\ v_0"></span> 가운데 하나씩이 빠져 있다. 문제에 주어지지도 묻지도 않은 양이 빠진 식을 고른다.</p>
-
-<h2>자유 낙하 가속도</h2>
-<p>공기의 영향을 무시하면 위로 던진 물체도 아래로 떨어지는 물체도 아래 방향으로 크기 <span data-tex="g"></span>인 일정한 가속도로 움직인다. 이것이 <b class="k">자유 낙하 (free fall)</b>다.</p>
-<div class="eq"><div class="eq-tex" data-tex="a = -g = -9.8\ \mathrm{m/s^2}"></div></div>
-<p class="meaning"><span class="lbl">식의 뜻</span><span data-tex="y"></span>축을 위로 잡았을 때의 값이다. 빼기 부호는 아래 방향이라는 뜻이고 <span data-tex="g"></span> 자체는 양수다. 등가속도 식에 <span data-tex="x"></span> 대신 <span data-tex="y"></span>, <span data-tex="a"></span> 대신 <span data-tex="-g"></span>를 넣어 쓴다.</p>
-
-<h2>그래프 적분</h2>
-<div class="eq"><div class="eq-tex" data-tex="v_1 - v_0 = \int_{t_0}^{t_1} a\,dt"></div><span class="eq-no">(2.6.1)</span></div>
-<div class="eq"><div class="eq-tex" data-tex="x_1 - x_0 = \int_{t_0}^{t_1} v\,dt"></div><span class="eq-no">(2.6.3)</span></div>
-<p class="meaning"><span class="lbl">식의 뜻</span><span data-tex="a"></span>–<span data-tex="t"></span> 그래프 아래 넓이가 그동안의 속도 변화이고 <span data-tex="v"></span>–<span data-tex="t"></span> 그래프 아래 넓이가 변위다. 시간축 아래쪽 넓이는 음수로 센다.</p>
+<div class="sim" id="sim">
+<svg id="view" viewBox="0 0 660 380" role="img" aria-label="x축 위를 움직이는 물체와 x-t 그래프"></svg>
+<div class="row">
+<label for="v">속도 <span data-tex="v"></span> <input type="range" id="v" min="-4" max="4" step="0.5" value="2"> <span class="read" id="vval"></span></label>
+<button class="main" id="play">재생</button><button id="reset">처음으로</button>
+</div>
+<p class="read" id="read"></p>
+</div>
+<p class="next"><a href="free-fall.html">다음 → 자유 낙하</a></p>
 </div>
 <script type="module" src="../../core/chapter.js"></script>
+<script type="module" src="uniform.js"></script>
 </body>
 </html>

@@ -1,8 +1,8 @@
 """Build the catalog page index.html from data/textbook_toc.json and the chapter pages.
 
-Only chapter pages written in the new format are listed (user decision 2026-11-16): a chapter is
-linked when chapters/chNN/index.html exists. The earlier screens under sims/ stay in the repository
-but are not linked. Card text is the page's <h1> and its <h2> section titles. Run: python3 tools/build_index.py
+Only pages written in the new format are listed (user decision 2026-11-16): chapters/chapters.json
+gives each chapter's Korean name and page order, and each page's <meta name="card-title"> is its card.
+The earlier screens under sims/ stay in the repository but are not linked. Run: python3 tools/build_index.py
 """
 import json
 import pathlib
@@ -12,13 +12,17 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 toc = json.loads((ROOT / 'data' / 'textbook_toc.json').read_text(encoding='utf-8'))
 courses = {'I': '일반물리 I', 'II': '일반물리 II'}
 
+# Chapter names and page order: chapters/chapters.json. Card title: <meta name="card-title"> of each page.
+chap = {int(k): v for k, v in json.loads((ROOT / 'chapters' / 'chapters.json').read_text(encoding='utf-8')).items()}
 pages = {}
-for page in sorted(ROOT.glob('chapters/ch[0-9][0-9]/index.html')):
-    text = page.read_text(encoding='utf-8')
-    h1 = re.search(r'<h1>(.*?)</h1>', text)
-    sections = re.findall(r'<h2>(.*?)</h2>', text)
-    assert h1 and sections, f'{page}: needs an <h1> and <h2> sections'
-    pages[int(page.parent.name[2:])] = (page.relative_to(ROOT).as_posix(), h1.group(1), sections)
+for n, c in chap.items():
+    folder = ROOT / 'chapters' / f'ch{n:02d}'
+    assert sorted(c['pages']) == sorted(p.name for p in folder.glob('*.html')), f'{folder}: pages in chapters.json differ from the folder'
+    pages[n] = []
+    for name in c['pages']:
+        m = re.search(r'<meta name="card-title" content="([^"]+)">', (folder / name).read_text(encoding='utf-8'))
+        assert m, f'{folder / name}: no card-title'
+        pages[n].append((f'chapters/ch{n:02d}/{name}', m.group(1)))
 
 rows = []
 for course in ('I', 'II'):
@@ -27,9 +31,8 @@ for course in ('I', 'II'):
         continue
     rows.append(f'<section class="course"><h2>{courses[course]}</h2>')
     for c in chs:
-        href, h1, sections = pages[c['chapter']]
-        rows.append(f'<section class="chapter"><h3>{h1}</h3><div class="cards">'
-                    f'<a class="card" href="{href}"><div class="body"><h4>{" · ".join(sections)}</h4></div></a></div></section>')
+        cards = ''.join(f'<a class="card" href="{href}"><div class="body"><h4>{title}</h4></div></a>' for href, title in pages[c['chapter']])
+        rows.append(f'<section class="chapter"><h3>{c["chapter"]}장 {chap[c["chapter"]]["ko"]} ({c["title"]})</h3><div class="cards">{cards}</div></section>')
     rows.append('</section>')
 
 page = f"""<!doctype html>
@@ -61,4 +64,4 @@ a.card:focus-visible {{ outline: 3px solid var(--focus); outline-offset: 2px; }}
 </html>
 """
 (ROOT / 'index.html').write_text(page, encoding='utf-8')
-print(f'index.html written: {len(pages)} chapter pages {sorted(pages)}')
+print(f'index.html written: ' + ', '.join(f'{n}장 {len(v)}쪽' for n, v in pages.items()))

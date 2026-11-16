@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>포물선 운동 시뮬레이션 · 서강대 일반물리</title>
+<link rel="stylesheet" href="../../vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../../core/chapter.css">
+</head>
+<body>
+<div class="page wide">
+<a class="back" href="index.html">← 포물선 운동</a>
+<h1>포물선 운동 시뮬레이션</h1>
+<div class="eq"><div class="eq-tex" data-tex="\textcolor{#840025}{y = (\tan\theta_0)\,x - \frac{g x^2}{2(v_0\cos\theta_0)^2}}"></div></div>
+<div class="sim" id="sim">
+<svg id="view" viewBox="0 0 900 470" role="img" aria-label="발사점에서 던진 공의 궤적과 속도 화살표" style="touch-action:none"></svg>
+<div class="row">
+<label for="v0">처음 속력 <span data-tex="v_0"></span> <input type="range" id="v0" min="5" max="30" step="1" value="20"> <span class="read" id="v0val"></span></label>
+<label for="th">발사각 <span data-tex="\theta_0"></span> <input type="range" id="th" min="5" max="85" step="1" value="45"> <span class="read" id="thval"></span></label>
+<button class="main" id="play">재생</button><button id="reset">처음으로</button>
+</div>
+<p class="read" id="read"></p>
+</div>
+<p class="next"><a href="circular.html">다음 → 등속 원운동</a></p>
+</div>
+<script type="module" src="../../core/chapter.js"></script>
+<script type="module" src="projectile.js"></script>
+</body>
+</html>

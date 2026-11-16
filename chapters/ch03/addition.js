@@ -2,7 +2,7 @@
 // 보기 단추로 합성 규칙을 본다. a + b와 b + a는 같은 r에 닿고(교환 법칙, 교재 3.1.2),
 // a − b는 a에 −b를 더한 것이다(교재 3.1.4, 성분은 3.2.7).
 import { add, mag, angleDeg } from './vec.js';
-import { COLOR, tex, fmt, svgKit } from './sim-common.js';
+import { COLOR, tex, fmt, svgKit } from '../../core/simkit.js';
 
 const S = 34, C = 300, N = 8;                       // 1칸 34 px, 원점 (300, 300), 축 −8…8
 const svg = document.getElementById('view');

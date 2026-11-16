@@ -1,7 +1,7 @@
 // 3장 "외적" 시뮬레이션. a는 x축 방향, b는 xy 평면에서 x축과 ϕ를 이룬다. 크기 a, b와 ϕ는 slider로 정한다. c = a × b 또는 b × a는 z축 방향이다.
 // 3D는 회전한 점을 직접 화면에 투영해 SVG로 그린다. 화면을 끌면 돈다.
 import { cross, mag, rad } from './vec.js';
-import { COLOR, tex, fmt, svgKit } from './sim-common.js';
+import { COLOR, tex, fmt, svgKit } from '../../core/simkit.js';
 
 const U = 40, CX = 300, CY = 290;   // 1 단위 40 px, 크기는 0.5–2.5
 const svg = document.getElementById('view');
@@ -60,7 +60,7 @@ function draw() {
   document.getElementById('read').innerHTML = [
     tex(`\\vec c = ${name}`),
     tex(`\\textcolor{#840025}{c = ab\\sin\\phi = (${fmt(LA)})(${fmt(LB)})\\sin ${phi}^\\circ = ${fmt(mag(c), 2)}}`),
-    `방향 ${tex(c[2] > 0.005 ? '+z' : c[2] < -0.005 ? '-z' : '\\text{없음}')}`,
+    `방향 ${c[2] > 0.005 ? tex('+z') : c[2] < -0.005 ? tex('-z') : '없음'}`,
   ].join('<br>');
 }
 

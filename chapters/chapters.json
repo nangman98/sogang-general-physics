@@ -13,5 +13,10 @@
     "ko": "벡터",
     "pages": ["index.html", "dot.html", "cross.html"],
     "sims": ["add-sim.html", "dot-sim.html", "cross-sim.html"]
+  },
+  "4": {
+    "ko": "2차원과 3차원 운동",
+    "pages": ["index.html", "circular.html", "relative.html"],
+    "sims": ["projectile-sim.html", "circular-sim.html", "relative-sim.html"]
   }
 }

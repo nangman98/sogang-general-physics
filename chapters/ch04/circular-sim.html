@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>등속 원운동 시뮬레이션 · 서강대 일반물리</title>
+<link rel="stylesheet" href="../../vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../../core/chapter.css">
+</head>
+<body>
+<div class="page wide">
+<a class="back" href="circular.html">← 등속 원운동</a>
+<h1>등속 원운동 시뮬레이션</h1>
+<div class="eq"><div class="eq-tex" data-tex="\textcolor{#840025}{a = \frac{v^2}{r}}"></div></div>
+<div class="sim" id="sim">
+<svg id="view" viewBox="0 0 560 500" role="img" aria-label="원을 도는 물체의 속도와 구심 가속도 화살표" style="touch-action:none"></svg>
+<div class="row">
+<label for="v">속력 <span data-tex="v"></span> <input type="range" id="v" min="1" max="6" step="0.5" value="3"> <span class="read" id="vval"></span></label>
+<label for="r">반지름 <span data-tex="r"></span> <input type="range" id="r" min="2" max="5" step="0.5" value="4"> <span class="read" id="rval"></span></label>
+<button class="main" id="play">재생</button><button id="reset">처음으로</button>
+</div>
+<p class="read" id="read"></p>
+</div>
+<p class="next"><a href="relative.html">다음 → 상대 운동</a></p>
+</div>
+<script type="module" src="../../core/chapter.js"></script>
+<script type="module" src="circular.js"></script>
+</body>
+</html>

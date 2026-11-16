@@ -1,8 +1,9 @@
-// 3장 시뮬레이션 공통 부품. SVG 요소 만들기, 화살촉 정의, KaTeX 글.
-import katex from '../../vendor/katex/katex.mjs';
+// 장 시뮬레이션 공통 부품(3장에서 시작). SVG 요소 만들기, 화살촉 정의, KaTeX 글.
+import katex from '../vendor/katex/katex.mjs';
 
 export const NS = 'http://www.w3.org/2000/svg';
-export const COLOR = { a: '#0072B2', b: '#D55E00', c: '#840025', ink: '#1a1a1a', gray: '#8a8a8a', grid: '#e6e6e6' };
+export const COLOR = { a: '#0072B2', b: '#D55E00', c: '#840025', ink: '#1a1a1a', gray: '#8a8a8a', grid: '#e6e6e6',
+  vel: '#0072B2', acc: '#CC79A7', water: '#009E73' };
 export const tex = s => katex.renderToString(s, { throwOnError: true });
 export const fmt = (x, d = 1) => (Math.abs(x) < 0.5 * 10 ** -d ? 0 : x).toFixed(d).replace('-', '−');
 

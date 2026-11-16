@@ -1,7 +1,7 @@
 // 3장 "내적" 시뮬레이션. b는 x축 방향, a는 b에서 ϕ만큼 돌린 방향이다. 크기 a, b와 사이각 ϕ는 모두 slider로 정한다.
 // 파란 막대는 b 방향으로의 a의 성분 a cos ϕ이고, 내적은 그 값에 b를 곱한 것이다(교재 3.3.2).
 import { dot, rad } from './vec.js';
-import { COLOR, tex, fmt, svgKit } from './sim-common.js';
+import { COLOR, tex, fmt, svgKit } from '../../core/simkit.js';
 
 const S = 30, O = [270, 270];   // 1 단위 30 px, 크기는 1–8
 const svg = document.getElementById('view');

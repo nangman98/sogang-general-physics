@@ -81,7 +81,7 @@ b = [line(*O, O[0] + L, O[1], B, 3, 'b'), text(O[0] + L + 10, O[1] + 6, vec('b')
      arc(*O, 44, 0, phi), text(O[0] + 56, O[1] - 18, sym('ϕ'), 'start')]
 svg('f3_dot', 460, 270, ''.join(b))
 
-# 4. 외적: a, b가 놓인 평면에 수직인 c = a × b
+# 4. 외적: a, b가 놓인 평면(옅은 음영)에 수직인 c = a × b. 교재에 넓이 이야기가 없어 넓이 글은 쓰지 않는다(2026-11-16).
 O, u = (180, 230), 40
 P3 = lambda x, y, z: (O[0] - 28 / 40 * u * x + u * y, O[1] + 16 / 40 * u * x - u * z)
 av, bv, phi = 2.5, 2.0, 70
@@ -91,6 +91,5 @@ pa, pb, pab, pc = P3(av, 0, 0), P3(bx, by, 0), P3(av + bx, by, 0), P3(0, 0, cz)
 b = [f'<polygon points="{O[0]},{O[1]} {pa[0]:.1f},{pa[1]:.1f} {pab[0]:.1f},{pab[1]:.1f} {pb[0]:.1f},{pb[1]:.1f}" fill="{FILL}" fill-opacity="0.35" stroke="none"/>',
      line(*O, *pa, A, 3, 'a'), text(pa[0] - 10, pa[1] + 22, vec('a'), c=A, size=20),
      line(*O, *pb, B, 3, 'b'), text(pb[0] + 14, pb[1] + 6, vec('b'), 'start', c=B, size=20),
-     line(*O, *pc, CRIMSON, 3.5, 'c'), text(pc[0] + 12, pc[1] + 14, f'{vec("c")} = {vec("a")} × {vec("b")}', 'start', c=CRIMSON, size=18),
-     text(pab[0] + 10, pab[1] + 26, f'넓이 = {sym("ab")} sin {sym("ϕ")}', 'start', size=14, c='#555555')]
+     line(*O, *pc, CRIMSON, 3.5, 'c'), text(pc[0] + 12, pc[1] + 14, f'{vec("c")} = {vec("a")} × {vec("b")}', 'start', c=CRIMSON, size=18)]
 svg('f4_cross', 420, 330, ''.join(b))

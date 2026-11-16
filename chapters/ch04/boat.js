@@ -19,6 +19,15 @@ for (let x = -30; x <= 50; x += 10) {
 }
 el('text', { x: X0 + S * 50 + 14, y: Y0 + 22, 'font-size': 12, fill: '#555555' }).textContent = 'x (m)';
 const flow = el('text', { x: 860, y: Y0 - S * D + 22, 'text-anchor': 'end', 'font-size': 14, fill: COLOR.water });
+// 강물 표시: 재생하면 강가에서 본 강물의 속력 v_BA로 흘러간다(사용자 2026-11-16 "강물 속도 고정").
+const WATER = [];
+for (const y of [5, 12, 19]) for (let k = 0; k < 9; k++) WATER.push({ x0: -30 + k * 10 + (y % 2) * 5, y, e: el('line', { stroke: COLOR.water, 'stroke-width': 2.5, 'stroke-opacity': 0.45, 'stroke-linecap': 'round' }) });
+function drawWater(time) {
+  for (const w of WATER) {
+    const x = ((w.x0 + num('vBA') * time + 32) % 84 + 84) % 84 - 32, [X, Y] = P(x, w.y);
+    set(w.e, { x1: X - 12, y1: Y, x2: X + 12, y2: Y });
+  }
+}
 const trail = el('polyline', { fill: 'none', stroke: COLOR.c, 'stroke-width': 2, 'stroke-dasharray': '6 4' });
 const boatShape = el('polygon', { fill: '#d0d0d0', stroke: COLOR.ink, 'stroke-width': 1.5 });
 const aPB = arrow('vel'), aBA = arrow('water'), aPA = arrow('c', 3.5);
@@ -43,12 +52,12 @@ function draw() {
   const n = Math.max(1, Math.round(tt * 10));
   trail.setAttribute('points', Array.from({ length: n + 1 }, (_, i) => P(b.PA[0] * tt * i / n, b.PA[1] * tt * i / n).map(v => v.toFixed(1)).join(',')).join(' '));
   flow.textContent = `강물 흐름 → ${fmt(num('vBA'))} m/s`;
+  drawWater(t);
   for (const id of ['vPB', 'vBA']) $(id + 'val').innerHTML = tex(`${fmt(num(id))}\\ \\mathrm{m/s}`);
   $('thval').innerHTML = tex(`${num('th')}^\\circ`);
-  const mag = Math.hypot(...b.PA);
   $('read').innerHTML = [
     tex(`\\textcolor{#840025}{\\vec v_{PA} = \\vec v_{PB} + \\vec v_{BA} = (${fmt(b.PB[0], 2)},\\ ${fmt(b.PB[1], 2)}) + (${fmt(b.BA[0], 2)},\\ 0) = (${fmt(b.PA[0], 2)},\\ ${fmt(b.PA[1], 2)})\\ \\mathrm{m/s}}`),
-    `${tex(`v_{PA} = ${fmt(mag, 2)}\\ \\mathrm{m/s}`)} &nbsp; 건너는 시간 ${tex(`${fmt(b.time, 2)}\\ \\mathrm{s}`)} &nbsp; 떠내려간 거리 ${tex(`${fmt(b.drift, 1)}\\ \\mathrm{m}`)} &nbsp; ${tex(`t = ${fmt(tt, 2)}\\ \\mathrm{s}`)}`,
+    `건너는 시간 ${tex(`${fmt(b.time, 2)}\\ \\mathrm{s}`)} &nbsp; 떠내려간 거리 ${tex(`${fmt(b.drift, 1)}\\ \\mathrm{m}`)}`,
   ].join('<br>');
   return b.time;
 }

@@ -1,6 +1,6 @@
 // 4장 "포물선 운동" 시뮬레이션. 발사점 (0, 0)에서 처음 속력 v0, 발사각 θ0로 던진다. 같은 축척(1 m = 8 px).
 // 시간은 실제 빠르기(1배)로 흐른다. 속도 화살표 1 m/s = 2.4 px.
-import { projectile, flightTime, range, maxHeight, G } from './motion.js';
+import { projectile, flightTime, range } from './motion.js';
 import { COLOR, tex, fmt, svgKit } from '../../core/simkit.js';
 
 const S = 8, O = [60, 420], K = 2.4;
@@ -43,10 +43,8 @@ function draw() {
   set(rangeMark, { x1: O[0] + S * R, y1: O[1] - 14, x2: O[0] + S * R, y2: O[1] + 14 });
   $('v0val').innerHTML = tex(`${v0()}\\ \\mathrm{m/s}`);
   $('thval').innerHTML = tex(`${th()}^\\circ`);
-  $('read').innerHTML = [
-    tex(`t = ${fmt(t, 2)}\\ \\mathrm{s}\\qquad x = ${fmt(p.x)}\\ \\mathrm{m}\\qquad y = ${fmt(p.y)}\\ \\mathrm{m}\\qquad v_x = ${fmt(p.vx)}\\ \\mathrm{m/s}\\qquad v_y = ${fmt(p.vy)}\\ \\mathrm{m/s}`),
-    tex(`R = \\frac{v_0^2}{g}\\sin 2\\theta_0 = ${fmt(R)}\\ \\mathrm{m}\\qquad H = ${fmt(maxHeight(v0(), th()))}\\ \\mathrm{m}\\qquad g = ${G}\\ \\mathrm{m/s^2}`),
-  ].join('<br>');
+  // 보여 줄 값만 둔다(사용자 2026-11-16 "너무 여러 개라서 지저분"). v_x는 그대로이고 v_y만 바뀐다.
+  $('read').innerHTML = tex(`v_x = ${fmt(p.vx)}\\ \\mathrm{m/s}\\qquad v_y = ${fmt(p.vy)}\\ \\mathrm{m/s}\\qquad R = ${fmt(R)}\\ \\mathrm{m}`);
   return T;
 }
 

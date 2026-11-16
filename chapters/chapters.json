@@ -18,5 +18,10 @@
     "ko": "2차원과 3차원 운동",
     "pages": ["index.html", "circular.html", "relative.html"],
     "sims": ["projectile-sim.html", "circular-sim.html", "relative-sim.html"]
+  },
+  "5": {
+    "ko": "힘과 운동 I",
+    "pages": ["index.html", "force.html", "third.html"],
+    "sims": ["law-sim.html", "elevator-sim.html", "contact-sim.html"]
   }
 }

@@ -1,0 +1,268 @@
+{
+ "처음 생긴 은하까지 거리": {
+  "file": "01.jpg",
+  "commons": "File:Hubble ultra deep field.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Hubble_ultra_deep_field.jpg",
+  "artist": "NASA and the European Space Agency.",
+  "license": "Public domain"
+ },
+ "안드로메다 은하까지 거리": {
+  "file": "02.jpg",
+  "commons": "File:Andromeda galaxy.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Andromeda_galaxy.jpg",
+  "artist": "NASA/JPL/California Institute of Technology",
+  "license": "Public domain"
+ },
+ "프록시마 센타우리까지 거리": {
+  "file": "03.jpg",
+  "commons": "File:New shot of Proxima Centauri, our nearest neighbour.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:New_shot_of_Proxima_Centauri,_our_nearest_neighbour.jpg",
+  "artist": "ESA/Hubble &amp; NASA",
+  "license": "CC BY 4.0"
+ },
+ "명왕성까지 거리": {
+  "file": "04.jpg",
+  "commons": "File:Pluto-01 Stern 03 Pluto Color TXT.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Pluto-01_Stern_03_Pluto_Color_TXT.jpg",
+  "artist": "NASA / Johns Hopkins University Applied Physics Laboratory / Southwest Research Institute",
+  "license": "Public domain"
+ },
+ "지구 반지름": {
+  "file": "05.jpg",
+  "commons": "File:The Blue Marble, AS17-148-22727.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:The_Blue_Marble,_AS17-148-22727.jpg",
+  "artist": "Harrison Schmitt / Apollo 17",
+  "license": "Public domain"
+ },
+ "에베레스트산 높이": {
+  "file": "06.jpg",
+  "commons": "File:Mount Everest from Rongbuk may 2005.JPG",
+  "url": "https://commons.wikimedia.org/wiki/File:Mount_Everest_from_Rongbuk_may_2005.JPG",
+  "artist": "No machine-readable author provided. Ocrambo assumed (based on copyright claims).",
+  "license": "Public domain"
+ },
+ "사람의 키": {
+  "file": "07.jpg",
+  "commons": "File:Da Vinci Vitruve Luc Viatour.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Da_Vinci_Vitruve_Luc_Viatour.jpg",
+  "artist": "Leonardo da Vinci",
+  "license": "Public domain"
+ },
+ "킬로그램 원기의 높이": {
+  "file": "08.jpg",
+  "commons": "File:National prototype kilogram K20 replica.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:National_prototype_kilogram_K20_replica.jpg",
+  "artist": "Unknown authorUnknown author",
+  "license": "Public domain"
+ },
+ "교재 종이 한 장의 두께": {
+  "file": "09.jpg",
+  "commons": "File:Nominet-2021-egm-members-list-on-paper-575-pages.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Nominet-2021-egm-members-list-on-paper-575-pages.jpg",
+  "artist": "Simon Blackler (Krystal Hosting t/a PublicBenefit.uk)",
+  "license": "CC BY 4.0"
+ },
+ "보통 바이러스의 길이": {
+  "file": "10.jpg",
+  "commons": "File:Electron micrograph of Influenza A H7N9.png",
+  "url": "https://commons.wikimedia.org/wiki/File:Electron_micrograph_of_Influenza_A_H7N9.png",
+  "artist": "Photo Credit: Cynthia S. Goldsmith and Thomas Rowe Content Providers: CDC/ Cynthia S. Goldsmith and Thomas Rowe",
+  "license": "Public domain"
+ },
+ "수소 원자 반지름": {
+  "file": "11.jpg",
+  "commons": "File:Hydrogen atom.svg",
+  "url": "https://commons.wikimedia.org/wiki/File:Hydrogen_atom.svg",
+  "artist": "Bensaccount",
+  "license": "Public domain"
+ },
+ "양성자 반지름": {
+  "file": "12.jpg",
+  "commons": "File:Proton diagram.png",
+  "url": "https://commons.wikimedia.org/wiki/File:Proton_diagram.png",
+  "artist": "Cush, afgeleid werk: LukaBE",
+  "license": "CC0"
+ },
+ "양성자 수명 (예측값)": {
+  "file": "12.jpg",
+  "commons": "File:Proton diagram.png",
+  "url": "https://commons.wikimedia.org/wiki/File:Proton_diagram.png",
+  "artist": "Cush, afgeleid werk: LukaBE",
+  "license": "CC0"
+ },
+ "우주의 나이": {
+  "file": "13.jpg",
+  "commons": "File:WMAP 2010.png",
+  "url": "https://commons.wikimedia.org/wiki/File:WMAP_2010.png",
+  "artist": "NASA",
+  "license": "Public domain"
+ },
+ "쿠푸 피라미드의 나이": {
+  "file": "14.jpg",
+  "commons": "File:Giza Great Pyramid of Khufu (9793885004).jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Giza_Great_Pyramid_of_Khufu_(9793885004).jpg",
+  "artist": "Gary Todd from Xinzheng, China",
+  "license": "CC0"
+ },
+ "사람의 기대 수명": {
+  "file": "15.jpg",
+  "commons": "File:Hourglass with sand.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Hourglass_with_sand.jpg",
+  "artist": "John Morgan",
+  "license": "CC BY 2.0"
+ },
+ "하루의 길이": {
+  "file": "16.jpg",
+  "commons": "File:An orbital sunrise (iss071e001425).jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:An_orbital_sunrise_(iss071e001425).jpg",
+  "artist": "NASA Johnson Space Center",
+  "license": "Public domain"
+ },
+ "한 시간": {
+  "file": "17.jpg",
+  "commons": "File:Pittsfield Town Clock Face - Google Art Project.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Pittsfield_Town_Clock_Face_-_Google_Art_Project.jpg",
+  "artist": "Unknown",
+  "license": "Public domain"
+ },
+ "심장 박동 사이 시간": {
+  "file": "18.jpg",
+  "commons": "File:12 lead generated sinus rhythm.JPG",
+  "url": "https://commons.wikimedia.org/wiki/File:12_lead_generated_sinus_rhythm.JPG",
+  "artist": "Glenlarson",
+  "license": "Public domain"
+ },
+ "뮤온의 수명": {
+  "file": "19.jpg",
+  "commons": "File:CMS muon chambers.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:CMS_muon_chambers.jpg",
+  "artist": "zipckr",
+  "license": "CC BY 2.0"
+ },
+ "실험실에서 만든 가장 짧은 빛 펄스": {
+  "file": "20.jpg",
+  "commons": "File:Femtosecond laser spark.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Femtosecond_laser_spark.jpg",
+  "artist": "Smirnov Semen",
+  "license": "CC BY 4.0"
+ },
+ "가장 불안정한 입자의 수명": {
+  "file": "21.jpg",
+  "commons": "File:Neutrino bubble chamber decay overlay.png",
+  "url": "https://commons.wikimedia.org/wiki/File:Neutrino_bubble_chamber_decay_overlay.png",
+  "artist": "First_neutrino_observation.jpg: ? derivative work:Messier",
+  "license": "Public domain"
+ },
+ "플랑크 시간": {
+  "file": "22.jpg",
+  "commons": "File:Max Planck 1933.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Max_Planck_1933.jpg",
+  "artist": "Unknown authorUnknown author",
+  "license": "Public domain"
+ },
+ "알려진 우주": {
+  "file": "23.jpg",
+  "commons": "File:Hubble Extreme Deep Field (full resolution).png",
+  "url": "https://commons.wikimedia.org/wiki/File:Hubble_Extreme_Deep_Field_(full_resolution).png",
+  "artist": "NASA; ESA; G. Illingworth, D. Magee, and P. Oesch, University of California, Santa Cruz; R. Bouwens, Leiden University; and the HUDF09 Team",
+  "license": "Public domain"
+ },
+ "우리 은하": {
+  "file": "24.jpg",
+  "commons": "File:Milky Way IR Spitzer.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Milky_Way_IR_Spitzer.jpg",
+  "artist": "Credit: NASA/JPL-Caltech/S. Stolovy (Spitzer Science Center/Caltech)",
+  "license": "Public domain"
+ },
+ "태양": {
+  "file": "25.jpg",
+  "commons": "File:The Sun by the Atmospheric Imaging Assembly of NASA's Solar Dynamics Observatory - 20100819.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg",
+  "artist": "NASA/SDO (AIA)",
+  "license": "Public domain"
+ },
+ "달": {
+  "file": "26.jpg",
+  "commons": "File:Full moon partially obscured by atmosphere.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Full_moon_partially_obscured_by_atmosphere.jpg",
+  "artist": "NASA",
+  "license": "Public domain"
+ },
+ "소행성 에로스": {
+  "file": "27.jpg",
+  "commons": "File:PIA02475 Eros' Bland Butterscotch Colors.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:PIA02475_Eros%27_Bland_Butterscotch_Colors.jpg",
+  "artist": "NASA/JPL/JHUAPL",
+  "license": "Public domain"
+ },
+ "작은 산": {
+  "file": "28.jpg",
+  "commons": "File:Freudenberg sg Switzerland.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Freudenberg_sg_Switzerland.jpg",
+  "artist": "Christoph Michels Edited by: (Sharpened - Noise reduced): Arad",
+  "license": "CC BY 2.5"
+ },
+ "원양 여객선": {
+  "file": "29.jpg",
+  "commons": "File:RMS Olympic arriving Jarrow for scrapping.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:RMS_Olympic_arriving_Jarrow_for_scrapping.jpg",
+  "artist": "Enrique L from United States",
+  "license": "Public domain"
+ },
+ "코끼리": {
+  "file": "30.jpg",
+  "commons": "File:Loxodonta africana South Luangwa National Park (1).jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Loxodonta_africana_South_Luangwa_National_Park_(1).jpg",
+  "artist": "Geoff Gallice",
+  "license": "CC BY 2.0"
+ },
+ "킬로그램 원기": {
+  "file": "08.jpg",
+  "commons": "File:National prototype kilogram K20 replica.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:National_prototype_kilogram_K20_replica.jpg",
+  "artist": "Unknown authorUnknown author",
+  "license": "Public domain"
+ },
+ "포도알": {
+  "file": "31.jpg",
+  "commons": "File:Green Grape 3.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Green_Grape_3.jpg",
+  "artist": "Martin Kozák",
+  "license": "Public domain"
+ },
+ "먼지 한 톨": {
+  "file": "32.jpg",
+  "commons": "File:Comet dust microscopic photo.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Comet_dust_microscopic_photo.jpg",
+  "artist": "NASA",
+  "license": "Public domain"
+ },
+ "페니실린 분자": {
+  "file": "33.jpg",
+  "commons": "File:Penicillin-G 3D.png",
+  "url": "https://commons.wikimedia.org/wiki/File:Penicillin-G_3D.png",
+  "artist": "Cacycle",
+  "license": "Public domain"
+ },
+ "우라늄 원자": {
+  "file": "34.jpg",
+  "commons": "File:Ames Process uranium biscuit.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Ames_Process_uranium_biscuit.jpg",
+  "artist": "Unknown authorUnknown author",
+  "license": "Public domain"
+ },
+ "양성자": {
+  "file": "12.jpg",
+  "commons": "File:Proton diagram.png",
+  "url": "https://commons.wikimedia.org/wiki/File:Proton_diagram.png",
+  "artist": "Cush, afgeleid werk: LukaBE",
+  "license": "CC0"
+ },
+ "전자": {
+  "file": "11.jpg",
+  "commons": "File:Hydrogen atom.svg",
+  "url": "https://commons.wikimedia.org/wiki/File:Hydrogen_atom.svg",
+  "artist": "Bensaccount",
+  "license": "Public domain"
+ }
+}

@@ -1,11 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { QUANTITIES as Q, prefixed, nearest, log10Of } from './sizes.js';
+import { readFileSync } from 'node:fs';
+import { QUANTITIES as Q, prefixed, nearest, log10Of, sourceOf } from './sizes.js';
 
 test('textbook table rows and values (Tables 1.1.3, 1.2.1, 1.3.1)', () => {
-  assert.equal(Q.length.items.length, 10);
-  assert.equal(Q.time.items.length, 10);
-  assert.equal(Q.mass.items.length, 14);
+  const table = q => Q[q].items.filter(r => r[3] === undefined).length;
+  assert.equal(table('length'), 10);
+  assert.equal(table('time'), 10);
+  assert.equal(table('mass'), 14);
   const get = (q, name) => Q[q].items.find(r => r[0] === name).slice(1);
   assert.deepEqual(get('length', '지구 반지름'), [6, 6]);
   assert.deepEqual(get('length', '양성자 반지름'), [1, -15]);
@@ -37,7 +39,20 @@ test('prefix form', () => {
 
 test('nearest textbook example', () => {
   assert.equal(nearest(Q.length, 6)[0], '지구 반지름');
-  assert.equal(nearest(Q.length, 0)[0], '에베레스트산 높이');
+  assert.equal(nearest(Q.length, 0)[0], '사람의 키');
+  assert.equal(nearest(Q.length, -2)[0], '킬로그램 원기의 높이');
   assert.equal(nearest(Q.time, 0)[0], '심장 박동 사이 시간');
-  assert.equal(nearest(Q.mass, 0)[0], '포도알');
+  assert.equal(nearest(Q.mass, 0)[0], '킬로그램 원기');
+  assert.equal(nearest(Q.time, 3)[0], '한 시간');
+});
+
+test('sources and pictures', () => {
+  assert.equal(sourceOf(Q.length, Q.length.items[0]), '교재 표 1.1.3');
+  assert.equal(sourceOf(Q.mass, Q.mass.items.find(r => r[0] === '킬로그램 원기')), '교재 1.3');
+  const credits = JSON.parse(readFileSync(new URL('./img/credits.json', import.meta.url)));
+  for (const q of Object.values(Q)) for (const r of q.items) {
+    const c = credits[r[0]];
+    assert.ok(c, `no picture for ${r[0]}`);
+    assert.match(c.license, /^(Public domain|CC0|CC BY [0-9.]+)$/, `${r[0]}: ${c.license}`);
+  }
 });

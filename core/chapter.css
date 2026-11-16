@@ -45,9 +45,16 @@ table.compact td { padding: 6px 12px; }
 .value { font-size: 26px; font-weight: 600; margin: 24px 0 8px; font-variant-numeric: tabular-nums; }
 .value small { font-size: 16px; font-weight: 500; color: var(--ink-2); }
 .scale { position: relative; margin: 8px 0 4px; }
-.marks { position: relative; height: 14px; }
-.dot { position: absolute; top: 3px; width: 8px; height: 8px; margin-left: -4px; border-radius: 50%; background: #b5b5b5; }
-.dot.on { background: var(--crimson); }
+.scale-wrap { overflow-x: auto; }
+.scale-wrap .scale { min-width: 600px; margin: 0 18px; }
+.marks { position: relative; height: 92px; }
+.pic { position: absolute; width: 30px; height: 30px; margin-left: -15px; border-radius: 4px; object-fit: cover; border: 1px solid var(--line); background: var(--bg); }
+.pic.on { width: 80px; height: 80px; margin-left: -40px; bottom: 6px !important; z-index: 2; border: 2px solid var(--crimson); }
+.near .src { color: var(--ink-2); font-size: 14px; }
+details.credits { margin-top: 36px; font-size: 13px; color: var(--ink-2); }
+details.credits summary { cursor: pointer; }
+details.credits ul { padding-left: 18px; }
+details.credits li { margin: 2px 0; }
 .scale input { width: 100%; margin: 0; appearance: none; -webkit-appearance: none; background: none; height: 22px; cursor: pointer; }
 .scale input::-webkit-slider-runnable-track { height: 2px; background: var(--ink); }
 .scale input::-moz-range-track { height: 2px; background: var(--ink); }

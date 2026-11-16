@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>벡터의 합성 시뮬레이션 · 서강대 일반물리</title>
+<link rel="stylesheet" href="../../vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../../core/chapter.css">
+</head>
+<body>
+<div class="page wide">
+<a class="back" href="index.html">← 벡터와 벡터의 합성</a>
+<h1>벡터의 합성 시뮬레이션</h1>
+<div class="eq"><div class="eq-tex" data-tex="\textcolor{#840025}{r_x = a_x + b_x \qquad r_y = a_y + b_y}"></div></div>
+<div class="sim" id="sim">
+<svg id="view" viewBox="0 0 600 600" role="img" aria-label="격자 위의 두 벡터 a, b와 머리-꼬리 합 r" style="touch-action:none"></svg>
+<div class="row">
+<button data-mode="a+b"><span data-tex="\vec a + \vec b"></span></button><button data-mode="b+a"><span data-tex="\vec b + \vec a"></span></button><button data-mode="a-b"><span data-tex="\vec a - \vec b"></span></button> <button id="reset">처음으로</button> <span>동그라미를 끌어 <span data-tex="\vec a"></span>, <span data-tex="\vec b"></span>를 바꾼다</span>
+</div>
+<p class="read" id="read"></p>
+</div>
+<p class="next"><a href="dot.html">다음 → 내적</a></p>
+</div>
+<script type="module" src="../../core/chapter.js"></script>
+<script type="module" src="addition.js"></script>
+</body>
+</html>

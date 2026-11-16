@@ -1,4 +1,17 @@
 {
-  "1": { "ko": "측정", "pages": ["index.html"], "sims": ["sim.html"] },
-  "2": { "ko": "직선 운동", "pages": ["index.html", "free-fall.html"], "sims": ["uniform-sim.html", "free-fall-sim.html"] }
+  "1": {
+    "ko": "측정",
+    "pages": ["index.html"],
+    "sims": ["sim.html"]
+  },
+  "2": {
+    "ko": "직선 운동",
+    "pages": ["index.html", "free-fall.html"],
+    "sims": ["uniform-sim.html", "free-fall-sim.html"]
+  },
+  "3": {
+    "ko": "벡터",
+    "pages": ["index.html", "dot.html", "cross.html"],
+    "sims": ["add-sim.html", "dot-sim.html", "cross-sim.html"]
+  }
 }

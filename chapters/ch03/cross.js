@@ -1,0 +1,56 @@
+// 3장 "외적" 시뮬레이션. a = 2 (x축), b = 2 (xy 평면, x축에서 ϕ). c = a × b 또는 b × a는 z축 방향이다.
+// 3D는 회전한 점을 직접 화면에 투영해 SVG로 그린다. 화면을 끌면 돈다.
+import { cross, mag, rad } from './vec.js';
+import { COLOR, tex, fmt, svgKit } from './sim-common.js';
+
+const U = 56, CX = 300, CY = 300, LA = 2, LB = 2;
+const svg = document.getElementById('view');
+const { el, arrow, label, set } = svgKit(svg);
+let yaw = -35, pitch = 30, order = 'ab';
+
+function project([x, y, z]) {
+  const w = rad(yaw), p = rad(pitch);
+  const x1 = x * Math.cos(w) - y * Math.sin(w), y1 = x * Math.sin(w) + y * Math.cos(w);
+  return [CX + U * x1, CY - U * (z * Math.cos(p) + y1 * Math.sin(p))];
+}
+const axes = ['x', 'y', 'z'].map(n => ({ line: el('line', { stroke: COLOR.grid, 'stroke-width': 1.5 }), text: el('text', { 'font-size': 15, fill: COLOR.gray, 'font-style': 'italic', 'font-family': 'Times New Roman, serif', 'text-anchor': 'middle' }), n }));
+axes.forEach(o => { o.text.textContent = o.n; });
+const area = el('polygon', { fill: '#56B4E9', 'fill-opacity': 0.3, stroke: 'none' });
+const A = arrow('a'), B = arrow('b'), Cc = arrow('c', 3.5);
+const la = label('a', 'a'), lb = label('b', 'b'), lc = label('c', 'c');
+
+function seg(e, p, q) { const [x1, y1] = project(p), [x2, y2] = project(q); set(e, { x1, y1, x2, y2 }); }
+function tag(t, p, dx = 0, dy = 0) { const [x, y] = project(p); set(t, { x: x + dx, y: y + dy }); }
+
+function draw() {
+  const phi = Number(document.getElementById('phi').value), p = rad(phi);
+  const a = [LA, 0, 0], b = [LB * Math.cos(p), LB * Math.sin(p), 0];
+  const c = order === 'ab' ? cross(a, b) : cross(b, a), O = [0, 0, 0];
+  axes.forEach((o, i) => { const e = [0, 0, 0]; e[i] = 3; seg(o.line, [0, 0, 0].map((v, j) => (j === i ? -3 : 0)), e); tag(o.text, e.map(v => v * 1.08), 0, 5); });
+  area.setAttribute('points', [O, a, [a[0] + b[0], b[1], 0], b].map(q => project(q).map(v => v.toFixed(1)).join(',')).join(' '));
+  seg(A, O, a); seg(B, O, b); seg(Cc, O, c);
+  tag(la, a, 14, 18); tag(lb, b, 14, 18); tag(lc, c, 18, c[2] >= 0 ? 4 : 20);
+  Cc.style.display = mag(c) < 0.05 ? 'none' : '';
+  document.getElementById('phival').innerHTML = tex(`${phi}^\\circ`);
+  document.getElementById('order').textContent = order === 'ab' ? '순서 바꾸기 (b × a)' : '순서 바꾸기 (a × b)';
+  const name = order === 'ab' ? '\\vec a\\times\\vec b' : '\\vec b\\times\\vec a';
+  document.getElementById('read').innerHTML = [
+    tex(`\\vec c = ${name}`),
+    tex(`\\textcolor{#840025}{c = ab\\sin\\phi = (2)(2)\\sin ${phi}^\\circ = ${fmt(mag(c), 2)}}`),
+    `방향 ${tex(c[2] > 0.005 ? '+z' : c[2] < -0.005 ? '-z' : '\\text{없음}')}`,
+  ].join('<br>');
+}
+
+let dragging = null;
+svg.addEventListener('pointerdown', ev => { dragging = [ev.clientX, ev.clientY]; svg.setPointerCapture(ev.pointerId); });
+svg.addEventListener('pointermove', ev => {
+  if (!dragging) return;
+  yaw += (ev.clientX - dragging[0]) * 0.5;
+  pitch = Math.max(-10, Math.min(80, pitch + (ev.clientY - dragging[1]) * 0.3));
+  dragging = [ev.clientX, ev.clientY];
+  draw();
+});
+svg.addEventListener('pointerup', () => { dragging = null; });
+document.getElementById('phi').addEventListener('input', draw);
+document.getElementById('order').addEventListener('click', () => { order = order === 'ab' ? 'ba' : 'ab'; draw(); });
+draw();

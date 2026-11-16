@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>외적 시뮬레이션 · 서강대 일반물리</title>
+<link rel="stylesheet" href="../../vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../../core/chapter.css">
+</head>
+<body>
+<div class="page wide">
+<a class="back" href="cross.html">← 외적</a>
+<h1>외적 시뮬레이션</h1>
+<div class="eq"><div class="eq-tex" data-tex="\textcolor{#840025}{c = ab\sin\phi}"></div></div>
+<div class="sim" id="sim">
+<svg id="view" viewBox="0 0 600 560" role="img" aria-label="xy 평면의 두 벡터 a, b와 그 평면에 수직인 외적 c, 끌어서 돌려 볼 수 있음" style="touch-action:none"></svg>
+<div class="row">
+<label for="phi">사이각 <span data-tex="\phi"></span> <input type="range" id="phi" min="0" max="180" step="1" value="70"> <span class="read" id="phival"></span></label> <button id="order">순서 바꾸기</button> <span>그림을 끌면 돌아간다</span>
+</div>
+<p class="read" id="read"></p>
+</div>
+
+</div>
+<script type="module" src="../../core/chapter.js"></script>
+<script type="module" src="cross.js"></script>
+</body>
+</html>

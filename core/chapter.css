@@ -33,6 +33,29 @@ table.compact td { padding: 6px 12px; }
 .eq-no { color: var(--ink-2); font-size: 15px; white-space: nowrap; }
 .meaning { margin: 4px 0 14px; }
 .meaning .lbl { color: var(--crimson); font-weight: 700; margin-right: 8px; }
+/* 장 시뮬레이션 쪽 */
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin: 20px 0 8px; }
+.tabs button { font: inherit; font-size: 15px; background: none; border: 0; border-bottom: 2px solid transparent; padding: 8px 12px; color: var(--ink-2); cursor: pointer; }
+.tabs button[aria-selected="true"] { color: var(--crimson); border-bottom-color: var(--crimson); font-weight: 700; }
+.tabs button:focus-visible, .scale input:focus-visible { outline: 2px solid var(--crimson); outline-offset: 2px; }
+.value { font-size: 26px; font-weight: 600; margin: 24px 0 8px; font-variant-numeric: tabular-nums; }
+.value small { font-size: 16px; font-weight: 500; color: var(--ink-2); }
+.scale { position: relative; margin: 8px 0 4px; }
+.marks { position: relative; height: 14px; }
+.dot { position: absolute; top: 3px; width: 8px; height: 8px; margin-left: -4px; border-radius: 50%; background: #b5b5b5; }
+.dot.on { background: var(--crimson); }
+.scale input { width: 100%; margin: 0; appearance: none; -webkit-appearance: none; background: none; height: 22px; cursor: pointer; }
+.scale input::-webkit-slider-runnable-track { height: 2px; background: var(--ink); }
+.scale input::-moz-range-track { height: 2px; background: var(--ink); }
+.scale input::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; margin-top: -8px; border-radius: 50%; background: var(--crimson); border: 2px solid var(--bg); box-shadow: 0 0 0 1px var(--crimson); }
+.scale input::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--crimson); border: 2px solid var(--bg); box-shadow: 0 0 0 1px var(--crimson); }
+.ticks { position: relative; height: 22px; font-size: 13px; color: var(--ink-2); }
+.ticks span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+.near { margin: 18px 0 4px; }
+.near .lbl { color: var(--crimson); font-weight: 700; margin-right: 10px; }
+.next { margin-top: 40px; }
+.next a { color: var(--crimson); font-weight: 600; text-decoration: none; }
+.next a:hover { text-decoration: underline; }
 @media (max-width: 760px) {
   body { font-size: 16px; }
   h1 { font-size: 27px; }

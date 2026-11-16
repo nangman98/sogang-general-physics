@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>길이·시간·질량의 크기 · 서강대 일반물리</title>
+<link rel="stylesheet" href="../../vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../../core/chapter.css">
+</head>
+<body>
+<div class="page">
+<a class="back" href="index.html">← 1장 측정</a>
+<h1>길이·시간·질량의 크기</h1>
+
+<div class="tabs" role="tablist" aria-label="기본량">
+<button role="tab" id="tab-length" data-q="length" aria-selected="true">길이 (length)</button>
+<button role="tab" id="tab-time" data-q="time" aria-selected="false">시간 (time)</button>
+<button role="tab" id="tab-mass" data-q="mass" aria-selected="false">질량 (mass)</button>
+</div>
+
+<p class="value" id="value" aria-live="polite"></p>
+
+<div class="scale">
+<div class="marks" id="marks"></div>
+<input type="range" id="n" step="1" aria-label="크기 (한 칸에 10배)">
+<div class="ticks" id="ticks"></div>
+</div>
+
+<p class="near"><span class="lbl">표에서 가장 가까운 예</span><span id="near"></span></p>
+<p class="src" id="src"></p>
+</div>
+<script type="module" src="sim.js"></script>
+</body>
+</html>

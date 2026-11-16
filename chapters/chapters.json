@@ -7,7 +7,7 @@
   "2": {
     "ko": "직선 운동",
     "pages": ["index.html", "free-fall.html"],
-    "sims": ["uniform-sim.html", "free-fall-sim.html"]
+    "sims": ["accel-sim.html", "free-fall-sim.html"]
   },
   "3": {
     "ko": "벡터",

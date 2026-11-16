@@ -3,28 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="card-title" content="등속도 운동">
-<title>등속도 운동 · 서강대 일반물리</title>
+<meta name="card-title" content="등가속도 운동">
+<title>등가속도 운동 · 서강대 일반물리</title>
 <link rel="stylesheet" href="../../vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../../core/chapter.css">
 </head>
 <body>
 <div class="page two">
 <a class="back" href="../../index.html">← 목차</a>
-<h1>등속도 운동 (constant velocity)</h1>
+<h1>등가속도 운동 (constant acceleration)</h1>
 <div class="cols">
 <div>
-<p>직선 운동은 먼저 좌표축을 정하고 물체의 자리를 <b class="k">위치 (position)</b> <span data-tex="x"></span>로 나타낸다. 속도가 일정하면 어느 구간을 골라도 평균 속도가 같은 값 <span data-tex="v"></span>이다.</p>
-<div class="eq"><div class="eq-tex" data-tex="\textcolor{#840025}{x = x_0 + vt}"></div><span class="eq-no">(2.4.5에서 <span data-tex="a = 0"></span>)</span></div>
+<p><b class="k">속도 (velocity)</b>는 위치의 시간 변화율 <span data-tex="v = dx/dt"></span> (2.2.1)이고 <b class="k">가속도 (acceleration)</b>는 속도의 시간 변화율 <span data-tex="a = dv/dt"></span> (2.3.2)다. 가속도가 일정하면 위치는 다음과 같다.</p>
+<div class="eq"><div class="eq-tex" data-tex="\textcolor{#840025}{x - x_0 = v_0 t + \tfrac{1}{2} a t^2}"></div><span class="eq-no">(2.4.5)</span></div>
 <ul class="pts">
-<li><b class="k">평균 속도 (average velocity)</b>는 <b class="k">변위 (displacement)</b> <span data-tex="\Delta x = x_2 - x_1"></span>을 걸린 시간 <span data-tex="\Delta t"></span>로 나눈 값이다 (2.1.1, 2.1.2).</li>
-<li><span data-tex="x"></span>–<span data-tex="t"></span> 그래프는 기울기가 <span data-tex="v"></span>인 직선이다.</li>
-<li><span data-tex="v"></span>가 음수이면 음의 방향으로 움직인다.</li>
+<li>속도는 <span data-tex="v = v_0 + at"></span>다 (2.4.1).</li>
+<li><span data-tex="x"></span>–<span data-tex="t"></span> 그래프의 기울기가 <span data-tex="v"></span>이고 <span data-tex="v"></span>–<span data-tex="t"></span> 그래프의 기울기가 <span data-tex="a"></span>다.</li>
+<li>속도와 가속도의 부호가 같으면 빨라지고 다르면 느려진다.</li>
 </ul>
 </div>
-<div class="fig"><img src="fig/f1_position.svg" alt="x축 위 원점 O와 x = 3 m에 있는 물체, 원점에서 물체까지의 위치 화살표"></div>
+<div class="fig"><img src="fig/f1_accel.svg" alt="일정한 가속도로 움직이는 물체의 x-t 포물선(접선의 기울기가 v), v-t 직선(기울기가 a), a-t 수평선"></div>
 </div>
-<p class="next"><a href="uniform-sim.html">다음 → 등속도 운동 시뮬레이션</a></p>
+<p class="next"><a href="accel-sim.html">다음 → 등가속도 운동 시뮬레이션</a></p>
 </div>
 <script type="module" src="../../core/chapter.js"></script>
 </body>

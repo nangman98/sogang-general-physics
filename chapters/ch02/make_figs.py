@@ -1,7 +1,7 @@
 """2장 페이지 그림(SVG)을 만든다. 실행 python3 chapters/ch02/make_figs.py -> chapters/ch02/fig/*.svg
 
 값의 출처
-- 위치 그림은 원점 O와 x = 3 m의 물체다(사용자가 보여 준 예시 그림과 같은 꼴, 2026-11-16).
+- 등가속도 그림은 교재 그림 2.4.1처럼 x(t), v(t), a(t)를 위아래로 놓은 숫자 없는 모양 그림이다(x0 = 1, v0 = 1, a = 1, 임의 단위).
 - 자유 낙하 그림은 정지 상태에서 떨어지는 물체(g = 9.8 m/s^2)의 t = 0, 1, 2, 3 s 위치와 속도다(값은 교재 Sample Problem 2.5.1과 같고, 수면 표시는 2026-11-16 사용자 결정으로 뺐다).
 색은 05_디자인_기준.md를 따른다. 축과 글자 검정, 위치 진한 빨강, 속도 #0072B2, 가속도 #CC79A7.
 """
@@ -54,16 +54,30 @@ def axis_1d(x0, unit, kmin, kmax, y, label_every=1, x_end=None):
     return b
 
 
-# 1. 위치: 원점 O, x = 3 m의 물체
-x0, u, y = 200, 70, 100
-b = axis_1d(x0, u, -2, 5, y)
-b += [text(x0, y + 44, '원점 O', size=14, c='#555555'),
-      f'<circle cx="{x0 + 3 * u}" cy="{y}" r="9" fill="{CRIMSON}"/>',
-      line(x0, 58, x0 + 3 * u - 10, 58, CRIMSON, 2.5, 'crimson'),
-      text(x0 + 1.5 * u, 44, f'{sym("x")} = 3 m', c=CRIMSON, weight=600),
-      text(x0 - 1.5 * u, 84, '← 음의 방향', size=14, c='#555555'),
-      text(x0 + 4.4 * u, 84, '양의 방향 →', size=14, c='#555555')]
-svg('f1_position', 660, 160, ''.join(b))
+# 1. 등가속도: x(t) 포물선, v(t) 직선, a(t) 수평선(교재 그림 2.4.1). x-t 접선의 기울기가 v, v-t의 기울기가 a다.
+X0, V0, A1, TE = 1.0, 1.0, 1.0, 3.0
+L, R, H, GAP, TOP = 70, 330, 120, 36, 24
+def panel(k, vmax, curve, color, name, note=None, tangent=None):
+    top = TOP + k * (H + GAP)
+    tx_ = lambda t: L + (R - L) * t / TE
+    ty_ = lambda v: top + H - H * v / vmax
+    b = [line(L, top + H, R + 14, top + H, INK, 1.5, 'ink'), line(L, top + H, L, top - 8, INK, 1.5, 'ink'),
+         text(R + 18, top + H + 6, sym('t'), 'start', size=18), text(L - 10, top + 6, sym(name), 'end', c=color, size=19, weight=600)]
+    pts = ' '.join(f'{tx_(TE * i / 60):.1f},{ty_(curve(TE * i / 60)):.1f}' for i in range(61))
+    b.append(f'<polyline points="{pts}" fill="none" stroke="{color}" stroke-width="2.5"/>')
+    if tangent:
+        t1, slope = tangent
+        y1 = curve(t1)
+        b.append(line(tx_(t1 - 0.8), ty_(y1 - 0.8 * slope), tx_(t1 + 0.8), ty_(y1 + 0.8 * slope), GRAY, 1.5, dash='5 4'))
+        b.append(f'<circle cx="{tx_(t1):.1f}" cy="{ty_(y1):.1f}" r="4" fill="{color}"/>')
+    if note:
+        b.append(text(*note))
+    return b
+b = []
+b += panel(0, 9, lambda t: X0 + V0 * t + 0.5 * A1 * t * t, CRIMSON, 'x', (L + 150, TOP + 50, f'기울기 = {sym("v")}', 'end', GRAY, 17), (1.5, V0 + A1 * 1.5))
+b += panel(1, 4.6, lambda t: V0 + A1 * t, VEL, 'v', (L + 170, TOP + (H + GAP) + 58, f'기울기 = {sym("a")}', 'start', GRAY, 17))
+b += panel(2, 2, lambda t: A1, ACC, 'a')
+svg('f1_accel', 380, TOP + 3 * H + 2 * GAP + 20, ''.join(b))
 
 # 6. 자유 낙하: 정지 상태에서 떨어지는 물체
 g, Y0, s, VS = 9.8, 60, 6.25, 2.4   # y = 0 at pixel Y0, 6.25 px per m, velocity arrow 2.4 px per m/s

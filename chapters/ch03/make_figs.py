@@ -71,13 +71,13 @@ b = [line(*O, *R, GRAY, 1.5, 'gray', dash='5 4'), line(*R, *Q, GRAY, 1.5, 'gray'
      line(*O, *Q, CRIMSON, 3.5, 'c'), text(Q[0] + 12, Q[1] - 4, f'{vec("s")} = {vec("a")} + {vec("b")}', 'start', c=CRIMSON, size=18)]
 svg('f2_head_to_tail', 480, 280, ''.join(b))
 
-# 3. 내적: b 방향으로의 a의 성분 a cos ϕ
+# 3. 내적: b 방향으로의 a의 성분 a cos ϕ (a의 성분이라 a와 같은 파랑, 2026-11-16)
 O, L, phi, la = (70, 220), 340, 55, 210
 Ta = (O[0] + la * math.cos(math.radians(phi)), O[1] - la * math.sin(math.radians(phi)))
 b = [line(*O, O[0] + L, O[1], B, 3, 'b'), text(O[0] + L + 10, O[1] + 6, vec('b'), 'start', c=B, size=20),
      line(*O, *Ta, A, 3, 'a'), text(Ta[0] - 18, Ta[1] + 4, vec('a'), 'end', c=A, size=20),
      line(Ta[0], Ta[1] + 4, Ta[0], O[1] - 2, GRAY, 1.5, dash='4 4'),
-     line(O[0], O[1] + 16, Ta[0], O[1] + 16, CRIMSON, 4), text((O[0] + Ta[0]) / 2, O[1] + 42, f'{sym("a")} cos {sym("ϕ")}', c=CRIMSON),
+     line(O[0], O[1] + 16, Ta[0], O[1] + 16, A, 4).replace('/>', ' stroke-opacity="0.55"/>'), text((O[0] + Ta[0]) / 2, O[1] + 42, f'{sym("a")} cos {sym("ϕ")}', c=A),
      arc(*O, 44, 0, phi), text(O[0] + 56, O[1] - 18, sym('ϕ'), 'start')]
 svg('f3_dot', 460, 270, ''.join(b))
 

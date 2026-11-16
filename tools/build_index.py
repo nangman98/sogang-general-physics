@@ -1,7 +1,9 @@
 """Build the catalog page index.html from data/textbook_toc.json and the chapter pages.
 
 Only pages written in the new format are listed (user decision 2026-11-16): chapters/chapters.json
-gives each chapter's Korean name and page order, and each page's <meta name="card-title"> is its card.
+gives each chapter's Korean name, its content pages in order (one card each, title from
+<meta name="card-title">) and its simulation pages, which are not cards but the "다음" page after
+their content page (user decision 2026-11-16).
 The earlier screens under sims/ stay in the repository but are not linked. Run: python3 tools/build_index.py
 """
 import json
@@ -12,12 +14,12 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 toc = json.loads((ROOT / 'data' / 'textbook_toc.json').read_text(encoding='utf-8'))
 courses = {'I': '일반물리 I', 'II': '일반물리 II'}
 
-# Chapter names and page order: chapters/chapters.json. Card title: <meta name="card-title"> of each page.
+# Chapter names, content pages (cards) and simulation pages (reached from their content page): chapters/chapters.json.
 chap = {int(k): v for k, v in json.loads((ROOT / 'chapters' / 'chapters.json').read_text(encoding='utf-8')).items()}
 pages = {}
 for n, c in chap.items():
     folder = ROOT / 'chapters' / f'ch{n:02d}'
-    assert sorted(c['pages']) == sorted(p.name for p in folder.glob('*.html')), f'{folder}: pages in chapters.json differ from the folder'
+    assert sorted(c['pages'] + c['sims']) == sorted(p.name for p in folder.glob('*.html')), f'{folder}: pages in chapters.json differ from the folder'
     pages[n] = []
     for name in c['pages']:
         m = re.search(r'<meta name="card-title" content="([^"]+)">', (folder / name).read_text(encoding='utf-8'))

@@ -1,4 +1,4 @@
 {
-  "1": { "ko": "측정", "pages": ["index.html", "sim.html"] },
-  "2": { "ko": "직선 운동", "pages": ["index.html", "uniform-sim.html", "free-fall.html", "free-fall-sim.html"] }
+  "1": { "ko": "측정", "pages": ["index.html"], "sims": ["sim.html"] },
+  "2": { "ko": "직선 운동", "pages": ["index.html", "free-fall.html"], "sims": ["uniform-sim.html", "free-fall-sim.html"] }
 }

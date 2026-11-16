@@ -1,10 +1,10 @@
 """1장 시뮬레이션 축 위에 놓을 물체 사진을 Wikimedia Commons에서 받는다.
 
 실행  python3 chapters/ch01/fetch_images.py  ->  chapters/ch01/img/<번호>.jpg, chapters/ch01/img/credits.json
-- 물체마다 검색어(또는 정해 둔 파일 이름)로 Commons를 찾아, 라이선스가 퍼블릭 도메인·CC0·CC BY인 첫 그림을 고른다.
-  CC BY-SA와 그 밖의 라이선스는 쓰지 않는다. 교재 그림은 출판사 저작물이라 쓰지 않는다(사용자 결정 2026-11-16).
+- 물체마다 검색어(또는 정해 둔 파일 이름)로 Commons를 찾아, 라이선스가 퍼블릭 도메인·CC0인 첫 그림을 고른다.
+  출처 표시 의무가 있는 CC BY·CC BY-SA는 쓰지 않는다(사용자 2026-11-16 화면에 그림 출처를 두지 않기로 함). 교재 그림은 출판사 저작물이라 쓰지 않는다(사용자 결정 2026-11-16).
 - 그림은 가로세로 240 px 정사각형 JPEG로 저장한다. 사진은 가운데를 자르고 도식(PNG·SVG)은 흰 여백을 둔다.
-- credits.json에 Commons 파일 이름, 원본 주소, 작가, 라이선스를 적는다. 페이지 아래 "그림 출처"가 이 파일을 읽는다.
+- credits.json에 Commons 파일 이름, 원본 주소, 작가, 라이선스를 적는다. 페이지는 이 파일에서 그림 파일 이름만 읽는다.
 - PICK에 파일 이름을 적은 물체는 검색 대신 그 파일을 쓴다(검색 첫 결과가 맞지 않을 때 사람이 고른 것).
 """
 import io
@@ -23,7 +23,7 @@ HERE = pathlib.Path(__file__).resolve().parent
 OUT = HERE / 'img'
 OUT.mkdir(exist_ok=True)
 UA = {'User-Agent': 'sogang-general-physics/0.1 (https://github.com/nangman98/sogang-general-physics; course site build script)'}
-OK = re.compile(r'^(Public domain|PD.*|CC0.*|CC BY [0-9.]+|CC BY [0-9.]+ .*)$', re.I)
+OK = re.compile(r'^(Public domain|PD.*|CC0.*)$', re.I)
 
 # 물체 이름 -> 검색어. 같은 그림을 쓰는 물체는 같은 검색어를 쓴다.
 QUERY = {
@@ -67,23 +67,26 @@ QUERY = {
     '전자': 'electron',
 }
 # 물체 이름 -> 'File:...'. 검색 첫 결과가 맞지 않거나 허용 라이선스 그림이 없어 라이선스를 확인하고 고른 파일(2026-11-16).
-# 뮤온은 허용 라이선스 사진이 없어 뮤온 검출기 사진을, 전자는 수소 원자 그림(전자 하나와 핵)을 쓴다.
+# 뮤온은 허용 라이선스 사진이 없어 뮤온이 생기는 우주선 공기 샤워 그림을, 전자는 수소 원자 그림(전자 하나와 핵)을,
+# 프록시마 센타우리는 적색 왜성 그림(NASA)을 쓴다.
 PICK = {
     '양성자 반지름': 'File:Proton diagram.png', '양성자 수명 (예측값)': 'File:Proton diagram.png', '양성자': 'File:Proton diagram.png',
     '우주의 나이': 'File:WMAP 2010.png',
     '쿠푸 피라미드의 나이': 'File:Giza Great Pyramid of Khufu (9793885004).jpg',
-    '사람의 기대 수명': 'File:Hourglass with sand.jpg',
+    '사람의 기대 수명': 'File:Hourglass 1.jpg',
     '하루의 길이': 'File:An orbital sunrise (iss071e001425).jpg',
     '한 시간': 'File:Pittsfield Town Clock Face - Google Art Project.jpg',
     '심장 박동 사이 시간': 'File:12 lead generated sinus rhythm.JPG',
-    '뮤온의 수명': 'File:CMS muon chambers.jpg',
-    '실험실에서 만든 가장 짧은 빛 펄스': 'File:Femtosecond laser spark.jpg',
+    '뮤온의 수명': 'File:Crshower2 nasa.jpg',
+    '실험실에서 만든 가장 짧은 빛 펄스': 'File:Military laser experiment.jpg',
     '가장 불안정한 입자의 수명': 'File:Neutrino bubble chamber decay overlay.png',
     '플랑크 시간': 'File:Max Planck 1933.jpg',
     '알려진 우주': 'File:Hubble Extreme Deep Field (full resolution).png',
     '우리 은하': 'File:Milky Way IR Spitzer.jpg',
-    '작은 산': 'File:Freudenberg sg Switzerland.jpg',
-    '코끼리': 'File:Loxodonta africana South Luangwa National Park (1).jpg',
+    '작은 산': 'File:Rolling hills of Maramureș, near Văleni, Călinești, 2017.jpg',
+    '코끼리': 'File:African bush elephant (Loxodonta africana), Masai Mara.jpg',
+    '프록시마 센타우리까지 거리': "File:Red Dwarf Flare Star (Artist's Illustration) (2018-46-4241).jpg",
+    '교재 종이 한 장의 두께': 'File:Ream of Holyoke EaglePaper.png',
     '포도알': 'File:Green Grape 3.jpg',
     '먼지 한 톨': 'File:Comet dust microscopic photo.jpg',
     '수소 원자 반지름': 'File:Hydrogen atom.svg', '전자': 'File:Hydrogen atom.svg',

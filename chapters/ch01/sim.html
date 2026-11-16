@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="../../core/chapter.css">
 </head>
 <body>
-<div class="page">
+<div class="page wide">
 <a class="back" href="index.html">← 1장 측정</a>
 <h1>길이·시간·질량의 크기</h1>
 
@@ -21,14 +21,13 @@
 
 <p class="value" id="value" aria-live="polite"></p>
 
-<div class="scale-wrap"><div class="scale">
+<div class="scale">
 <div class="marks" id="marks"></div>
 <input type="range" id="n" step="1" aria-label="크기 (한 칸에 10배)">
 <div class="ticks" id="ticks"></div>
-</div></div>
+</div>
 
 <p class="near"><span class="lbl">가장 가까운 예</span><span id="near"></span></p>
-<details class="credits"><summary>그림 출처</summary><ul id="credits"></ul></details>
 </div>
 <script type="module" src="sim.js"></script>
 </body>

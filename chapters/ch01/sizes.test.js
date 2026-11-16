@@ -53,6 +53,6 @@ test('sources and pictures', () => {
   for (const q of Object.values(Q)) for (const r of q.items) {
     const c = credits[r[0]];
     assert.ok(c, `no picture for ${r[0]}`);
-    assert.match(c.license, /^(Public domain|CC0|CC BY [0-9.]+)$/, `${r[0]}: ${c.license}`);
+    assert.match(c.license, /^(Public domain|CC0)$/, `${r[0]}: ${c.license}`);
   }
 });

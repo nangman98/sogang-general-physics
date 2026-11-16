@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="card-title" content="등속도 운동 시뮬레이션">
+<title>등속도 운동 시뮬레이션 · 서강대 일반물리</title>
+<link rel="stylesheet" href="../../vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../../core/chapter.css">
+</head>
+<body>
+<div class="page wide">
+<a class="back" href="index.html">← 등속도 운동</a>
+<h1>등속도 운동 시뮬레이션</h1>
+<div class="eq"><div class="eq-tex" data-tex="x = x_0 + vt"></div></div>
+<div class="sim" id="sim">
+<svg id="view" viewBox="0 0 660 380" role="img" aria-label="x축 위를 움직이는 물체와 x-t 그래프"></svg>
+<div class="row">
+<label for="v">속도 <span data-tex="v"></span> <input type="range" id="v" min="-4" max="4" step="0.5" value="2"> <span class="read" id="vval"></span></label>
+<button class="main" id="play">재생</button><button id="reset">처음으로</button>
+</div>
+<p class="read" id="read"></p>
+</div>
+<p class="next"><a href="free-fall.html">다음 → 자유 낙하</a></p>
+</div>
+<script type="module" src="../../core/chapter.js"></script>
+<script type="module" src="uniform.js"></script>
+</body>
+</html>

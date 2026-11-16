@@ -1,9 +1,9 @@
-// 3장 "외적" 시뮬레이션. a = 2 (x축), b = 2 (xy 평면, x축에서 ϕ). c = a × b 또는 b × a는 z축 방향이다.
+// 3장 "외적" 시뮬레이션. a는 x축 방향, b는 xy 평면에서 x축과 ϕ를 이룬다. 크기 a, b와 ϕ는 slider로 정한다. c = a × b 또는 b × a는 z축 방향이다.
 // 3D는 회전한 점을 직접 화면에 투영해 SVG로 그린다. 화면을 끌면 돈다.
 import { cross, mag, rad } from './vec.js';
 import { COLOR, tex, fmt, svgKit } from './sim-common.js';
 
-const U = 56, CX = 300, CY = 300, LA = 2, LB = 2;
+const U = 40, CX = 300, CY = 290;   // 1 단위 40 px, 크기는 0.5–2.5
 const svg = document.getElementById('view');
 const { el, arrow, label, set } = svgKit(svg);
 let yaw = -35, pitch = 30, order = 'ab';
@@ -24,7 +24,9 @@ function tag(t, p, dx = 0, dy = 0) { const [x, y] = project(p); set(t, { x: x + 
 
 function draw() {
   const phi = Number(document.getElementById('phi').value), p = rad(phi);
+  const LA = Number(document.getElementById('a').value), LB = Number(document.getElementById('b').value);
   const a = [LA, 0, 0], b = [LB * Math.cos(p), LB * Math.sin(p), 0];
+  document.getElementById('aval').innerHTML = tex(`${fmt(LA)}`); document.getElementById('bval').innerHTML = tex(`${fmt(LB)}`);
   const c = order === 'ab' ? cross(a, b) : cross(b, a), O = [0, 0, 0];
   axes.forEach((o, i) => { const e = [0, 0, 0]; e[i] = 3; seg(o.line, [0, 0, 0].map((v, j) => (j === i ? -3 : 0)), e); tag(o.text, e.map(v => v * 1.08), 0, 5); });
   area.setAttribute('points', [O, a, [a[0] + b[0], b[1], 0], b].map(q => project(q).map(v => v.toFixed(1)).join(',')).join(' '));
@@ -36,7 +38,7 @@ function draw() {
   const name = order === 'ab' ? '\\vec a\\times\\vec b' : '\\vec b\\times\\vec a';
   document.getElementById('read').innerHTML = [
     tex(`\\vec c = ${name}`),
-    tex(`\\textcolor{#840025}{c = ab\\sin\\phi = (2)(2)\\sin ${phi}^\\circ = ${fmt(mag(c), 2)}}`),
+    tex(`\\textcolor{#840025}{c = ab\\sin\\phi = (${fmt(LA)})(${fmt(LB)})\\sin ${phi}^\\circ = ${fmt(mag(c), 2)}}`),
     `방향 ${tex(c[2] > 0.005 ? '+z' : c[2] < -0.005 ? '-z' : '\\text{없음}')}`,
   ].join('<br>');
 }
@@ -51,6 +53,6 @@ svg.addEventListener('pointermove', ev => {
   draw();
 });
 svg.addEventListener('pointerup', () => { dragging = null; });
-document.getElementById('phi').addEventListener('input', draw);
+for (const id of ['phi', 'a', 'b']) document.getElementById(id).addEventListener('input', draw);
 document.getElementById('order').addEventListener('click', () => { order = order === 'ab' ? 'ba' : 'ab'; draw(); });
 draw();

@@ -72,7 +72,7 @@ function draw() {
   const n = Math.max(1, Math.round(t * 20));
   trail.setAttribute('points', Array.from({ length: n + 1 }, (_, i) => `${gx(t * i / n).toFixed(1)},${gy(v0() - g * t * i / n).toFixed(1)}`).join(' '));
   $('v0val').innerHTML = tex(`${v0()}\\ \\mathrm{m/s}`);
-  $('read').innerHTML = tex(`t = ${fmt(t, 2)}\\ \\mathrm{s}\\qquad y = ${fmt(y)}\\ \\mathrm{m}\\qquad v = ${fmt(v)}\\ \\mathrm{m/s}\\qquad a = -9.8\\ \\mathrm{m/s^2}`);
+  $('read').innerHTML = tex(`y_0 = 0\\ \\mathrm{m}\\qquad t = ${fmt(t, 2)}\\ \\mathrm{s}\\qquad y = ${fmt(y)}\\ \\mathrm{m}\\qquad v = ${fmt(v)}\\ \\mathrm{m/s}\\qquad a = -9.8\\ \\mathrm{m/s^2}`);
 }
 
 function frame(now) {

@@ -13,8 +13,10 @@
 <h1>내적 시뮬레이션</h1>
 <div class="eq"><div class="eq-tex" data-tex="\textcolor{#840025}{\vec a\cdot\vec b = ab\cos\phi}"></div></div>
 <div class="sim" id="sim">
-<svg id="view" viewBox="0 0 640 300" role="img" aria-label="사이각 ϕ인 두 벡터와 b 방향으로의 a의 성분" style="touch-action:none"></svg>
+<svg id="view" viewBox="0 0 640 330" role="img" aria-label="사이각 ϕ인 두 벡터와 b 방향으로의 a의 성분" style="touch-action:none"></svg>
 <div class="row">
+<label for="a">크기 <span data-tex="a"></span> <input type="range" id="a" min="1" max="8" step="0.5" value="5"> <span class="read" id="aval"></span></label>
+<label for="b">크기 <span data-tex="b"></span> <input type="range" id="b" min="1" max="8" step="0.5" value="8"> <span class="read" id="bval"></span></label>
 <label for="phi">사이각 <span data-tex="\phi"></span> <input type="range" id="phi" min="0" max="180" step="1" value="50"> <span class="read" id="phival"></span></label>
 </div>
 <p class="read" id="read"></p>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="card-title" content="감쇠 단순 조화 운동">
+<title>감쇠 단순 조화 운동 · 서강대 일반물리</title>
+<link rel="stylesheet" href="../../vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../../core/chapter.css">
+</head>
+<body>
+<div class="page two">
+<a class="back" href="../../index.html">← 목차</a>
+<h1>감쇠 단순 조화 운동 (damped simple harmonic motion)</h1>
+<div class="cols">
+<div>
+<p>항력 같은 외력이 진동을 줄이면 진동자와 그 운동이 <b class="k">감쇠되었다 (damped)</b>고 한다. 감쇠력이 <span data-tex="F_d = -bv"></span> (15.5.1)이면 <span data-tex="b"></span>를 <b class="k">감쇠 상수 (damping constant)</b>라 한다.</p>
+<div class="eq"><div class="eq-tex" data-tex="\textcolor{#840025}{x(t) = x_m e^{-bt/2m}\cos(\omega' t + \phi)}"></div><span class="eq-no">(15.5.4)</span></div>
+<ul class="pts">
+<li>진폭 <span data-tex="x_m e^{-bt/2m}"></span>이 시간에 따라 지수적으로 줄어든다.</li>
+<li>감쇠 진동자의 각진동수는 <span data-tex="\omega' = \sqrt{k/m - b^2/4m^2}"></span> (15.5.5)다. <span data-tex="b = 0"></span>이면 <span data-tex="\omega = \sqrt{k/m}"></span>이 되고 <span data-tex="b \ll \sqrt{km}"></span>이면 <span data-tex="\omega' \approx \omega"></span>다.</li>
+<li>감쇠가 작으면 역학적 에너지는 <span data-tex="E(t) \approx \tfrac12 kx_m^2 e^{-bt/m}"></span> (15.5.6)이다. 진폭처럼 지수적으로 줄어들고 액체와 날개의 열에너지로 옮겨 간다.</li>
+</ul>
+</div>
+<div class="fig"><img src="fig/f3_damped.svg" alt="시간에 따라 줄어드는 포락선 +x_m e^(−bt/2m)과 −x_m e^(−bt/2m) 안에서 진동하는 변위 x(t)"></div>
+</div>
+</div>
+<script type="module" src="../../core/chapter.js"></script>
+</body>
+</html>

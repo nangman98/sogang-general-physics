@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="card-title" content="경사면을 굴러 내려가는 물체">
+<title>경사면을 굴러 내려가는 물체 · 서강대 일반물리</title>
+<link rel="stylesheet" href="../../vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../../core/chapter.css">
+</head>
+<body>
+<div class="page two">
+<a class="back" href="../../index.html">← 목차</a>
+<h1>경사면을 굴러 내려가는 물체 (rolling down a ramp)</h1>
+<div class="cols">
+<div>
+<p>질량 <span data-tex="M"></span>, 반지름 <span data-tex="R"></span>인 균일하고 둥근 물체가 경사각 <span data-tex="\theta"></span>인 경사면을 매끄럽게 굴러 내려간다. 경사면 위쪽을 <span data-tex="+x"></span>로 잡고 선운동과 회전의 뉴턴 제2법칙을 함께 써서 질량 중심의 가속도를 구한다.</p>
+<div class="eq"><div class="eq-tex" data-tex="\textcolor{#840025}{a_{com,x} = -\dfrac{g\sin\theta}{1 + I_{com}/MR^2}}"></div><span class="eq-no">(11.2.8)</span></div>
+<ul class="pts">
+<li>미끄러지지 않으면 <span data-tex="a_{com} = \alpha R"></span> (11.2.4)이고 접촉점 P의 마찰력은 정지 마찰력 <span data-tex="f_s"></span>다. 미끄러지면 운동 마찰력이 작용하고 이 식은 맞지 않는다.</li>
+<li>중력은 물체를 경사면 아래로 끌고 경사면 위쪽을 향한 <span data-tex="f_s"></span>의 돌림힘이 물체를 돌린다 (<span data-tex="Rf_s = I_{com}\alpha"></span>, 11.2.6). 마찰을 없애면 물체는 구르지 않고 미끄러진다.</li>
+<li>구르는 물체의 운동에너지는 질량 중심 둘레 회전과 질량 중심 병진의 두 부분이다 (<span data-tex="K = \tfrac12 I_{com}\omega^2 + \tfrac12 Mv_{com}^2"></span>, 11.2.3).</li>
+</ul>
+</div>
+<div class="fig"><img src="fig/f2_ramp.svg" alt="경사각 θ인 경사면을 굴러 내려가는 반지름 R인 물체에 작용하는 중력 F_g와 두 성분 F_g sin θ, F_g cos θ, 중심으로 옮겨 그린 수직항력 F_N, 접촉점 P에서 경사면 위쪽을 향한 정지 마찰력 f_s"></div>
+</div>
+</div>
+<script type="module" src="../../core/chapter.js"></script>
+</body>
+</html>

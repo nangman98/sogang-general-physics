@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="card-title" content="분자 속력 분포">
+<title>분자 속력 분포 · 서강대 일반물리</title>
+<link rel="stylesheet" href="../../vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../../core/chapter.css">
+</head>
+<body>
+<div class="page two">
+<a class="back" href="../../index.html">← 목차</a>
+<h1>분자 속력 분포 (distribution of molecular speeds)</h1>
+<div class="cols">
+<div>
+<p><b class="k">맥스웰 속력 분포 법칙 (Maxwell's speed distribution law)</b>의 <span data-tex="P(v)"></span>는 <b class="k">확률 분포 함수 (probability distribution function)</b>다. <span data-tex="P(v)\,dv"></span>는 속력 <span data-tex="v"></span>를 가운데 둔 폭 <span data-tex="dv"></span> 구간에 든 분자의 비율이다.</p>
+<div class="eq"><div class="eq-tex" data-tex="\textcolor{#840025}{P(v) = 4\pi\left(\dfrac{M}{2\pi RT}\right)^{3/2} v^2 e^{-Mv^2/2RT}}"></div><span class="eq-no">(19.6.1)</span></div>
+<ul class="pts">
+<li>곡선 아래 전체 넓이는 1이다 (<span data-tex="\int_0^\infty P(v)\,dv = 1"></span>, 19.6.2). <span data-tex="v_1"></span>에서 <span data-tex="v_2"></span>까지의 넓이가 그 속력 범위에 든 분자의 비율이다 (19.6.3).</li>
+<li>평균 속력은 <span data-tex="v_{avg} = \sqrt{8RT/\pi M}"></span> (19.6.5), rms 속력은 <span data-tex="v_{rms} = \sqrt{3RT/M}"></span> (19.6.8)이다. <span data-tex="P(v)"></span>가 가장 큰 속력이 <b class="k">가장 그럴듯한 속력 (most probable speed)</b> <span data-tex="v_P = \sqrt{2RT/M}"></span> (19.6.9)이다.</li>
+<li>온도가 낮으면 분자가 더 느리게 움직인다. 어느 온도에서도 곡선 아래 넓이는 1이다.</li>
+</ul>
+</div>
+<div class="fig"><img src="fig/f3_speeds.svg" alt="(a) 속력 분포 곡선 P(v)와 세 속력 v_P, v_avg, v_rms, 넓이가 P(v) dv인 좁은 띠 (b) 낮은 온도와 높은 온도의 분포 곡선"></div>
+</div>
+</div>
+<script type="module" src="../../core/chapter.js"></script>
+</body>
+</html>

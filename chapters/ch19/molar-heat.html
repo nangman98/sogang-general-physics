@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="card-title" content="이상 기체의 몰비열">
+<title>이상 기체의 몰비열 · 서강대 일반물리</title>
+<link rel="stylesheet" href="../../vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../../core/chapter.css">
+</head>
+<body>
+<div class="page two">
+<a class="back" href="../../index.html">← 목차</a>
+<h1>이상 기체의 몰비열 (molar specific heats of an ideal gas)</h1>
+<div class="cols">
+<div>
+<p>부피를 고정하고 기체를 데우면 <span data-tex="Q = nC_V\Delta T"></span> (19.7.3), 압력을 고정하고 데우면 <span data-tex="Q = nC_p\Delta T"></span> (19.7.10)다. <span data-tex="C_V"></span>를 <b class="k">정적 몰비열 (molar specific heat at constant volume)</b>, <span data-tex="C_p"></span>를 <b class="k">정압 몰비열 (molar specific heat at constant pressure)</b>이라 한다.</p>
+<div class="eq"><div class="eq-tex" data-tex="\textcolor{#840025}{C_p = C_V + R}"></div><span class="eq-no">(19.7.13)</span></div>
+<ul class="pts">
+<li>이상 기체의 내부 에너지 변화는 <span data-tex="\Delta E_{int} = nC_V\Delta T"></span> (19.7.9)다. 온도 변화에만 달려 있고 어떤 과정을 거쳤는지와는 상관없다.</li>
+<li>정적 과정에서는 기체가 일을 하지 않아 <span data-tex="Q"></span>가 모두 <span data-tex="\Delta E_{int}"></span>로 간다. 정압 과정에서는 <span data-tex="Q"></span>가 <span data-tex="\Delta E_{int}"></span>와 피스톤을 밀어 올리는 일 <span data-tex="W = p\Delta V = nR\Delta T"></span> (19.7.12)로 나뉘어 <span data-tex="C_p"></span>가 <span data-tex="C_V"></span>보다 크다.</li>
+<li><b class="k">에너지 등분배 정리 (equipartition of energy)</b>에 따라 분자의 <b class="k">자유도 (degree of freedom)</b> 하나마다 분자당 평균 <span data-tex="\tfrac12 kT"></span>의 에너지가 있다. 그래서 <span data-tex="C_V = (f/2)R"></span> (19.8.1)이고 단원자 기체는 <span data-tex="f = 3"></span>, 이원자 기체는 <span data-tex="f = 5"></span>다.</li>
+</ul>
+</div>
+<div class="fig"><img src="fig/f4_molar_heat.svg" alt="단원자 기체와 이원자 기체가 정적 과정과 정압 과정에서 받은 열 Q를 병진, 회전 몫의 내부 에너지 변화와 일 W로 나눈 막대"></div>
+</div>
+</div>
+<script type="module" src="../../core/chapter.js"></script>
+</body>
+</html>

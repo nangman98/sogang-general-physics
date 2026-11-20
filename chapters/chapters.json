@@ -36,12 +36,12 @@
   },
   "8": {
     "ko": "퍼텐셜 에너지와 에너지 보존",
-    "pages": ["index.html", "curve.html"],
+    "pages": ["index.html", "curve.html", "energy.html"],
     "sims": []
   },
   "9": {
     "ko": "질량 중심과 선운동량",
-    "pages": ["index.html", "impulse.html", "collision.html"],
+    "pages": ["impulse.html", "collision.html", "collision-2d.html"],
     "sims": []
   },
   "10": {
@@ -54,14 +54,9 @@
     "pages": ["index.html", "rolling-down.html", "angular-momentum.html", "conservation.html"],
     "sims": []
   },
-  "12": {
-    "ko": "평형과 탄성",
-    "pages": ["index.html", "center-of-gravity.html", "elasticity.html"],
-    "sims": []
-  },
   "13": {
     "ko": "중력",
-    "pages": ["index.html", "inside.html", "escape-speed.html", "kepler.html"],
+    "pages": ["kepler.html"],
     "sims": []
   },
   "14": {
@@ -71,32 +66,32 @@
   },
   "15": {
     "ko": "진동",
-    "pages": ["index.html", "pendulum.html", "damped.html", "resonance.html"],
+    "pages": ["index.html", "pendulum.html"],
     "sims": []
   },
   "16": {
     "ko": "파동 I",
-    "pages": ["index.html", "speed.html", "interference.html", "standing.html"],
+    "pages": ["index.html", "interference.html", "standing.html"],
     "sims": []
   },
   "17": {
     "ko": "파동 II",
-    "pages": ["index.html", "pipes.html", "beats.html", "doppler.html"],
+    "pages": ["beats.html", "doppler.html"],
     "sims": []
   },
   "18": {
     "ko": "온도, 열, 열역학 제1법칙",
-    "pages": ["index.html", "heat.html", "first-law.html", "conduction.html"],
+    "pages": ["heat.html", "first-law.html"],
     "sims": []
   },
   "19": {
     "ko": "기체 분자 운동론",
-    "pages": ["index.html", "rms.html", "speeds.html", "molar-heat.html", "adiabatic.html"],
+    "pages": ["rms.html", "speeds.html", "adiabatic.html"],
     "sims": []
   },
   "20": {
     "ko": "엔트로피와 열역학 제2법칙",
-    "pages": ["index.html", "carnot-engine.html", "refrigerator.html", "statistical.html"],
+    "pages": ["index.html", "carnot-engine.html"],
     "sims": []
   }
 }

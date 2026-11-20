@@ -56,35 +56,3 @@ b += [line(*P0, P0[0], P0[1] + L, GRAY, 1.2, dash='5 4'),
       arc(*B, 34, -90, -90 + math.degrees(TH)), text(B[0] + 48 * math.sin(TH / 2) + 2, B[1] + 48 * math.cos(TH / 2) + 6, it('θ'), size=17),
       circle(*B, 15)]
 svg(OUT, 'f2_pendulum', 480, 395, b)
-
-# 3. 감쇠 단순 조화 운동: 포락선 +-x_m e^(-bt/2m) 안에서 진동하는 x(t)(교재 그림 15.5.2)
-XL, XR, Y0, A, G = 90, 540, 160, 115, 0.28
-X = lambda s: XL + (XR - XL - 20) * s / 9
-ts = [9 * i / 600 for i in range(601)]
-env = lambda s: A * math.exp(-G * s)
-lab = f'{it("x", "m")}{it("e")}{sup("−bt/2m")}'
-b = [*axes(XL, Y0, XR + 6, Y0 - A - 26, it('t'), it('x')),
-     line(XL, Y0 + A + 20, XL, Y0, INK, 1.5),
-     poly([(X(s), Y0 - env(s)) for s in ts], GRAY, 1.5, dash='6 5'), poly([(X(s), Y0 + env(s)) for s in ts], GRAY, 1.5, dash='6 5'),
-     poly([(X(s), Y0 - env(s) * math.cos(2 * math.pi * s / 1.5)) for s in ts], CRIMSON, 2.5),
-     line(XL - 5, Y0 - A, XL + 5, Y0 - A, INK, 1.2), text(XL - 10, Y0 - A + 6, it('x', 'm'), 'end', size=18),
-     text(X(3.6) + 4, Y0 - env(3.6) - 14, f'+{lab}', 'start', size=19, c=NOTE),
-     text(X(3.6) + 4, Y0 + env(3.6) + 30, f'−{lab}', 'start', size=19, c=NOTE)]
-svg(OUT, 'f3_damped', 580, 310, b)
-
-# 4. 강제 진동과 공명: 감쇠 상수 b가 다른 세 진동자의 변위 진폭 x_m(omega_d/omega)(교재 그림 15.6.1)
-XL, XR, YB, YT, R0, R1 = 70, 500, 270, 40, 0.5, 1.5
-amp = lambda r, g: 1 / math.sqrt((1 - r * r) ** 2 + (g * r) ** 2)
-gs = (0.12, 0.25, 0.5)
-top = max(amp(i / 2000 * (R1 - R0) + R0, gs[0]) for i in range(2001))
-X = lambda r: XL + (XR - XL - 20) * (r - R0) / (R1 - R0)
-Yv = lambda a: YB - (YB - YT - 10) * a / top
-rs = [R0 + (R1 - R0) * i / 400 for i in range(401)]
-b = [*axes(XL, YB, XR + 6, YT - 8, f'{it("ω")}{sub("d")}/{it("ω")}', it('x', 'm')),
-     line(X(1), YB, X(1), YT + 4, GRAY, 1.2, dash='5 4'), line(X(1), YB, X(1), YB + 7, INK, 1.5), text(X(1), YB + 26, '1', size=17)]
-for g, c, w in zip(gs, (CRIMSON, VEL, GRAY), (3, 2.5, 2.5)):
-    b.append(poly([(X(r), Yv(amp(r, g))) for r in rs], c, w))
-pk = lambda g: max(rs, key=lambda r: amp(r, g))
-b += [text(X(pk(gs[0])) + 14, Yv(amp(pk(gs[0]), gs[0])) + 8, f'작은 {it("b")}', 'start', CRIMSON, 18),
-      text(X(1.04), Yv(amp(1, gs[2])) + 30, f'큰 {it("b")}', 'start', NOTE, 18)]
-svg(OUT, 'f4_resonance', 560, 300, b)

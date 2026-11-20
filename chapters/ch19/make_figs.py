@@ -26,24 +26,6 @@ def pv_frame(X, P, vmax, pmax):
     return (lambda v: X[0] + (X[1] - X[0]) * v / vmax), (lambda p: P[0] - (P[0] - P[1]) * p / pmax)
 
 
-# 1. 이상 기체 법칙: p-V 도표의 등온선 세 개와 가운데 등온선을 따라 i에서 f로 가는 등온 팽창(교재 그림 19.2.2)
-O = (60, 300)
-xs, ys = pv_frame((O[0], 520), (O[1], 30), 3.4, 2.6)
-b = [*axes(O[0], O[1], 545, 22, it('V'), it('p'), 19)]
-for T, c, w, lab in ((0.55, GRAY, 1.8, f'낮은 {it("T")}'), (1.0, INK, 2.2, it('T')), (1.6, GRAY, 1.8, f'높은 {it("T")}')):
-    v0 = max(0.6, T / 2.5)
-    vs = [v0 + (3.2 - v0) * i / 80 for i in range(81)]
-    b += [poly([(xs(v), ys(T / v)) for v in vs], c, w), text(xs(v0) - 8, ys(T / v0) + 6, lab, 'end', size=16, c=c if c != GRAY else NOTE)]
-Vi, Vf = 0.8, 1.6
-path = [(xs(v), ys(1 / v)) for v in [Vi + (Vf - Vi) * i / 40 for i in range(41)]]
-mid = path[22]
-b += [poly(path, CRIMSON, 4), line(*path[19], *mid, CRIMSON, 4, 'c'),
-      dot(*path[0], 6, CRIMSON), dot(*path[-1], 6, CRIMSON),
-      text(path[0][0] + 10, path[0][1] - 8, it('i'), 'start', size=19), text(path[-1][0] + 2, path[-1][1] - 12, it('f'), 'middle', size=19),
-      line(path[0][0], path[0][1] + 8, path[0][0], O[1], GRAY, 1.2, dash='4 4'), line(path[-1][0], path[-1][1] + 8, path[-1][0], O[1], GRAY, 1.2, dash='4 4'),
-      text(path[0][0], O[1] + 24, it('V', 'i'), size=17), text(path[-1][0], O[1] + 24, it('V', 'f'), size=17)]
-svg(OUT, 'f1_isotherm', 570, 335, b)
-
 # 2. 압력과 rms 속력: 한 변 L인 정육면체 상자, 빗금 친 벽으로 다가가는 질량 m, 속도 v인 분자와 벽의 법선(교재 그림 19.3.1)
 A, S, D = (150, 320), 200, (90, -66)          # 앞면 왼쪽 아래 꼭짓점, 한 변 길이, 깊이 방향 이동
 fr = {'A': A, 'B': (A[0] + S, A[1]), 'C': (A[0] + S, A[1] - S), 'Dd': (A[0], A[1] - S)}
@@ -92,29 +74,6 @@ for s, c, lab in ((0.6, VEL, f'낮은 {it("T")}'), (1.25, FORCE, f'높은 {it("T
     up = math.sqrt(2) * s
     b += [text(X2(up) + (10 if s < 1 else 30), Y(Pm(up, s), 170) + (4 if s < 1 else -10), lab, 'start', c, 17)]
 svg(OUT, 'f3_speeds', 640, 320, b)
-
-# 4. 몰비열: 단원자, 이원자 기체가 정적(con V), 정압(con p) 과정에서 받은 Q를 Delta E_int(병진, 회전)와 W로 나눈 막대(교재 그림 19.7.4)
-BASE, U, BW = 250, 50, 58
-segs = {'tr': ('병진', VEL), 'rot': ('회전', ACC), 'W': (it('W'), FORCE)}
-bars = [(70, ['tr'], '정적'), (170, ['tr', 'W'], '정압'), (330, ['tr', 'rot'], '정적'), (430, ['tr', 'rot', 'W'], '정압')]
-size = {'tr': 1.5, 'rot': 1.0, 'W': 1.0}
-b = [line(30, BASE, 560, BASE, INK, 1.5)]
-for x, parts, cap in bars:
-    y = BASE
-    for p in parts:
-        h = U * size[p]
-        lab, c = segs[p]
-        b += [f'<rect x="{x}" y="{y - h:.1f}" width="{BW}" height="{h:.1f}" fill="{c}" fill-opacity="0.28" stroke="{INK}" stroke-width="1.3"/>',
-              text(x + BW / 2, y - h / 2 + 6, lab, size=16)]
-        y -= h
-    b += [text(x + BW / 2, y - 10, it('Q'), c=CRIMSON, size=18), text(x + BW / 2, BASE + 22, cap, size=16)]
-    if 'W' in parts:
-        top = BASE - U * sum(size[p] for p in parts if p != 'W')
-        bx = x + BW + 8
-        b += [poly([(bx, BASE - 2), (bx + 6, BASE - 2), (bx + 6, top + 2), (bx, top + 2)], INK, 1.3),
-              text(bx + 12, (BASE + top) / 2 + 6, f'Δ{it("E", "int")}', 'start', size=16)]
-b += [text(149, BASE + 50, '단원자 기체', size=17, c=NOTE), text(409, BASE + 50, '이원자 기체', size=17, c=NOTE)]
-svg(OUT, 'f4_molar_heat', 580, 315, b)
 
 # 5. 단열 팽창: (a) 단열 받침 위 단열 실린더, 피스톤 위 납 알갱이를 덜어 냄 (b) 등온선들을 가로지르는 단열선 i -> f(교재 그림 19.9.1)
 b = [HATCH,

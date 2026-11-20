@@ -41,3 +41,25 @@ for u in turn:
     b += [dot(X(u), Yu(E), 5, INK), line(X(u), Yu(E), X(u), FB, GRAY, 1, dash='3 4')]
 b += [*axes(XL, (FT + FB) / 2, XR + 14, FT - 8, it('x'), it('F')), poly([(X(u), Yf(F(u))) for u in us], FORCE, 2.5)]
 svg(OUT, 'f2_potential_curve', 540, 380, b)
+
+# 3. 에너지 보존: 마찰 있는 경사면을 미끄러져 내려가는 블록(1에서 2로)과 두 순간의 K, U, E_th 막대. 고립계라 막대 전체 높이 E가 같다(교재 8.5)
+def blk(cx, cy, label, op=None):
+    o = f' fill-opacity="{op}" stroke-opacity="{op}"' if op else ''
+    return (f'<g transform="translate({cx:.1f},{cy:.1f}) rotate({SLOPE:.1f})"><rect x="-22" y="-34" width="44" height="34" fill="{LIGHT}" stroke="{INK}" stroke-width="1.5"{o}/></g>'
+            + text(cx, cy - 44, label, size=16, c=NOTE))
+SLOPE = math.degrees(math.atan2(160, 260))
+b = [poly([(40, 270), (300, 270), (40, 110), (40, 270)], INK, 1.5, fill='#f1ebe0'),
+     *[line(60 + 24 * i, 122 + 24 * i * 160 / 260 + 2, 52 + 24 * i, 122 + 24 * i * 160 / 260 + 10, GRAY, 1) for i in range(10)],
+     blk(92, 142, '1'), blk(232, 228, '2')]
+BX, BASE, EH = 380, 280, 180
+for x, (u, k, th) in ((BX, (150, 30, 0)), (BX + 90, (40, 80, 60))):
+    y = BASE
+    for hgt, c in ((u, FORCE), (k, VEL), (th, ACC)):
+        if hgt: b.append(f'<rect x="{x}" y="{y - hgt}" width="44" height="{hgt}" fill="{c}"/>')
+        y -= hgt
+b += [line(BX - 12, BASE, BX + 146, BASE, INK, 1.2), line(BX - 12, BASE - EH, BX + 146, BASE - EH, INK, 1.2, dash='6 4'),
+      text(BX + 152, BASE - EH + 5, it('E'), 'start', size=17),
+      text(BX + 22, BASE + 22, '1', size=16, c=NOTE), text(BX + 112, BASE + 22, '2', size=16, c=NOTE),
+      text(BX + 152, BASE - 20, it('U'), 'start', FORCE, 16), text(BX + 152, BASE - 62, it('K'), 'start', VEL, 16),
+      text(BX + 152, BASE - 140, it('E', 'th'), 'start', ACC, 16)]
+svg(OUT, 'f3_energy', 560, 300, b)

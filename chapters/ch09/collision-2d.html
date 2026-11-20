@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="card-title" content="2차원 충돌">
+<title>2차원 충돌 · 서강대 일반물리</title>
+<link rel="stylesheet" href="../../vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../../core/chapter.css">
+</head>
+<body>
+<div class="page two">
+<a class="back" href="../../index.html">← 목차</a>
+<h1>2차원 충돌 (collisions in two dimensions)</h1>
+<div class="cols">
+<div>
+<p>두 물체가 정면으로 부딪히지 않으면 충돌 뒤 처음 축을 벗어나 움직인다. 이런 <b class="k">2차원 충돌</b>에서도 닫힌 고립계의 선운동량 총합은 충돌 전과 뒤가 같다.</p>
+<div class="eq"><div class="eq-tex" data-tex="\textcolor{#840025}{\vec P_{1i} + \vec P_{2i} = \vec P_{1f} + \vec P_{2f}}"></div><span class="eq-no">(9.8.1)</span></div>
+<ul class="pts">
+<li>성분마다 따로 성립한다. 정지한 물체 2에 물체 1이 <span data-tex="x"></span>축을 따라 부딪히면 <span data-tex="m_1v_{1i} = m_1v_{1f}\cos\theta_1 + m_2v_{2f}\cos\theta_2"></span> (9.8.3), <span data-tex="0 = -m_1v_{1f}\sin\theta_1 + m_2v_{2f}\sin\theta_2"></span> (9.8.4)이다.</li>
+<li>탄성 충돌이면 운동에너지 합도 같아서 <span data-tex="K_{1i} + K_{2i} = K_{1f} + K_{2f}"></span> (9.8.2)이다.</li>
+</ul>
+</div>
+<div class="fig"><img src="fig/f4_collision2d.svg" alt="정지한 물체 2에 비스듬히 부딪힌 물체 1이 x축과 각 θ1, θ2로 흩어지는 모습과 나중 운동량 P1f, P2f를 이어 붙이면 처음 운동량 P1i가 되는 벡터 그림"></div>
+</div>
+</div>
+<script type="module" src="../../core/chapter.js"></script>
+</body>
+</html>

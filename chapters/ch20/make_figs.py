@@ -99,27 +99,3 @@ b += [text(S1 - 8, YH - 8, it('a'), 'end', size=19), text(S2 + 8, YH - 8, it('b'
       line(QX, 58, QX, 104, CRIMSON, 3, 'c'), text(QX + 10, 70, it('Q', 'H'), 'start', CRIMSON, 18),
       line(QX, 226, QX, 272, CRIMSON, 3, 'c'), text(QX + 10, 266, it('Q', 'L'), 'start', CRIMSON, 18)]
 svg(OUT, 'f2_carnot', 675, 330, b)
-
-# 3. 카르노 냉동기: 위 고온 저장체, 아래 저온 저장체, 가운데 작업 물질 고리와 Q_L, W, Q_H(교재 그림 20.3.1)
-C, R = (230, 200), 46
-b = [fill_rect(70, 20, 320, 62, HOT), text(230, 58, f'고온 저장체 {it("T", "H")}', size=17),
-     fill_rect(70, 318, 320, 62, COLD), text(230, 356, f'저온 저장체 {it("T", "L")}', size=17),
-     circle(*C, R, '#ffffff', INK, 2.5), arc(*C, R, 100, 140, INK, 2.5, 'ink'), arc(*C, R, 280, 320, INK, 2.5, 'ink'),
-     text(C[0] + R + 14, C[1] + 6, '작업 물질', 'start', size=14, c=NOTE),
-     line(C[0], 316, C[0], C[1] + R + 6, CRIMSON, 4, 'c'), text(C[0] + 14, 290, it('Q', 'L'), 'start', CRIMSON, 19),
-     line(C[0], C[1] - R - 2, C[0], 88, CRIMSON, 4, 'c'), text(C[0] + 14, 124, it('Q', 'H'), 'start', CRIMSON, 19),
-     line(96, C[1], C[0] - R - 6, C[1], FORCE, 4, 'f'), text(118, C[1] - 14, it('W'), 'middle', FORCE, 20)]
-svg(OUT, 'f3_refrigerator', 460, 395, b)
-
-# 4. 통계로 본 엔트로피: 단열 상자 속 분자 여섯 개 a~f를 왼쪽 반과 오른쪽 반에 나눈 두 배열(교재 그림 20.4.1, 배열 III과 IV)
-SPOT_L = [(50, 70), (95, 120), (45, 150), (100, 64), (70, 104), (110, 160)]
-SPOT_R = [(170, 80), (215, 140), (165, 148), (220, 70), (190, 110), (230, 170)]
-b = [HATCH]
-for X0, tag, left, right in ((10, 'a', 'abcd', 'ef'), (320, 'b', 'abc', 'def')):
-    b += insul_box(X0, 34, 270, 168)
-    b += [line(X0 + 135, 46, X0 + 135, 190, GRAY, 1.5, dash='6 5')]
-    for spots, mols in ((SPOT_L, left), (SPOT_R, right)):
-        for (sx, sy), m in zip(spots, mols):
-            b += [circle(X0 + sx, 20 + sy, 14, '#ffffff', INK, 1.8), text(X0 + sx, 20 + sy + 6, it(m), size=19)]
-    b += [text(X0 + 70, 228, it('n', '1'), size=20), text(X0 + 200, 228, it('n', '2'), size=20), text(X0 + 135, 256, f'({tag})', size=16)]
-svg(OUT, 'f4_microstates', 600, 266, b)

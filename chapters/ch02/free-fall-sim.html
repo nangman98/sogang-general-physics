@@ -6,21 +6,33 @@
 <title>자유 낙하 시뮬레이션 · 서강대 일반물리</title>
 <link rel="stylesheet" href="../../vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../../core/chapter.css">
+<style>
+/* 값 글자 폭이 바뀌어도 조작 막대 줄바꿈이 그대로이게 한다. 세로 운동이라 좁은 화면에서도 장면을 높게 둔다 */
+#y0, #v0 { width: 120px; }
+#y0num, #v0num { display: inline-block; }
+#y0num { min-width: 66px; }
+#v0num { min-width: 100px; }
+@media (max-width: 860px) { .page.screen .stagewrap { height: 440px; } }
+</style>
 </head>
 <body>
-<div class="page wide">
+<div class="page screen">
+<div class="sim-head">
 <a class="back" href="free-fall.html">← 자유 낙하</a>
 <h1>자유 낙하 시뮬레이션</h1>
-<div class="eq"><div class="eq-tex" data-tex="v = v_0 - gt \qquad \textcolor{#840025}{y - y_0 = v_0 t - \tfrac{1}{2} g t^2}"></div><span class="eq-no"><span data-tex="y_0 = 0,\ g = 9.8\ \mathrm{m/s^2}"></span></span></div>
-<div class="sim" id="sim">
-<svg id="view" viewBox="0 0 640 360" role="img" aria-label="위로 던진 공의 높이와 v-t 그래프"></svg>
-<div class="row">
-<label for="v0">처음 속도 <span data-tex="v_0"></span> <input type="range" id="v0" min="0" max="25" step="1" value="15"> <span class="read" id="v0val"></span></label>
-<button class="main" id="play">재생</button><button id="reset">처음으로</button>
+<div class="eq"><div class="eq-tex" data-tex="\textcolor{#840025}{y - y_0 = v_0 t - \tfrac{1}{2} g t^2}"></div><span class="eq-no"><span data-tex="g = 9.8\ \mathrm{m/s^2}"></span></span></div>
 </div>
-<p class="read" id="read"></p>
+<div class="stagewrap"><svg id="scene" class="scene" role="img" aria-label="건물 옥상 높이에서 던진 공과 높이 자, 속도 v, 가속도 a 화살표, 0.5 s마다 찍은 공의 위치" style="touch-action:none"></svg>
+<div class="readout"><div class="read" id="yval"></div><div class="read" id="vval"></div></div></div>
+<div class="bar">
+<button id="play" aria-label="재생">▶</button><button id="reset" aria-label="처음으로">↺</button>
+<label for="speed">배속 <select id="speed"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
+<span class="read" id="tval"></span>
+<label for="strobe"><input type="checkbox" id="strobe" checked> 0.5 s마다 위치</label>
+<label for="y0">처음 높이 <span data-tex="y_0"></span> <input type="range" id="y0" min="0" max="30" step="1" value="20"> <span class="read" id="y0num"></span></label>
+<label for="v0">처음 속도 <span data-tex="v_0"></span> <input type="range" id="v0" min="-15" max="20" step="1" value="10"> <span class="read" id="v0num"></span></label>
 </div>
-
+<svg id="graphs" class="graphs" role="img" aria-label="같은 시간축의 y-t, v-t, a-t 그래프"></svg>
 </div>
 <script type="module" src="../../core/chapter.js"></script>
 <script type="module" src="freefall.js"></script>

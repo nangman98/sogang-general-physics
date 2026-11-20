@@ -6,22 +6,31 @@
 <title>등가속도 운동 시뮬레이션 · 서강대 일반물리</title>
 <link rel="stylesheet" href="../../vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../../core/chapter.css">
+<style>
+/* 값 글자 폭이 바뀌어도 조작 막대 줄바꿈이 그대로이게 한다 */
+#v0, #a { width: 120px; }
+#v0num, #anum { display: inline-block; min-width: 100px; }
+</style>
 </head>
 <body>
-<div class="page wide">
+<div class="page screen">
+<div class="sim-head">
 <a class="back" href="index.html">← 등가속도 운동</a>
 <h1>등가속도 운동 시뮬레이션</h1>
 <div class="eq"><div class="eq-tex" data-tex="\textcolor{#840025}{x - x_0 = v_0 t + \tfrac{1}{2} a t^2}"></div><span class="eq-no"><span data-tex="x_0 = 0"></span></span></div>
-<div class="sim" id="sim">
-<svg id="view" viewBox="0 0 900 460" role="img" aria-label="x축 위를 움직이는 물체와 속도·가속도 화살표, x-t, v-t, a-t 그래프"></svg>
-<div class="row">
-<label for="v0">처음 속도 <span data-tex="v_0"></span> <input type="range" id="v0" min="-10" max="10" step="1" value="8"> <span class="read" id="v0val"></span></label>
-<label for="a">가속도 <span data-tex="a"></span> <input type="range" id="a" min="-5" max="5" step="0.5" value="-4"> <span class="read" id="aval"></span></label>
-<button class="main" id="play">재생</button><button id="reset">처음으로</button>
-</div>
-<p class="read" id="read"></p>
-</div>
 <p class="next"><a href="free-fall.html">다음 → 자유 낙하</a></p>
+</div>
+<div class="stagewrap"><svg id="scene" class="scene" role="img" aria-label="거리 표지가 선 길 위의 자동차와 속도 v, 가속도 a 화살표, 0.5 s마다 찍은 자동차 위치" style="touch-action:none"></svg>
+<div class="readout"><div class="read" id="xval"></div><div class="read" id="vval"></div></div></div>
+<div class="bar">
+<button id="play" aria-label="재생">▶</button><button id="reset" aria-label="처음으로">↺</button>
+<label for="speed">배속 <select id="speed"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
+<span class="read" id="tval"></span>
+<label for="strobe"><input type="checkbox" id="strobe" checked> 0.5 s마다 위치</label>
+<label for="v0">처음 속도 <span data-tex="v_0"></span> <input type="range" id="v0" min="-10" max="10" step="1" value="8"> <span class="read" id="v0num"></span></label>
+<label for="a">가속도 <span data-tex="a"></span> <input type="range" id="a" min="-5" max="5" step="0.5" value="-4"> <span class="read" id="anum"></span></label>
+</div>
+<svg id="graphs" class="graphs" role="img" aria-label="같은 시간축의 x-t, v-t, a-t 그래프"></svg>
 </div>
 <script type="module" src="../../core/chapter.js"></script>
 <script type="module" src="accel.js"></script>

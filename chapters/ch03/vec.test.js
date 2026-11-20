@@ -39,3 +39,18 @@ test('cross product z component over phi 0-360 deg: a along x, b turned by phi i
     assert.ok(Math.abs(cross(b, [2.5, 0, 0])[2] + c[2]) < 1e-12); // order flips the sign (3.3.6)
   }
 });
+
+test('difference by components and polar helpers (Eqs. 3.1.4, 3.2.7, 3.1.5)', async () => {
+  const { sub, polar, between, ccw, snap } = await import('./vec.js');
+  assert.deepEqual(sub([4, 1], [1, 3]), [3, -2]);
+  assert.deepEqual(add([4, 1], [-1, -3]), sub([4, 1], [1, 3]));   // a - b = a + (-b)
+  const p = polar(2, 30); near(p[0], 2 * Math.cos(rad(30))); near(p[1], 1);
+  near(between(10, 60), 50); near(between(60, 10), 50); near(between(350, 20), 30); near(between(0, 180), 180); near(between(0, 250), 110);
+  near(ccw(0, 70), 70); near(ccw(70, 0), 290); near(ccw(350, 20), 30); near(ccw(30, 30), 0);
+  assert.equal(snap(1.26, 0.5), 1.5); assert.equal(snap(-0.74, 0.5), -0.5); assert.equal(snap(9, 0.5, -6, 6), 6); assert.equal(snap(0.30000000000000004, 0.1), 0.3);
+  // a.b from polar form matches ab cos(phi) with phi the smaller angle
+  const a = polar(4, 200), b = polar(6, 330);
+  near(dot(a, b), 4 * 6 * Math.cos(rad(between(200, 330))));
+  // c_z from polar form matches ab sin(phi) with phi measured ccw from a to b (0-360)
+  near(cross([...a, 0], [...b, 0])[2], 4 * 6 * Math.sin(rad(ccw(200, 330))));
+});

@@ -6,27 +6,34 @@
 <title>길이·시간·질량의 크기 · 서강대 일반물리</title>
 <link rel="stylesheet" href="../../vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../../core/chapter.css">
+<style>
+/* 기본량 고르기 단추 묶음과 넓은 크기 slider. 좁은 화면에서는 장면을 높게 둔다 */
+.bar .seg { display: inline-flex; border: 1px solid var(--crimson); border-radius: 8px; overflow: hidden; }
+.bar .seg button { width: auto; height: 36px; border: 0; border-radius: 0; padding: 0 16px; font-size: 16px; background: var(--bg); color: var(--crimson); }
+.bar .seg button + button { border-left: 1px solid var(--crimson); }
+.bar .seg button[aria-pressed="true"] { background: var(--crimson); color: var(--bg); font-weight: 600; }
+.bar .seg button:focus-visible { outline: 2px solid var(--crimson); outline-offset: 2px; }
+#n { width: min(420px, 48vw); }
+#nval { display: inline-block; min-width: 90px; }
+.readout .lbl { font-size: 15px; color: var(--ink-2); margin-right: 8px; }
+@media (max-width: 860px) { .page.screen .stagewrap { height: 560px; } }
+</style>
 </head>
 <body>
-<div class="page wide">
+<div class="page screen">
+<div class="sim-head">
 <a class="back" href="index.html">← 1장 측정</a>
 <h1>길이·시간·질량의 크기</h1>
-
-<div class="tabs" role="tablist" aria-label="기본량">
-<button role="tab" id="tab-length" data-q="length" aria-selected="true">길이 (length)</button>
-<button role="tab" id="tab-time" data-q="time" aria-selected="false">시간 (time)</button>
-<button role="tab" id="tab-mass" data-q="mass" aria-selected="false">질량 (mass)</button>
+<div class="eq"><div class="eq-tex" data-tex="\textcolor{#840025}{c = 299\,792\,458\ \mathrm{m/s}}"></div></div>
 </div>
-
-<p class="value" id="value" aria-live="polite"></p>
-
-<div class="scale">
-<div class="marks" id="marks"></div>
-<input type="range" id="n" step="1" aria-label="크기 (한 칸에 10배)">
-<div class="ticks" id="ticks"></div>
+<div class="stagewrap"><svg id="scene" class="scene" role="img" aria-label="한 눈금이 10배인 자 위에 교재 표의 물체 그림을 놓고 끌 수 있는 빨간 바늘로 크기를 고르는 장면" style="touch-action:none"></svg>
+<div class="readout"><div class="read" id="val"></div><div class="read" id="light"></div></div></div>
+<div class="bar">
+<div class="seg" role="group" aria-label="기본량">
+<button data-q="length" aria-pressed="true">길이</button><button data-q="time" aria-pressed="false">시간</button><button data-q="mass" aria-pressed="false">질량</button>
 </div>
-
-<p class="near"><span class="lbl">가장 가까운 예</span><span id="near"></span></p>
+<label for="n">크기 <input type="range" id="n" min="-15" max="26" step="1" value="0"> <span class="read" id="nval"></span></label>
+</div>
 </div>
 <script type="module" src="../../core/chapter.js"></script>
 <script type="module" src="sim.js"></script>

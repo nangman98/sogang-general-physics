@@ -14,6 +14,12 @@ export const trajectoryY = (v0, th0, x, g = G) => Math.tan(rad(th0)) * x - (g * 
 
 export const centripetal = (v, r) => (v * v) / r;          // (4.5.1)
 export const period = (v, r) => (2 * Math.PI * r) / v;     // (4.5.2)
+// 중심이 원점인 반지름 r의 원을 속력 v로 반시계 방향으로 돈다. t = 0에 (r, 0)에서 출발하고 θ = vt/r.
+// 속도 v_x = −v sin θ, v_y = v cos θ (4.5.3), 가속도 a_x = −(v²/r) cos θ, a_y = −(v²/r) sin θ (4.5.6).
+export function circle(v, r, t) {
+  const th = (v * t) / r, c = Math.cos(th), s = Math.sin(th), a = centripetal(v, r);
+  return { th, x: r * c, y: r * s, vx: -v * s, vy: v * c, ax: -a * c, ay: -a * s };
+}
 
 // 강을 건너는 배. P 배, A 강가, B 강물. x는 강물이 흐르는 쪽, y는 건너는 쪽.
 // 뱃머리 각 th는 똑바로 건너는 방향에서 상류 쪽(−x)으로 잰 각(도).

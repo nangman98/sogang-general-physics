@@ -81,6 +81,38 @@ ul.pts li { margin: 3px 0; }
 .cols .fig img { min-width: 0; max-width: 100%; max-height: 60vh; }
 .page.two .next { margin-top: 24px; }
 @media (max-width: 860px) { .cols { grid-template-columns: minmax(0, 1fr); } .page.two { min-height: 0; display: block; font-size: inherit; } }
+/* 시뮬레이션 쪽 한 화면 배치(2026-11-19, 참고 twinace98 web_phys_sim). 맨 위 줄에 돌아가기·제목·빨간 식·다음,
+   왼쪽에 장면(.stagewrap)과 그 아래 조작 막대(.bar), 오른쪽에 시간 그래프(svg.graphs)를 둔다(사용자 요청 2026-11-19).
+   그래프가 없는 쪽은 한 열이다. SVG는 simshell.js가 실제 픽셀 크기로 다시 그린다. */
+.page.screen { max-width: none; height: 100vh; padding: 10px 28px 12px; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto; grid-template-areas: "head head" "scene graphs" "bar graphs"; column-gap: 28px; }
+.page.screen:not(:has(svg.graphs)) { grid-template-columns: minmax(0, 1fr); grid-template-areas: "head" "scene" "bar"; }
+.sim-head { grid-area: head; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 24px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+.sim-head h1 { font-size: 22px; margin: 0; }
+.sim-head .eq { flex: 1; margin: 0; min-width: 240px; }
+.sim-head .eq-tex .katex { font-size: 2.1em; }
+.sim-head .next { margin: 0; font-size: 16px; }
+.page.screen svg { display: block; width: 100%; min-height: 0; }
+.page.screen .stagewrap { grid-area: scene; position: relative; min-height: 0; margin: 10px 0 8px; }
+.page.screen svg.scene { height: 100%; border-radius: 10px; }
+.readout { position: absolute; top: 10px; left: 12px; padding: 6px 14px; background: #ffffffe6; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 1px 4px #0000000f; font-size: 20px; line-height: 1.6; }
+.readout .read { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.page.screen svg.graphs { grid-area: graphs; height: 100%; padding-top: 6px; }
+.bar { grid-area: bar; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 18px; padding: 8px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 15px; }
+.bar label { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.bar input[type=range] { width: 140px; accent-color: var(--crimson); }
+.bar select { font: inherit; padding: 3px 4px; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); color: var(--ink); }
+.bar button { font: inherit; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--ink); background: var(--bg); color: var(--ink); cursor: pointer; padding: 0; }
+.bar button#play { background: var(--crimson); border-color: var(--crimson); color: var(--bg); font-size: 14px; width: 42px; height: 42px; }
+.bar input[type=checkbox] { accent-color: var(--crimson); width: 16px; height: 16px; margin: 0; }
+.bar .read { font-size: 18px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.bar .out { margin-left: auto; display: flex; gap: 22px; }
+@media (max-width: 860px) {
+  .page.screen, .page.screen:not(:has(svg.graphs)) { height: auto; grid-template-columns: minmax(0, 1fr); grid-template-areas: "head" "scene" "bar" "graphs"; }
+  .page.screen .stagewrap { height: 260px; }
+  .page.screen svg.graphs { height: 460px; }
+  .bar .out { margin-left: 0; flex-wrap: wrap; }
+}
 /* 페이지 안 시뮬레이션 */
 .sim { border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin: 24px 0; }
 .sim svg { display: block; width: 100%; height: auto; max-height: 60vh; }

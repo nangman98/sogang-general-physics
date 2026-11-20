@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { QUANTITIES as Q, prefixed, nearest, log10Of, sourceOf } from './sizes.js';
+import { QUANTITIES as Q, prefixed, nearest, log10Of, sourceOf, C_LIGHT, sci } from './sizes.js';
+import { iconOf } from './icons.js';
 
 test('textbook table rows and values (Tables 1.1.3, 1.2.1, 1.3.1)', () => {
   const table = q => Q[q].items.filter(r => r[3] === undefined).length;
@@ -55,4 +56,23 @@ test('sources and pictures', () => {
     assert.ok(c, `no picture for ${r[0]}`);
     assert.match(c.license, /^(Public domain|CC0)$/, `${r[0]}: ${c.license}`);
   }
+});
+
+test('two-figure scientific form and the speed of light', () => {
+  assert.equal(C_LIGHT, 299792458);
+  assert.deepEqual(sci(C_LIGHT), [3, 8]);
+  assert.deepEqual(sci(1 / C_LIGHT), [3.3, -9]);            // light crosses 1 m in 3.3 ns
+  assert.deepEqual(sci(1e6 / C_LIGHT), [3.3, -3]);
+  assert.deepEqual(sci(C_LIGHT * 1e-43), [3, -35]);
+  assert.deepEqual(sci(9.96), [1, 1]);
+  assert.deepEqual(sci(1), [1, 0]);
+  for (let n = -45; n <= 45; n++) {
+    const [m, e] = sci(10 ** n / C_LIGHT);
+    assert.ok(m >= 1 && m < 10, `n = ${n}`);
+    assert.ok(Math.abs(m * 10 ** e / (10 ** n / C_LIGHT) - 1) < 0.02, `n = ${n}`);
+  }
+});
+
+test('every item has a drawn picture', () => {
+  for (const q of Object.values(Q)) for (const r of q.items) assert.match(iconOf(r[0]) ?? '', /^<g clip-path/, r[0]);
 });

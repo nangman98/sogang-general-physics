@@ -8,20 +8,25 @@
 <link rel="stylesheet" href="../../core/chapter.css">
 </head>
 <body>
-<div class="page wide">
+<div class="page screen">
+<div class="sim-head">
 <a class="back" href="index.html">← 포물선 운동</a>
 <h1>포물선 운동 시뮬레이션</h1>
 <div class="eq"><div class="eq-tex" data-tex="\textcolor{#840025}{y = (\tan\theta_0)\,x - \frac{g x^2}{2(v_0\cos\theta_0)^2}}"></div><span class="eq-no"><span data-tex="g = 9.8\ \mathrm{m/s^2}"></span></span></div>
-<div class="sim" id="sim">
-<svg id="view" viewBox="0 0 900 470" role="img" aria-label="발사점에서 던진 공의 궤적과 속도 화살표" style="touch-action:none"></svg>
-<div class="row">
-<label for="v0">처음 속력 <span data-tex="v_0"></span> <input type="range" id="v0" min="0" max="30" step="1" value="20"> <span class="read" id="v0val"></span></label>
-<label for="th">발사각 <span data-tex="\theta_0"></span> <input type="range" id="th" min="0" max="90" step="1" value="45"> <span class="read" id="thval"></span></label>
-<button class="main" id="play">재생</button><button id="reset">처음으로</button>
-</div>
-<p class="read" id="read"></p>
-</div>
 <p class="next"><a href="circular.html">다음 → 등속 원운동</a></p>
+</div>
+<div class="stagewrap"><svg id="scene" class="scene" role="img" aria-label="잔디밭에서 찬 축구공의 궤적, 속도 v와 성분 v_x, v_y, 가속도 a 화살표, 0.25 s마다 찍은 공 위치" style="touch-action:none"></svg>
+<div class="readout"><div class="read" id="vxval"></div><div class="read" id="vyval"></div><div class="read" id="Rval"></div></div></div>
+<div class="bar">
+<button id="play" aria-label="재생">▶</button><button id="reset" aria-label="처음으로">↺</button>
+<label for="speed">배속 <select id="speed"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
+<span class="read" id="tval"></span>
+<label for="v0">처음 속력 <span data-tex="v_0"></span> <input type="range" id="v0" min="0" max="30" step="1" value="20" style="width:120px"> <span class="read" id="v0val"></span></label>
+<label for="th">발사각 <span data-tex="\theta_0"></span> <input type="range" id="th" min="0" max="90" step="1" value="45" style="width:120px"> <span class="read" id="thval"></span></label>
+<label for="strobe"><input type="checkbox" id="strobe" checked> 0.25 s마다 위치</label>
+<label for="comp"><input type="checkbox" id="comp" checked> 속도 성분</label>
+</div>
+<svg id="graphs" class="graphs" role="img" aria-label="같은 시간축의 x-t, y-t 그래프"></svg>
 </div>
 <script type="module" src="../../core/chapter.js"></script>
 <script type="module" src="projectile.js"></script>

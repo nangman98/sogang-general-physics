@@ -6,20 +6,29 @@
 <title>벡터의 합성 시뮬레이션 · 서강대 일반물리</title>
 <link rel="stylesheet" href="../../vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../../core/chapter.css">
+<style>
+.bar input[type=radio] { accent-color: var(--crimson); width: 16px; height: 16px; margin: 0; }
+@media (max-width: 860px) { .page.screen .stagewrap { height: 520px; } }
+</style>
 </head>
 <body>
-<div class="page wide">
+<div class="page screen">
+<div class="sim-head">
 <a class="back" href="index.html">← 벡터와 벡터의 합성</a>
 <h1>벡터의 합성 시뮬레이션</h1>
 <div class="eq"><div class="eq-tex" data-tex="\textcolor{#840025}{r_x = a_x + b_x \qquad r_y = a_y + b_y}"></div></div>
-<div class="sim" id="sim">
-<svg id="view" viewBox="0 0 600 600" role="img" aria-label="격자 위의 두 벡터 a, b와 머리-꼬리 합 r" style="touch-action:none"></svg>
-<div class="row">
-<button data-mode="a+b"><span data-tex="\vec a + \vec b"></span></button><button data-mode="b+a"><span data-tex="\vec b + \vec a"></span></button><button data-mode="a-b"><span data-tex="\vec a - \vec b"></span></button> <button id="reset">처음으로</button> <span>동그라미를 끌어 <span data-tex="\vec a"></span>, <span data-tex="\vec b"></span>를 바꾼다</span>
-</div>
-<p class="read" id="read"></p>
-</div>
 <p class="next"><a href="dot.html">다음 → 내적</a></p>
+</div>
+<div class="stagewrap"><svg id="scene" class="scene" role="group" aria-label="격자 위에서 a의 머리에 b의 꼬리를 이은 합 r, 두 화살표 끝을 끌어 바꿈, 축 옆에 a_x와 b_x를 이은 화살표와 r_x 화살표" style="touch-action:none"></svg>
+<div class="readout"><div class="read" id="rx"></div><div class="read" id="ry"></div><div class="read" id="rmag"></div></div></div>
+<div class="bar">
+<button id="reset" aria-label="처음으로">↺</button>
+<label for="op-add"><input type="radio" name="op" id="op-add" value="add" checked> <span data-tex="\vec a + \vec b"></span></label>
+<label for="op-sub"><input type="radio" name="op" id="op-sub" value="sub"> <span data-tex="\vec a - \vec b"></span></label>
+<label for="comp"><input type="checkbox" id="comp" checked> 성분</label>
+<label for="swap"><input type="checkbox" id="swap"> 순서 바꾸기</label>
+<span class="out"><span class="read" id="aval"></span><span class="read" id="bval"></span></span>
+</div>
 </div>
 <script type="module" src="../../core/chapter.js"></script>
 <script type="module" src="addition.js"></script>

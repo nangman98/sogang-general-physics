@@ -53,3 +53,12 @@ export function prefixed(q, n) {
 export function nearest(q, n) {
   return q.items.reduce((a, b) => (Math.abs(log10Of(b) - n) < Math.abs(log10Of(a) - n) ? b : a));
 }
+
+// 진공에서 빛의 속력 c (m/s). 미터를 빛이 1/299 792 458 s 동안 가는 거리로 정했기 때문에 정해진 값이다(교재 1.1).
+export const C_LIGHT = 299792458;
+// 양수 x를 유효숫자 두 자리 [가수, 지수]로 쓴다. 가수는 1.0 이상 10 미만이다.
+export function sci(x) {
+  let e = Math.floor(Math.log10(x)), m = Number((x / 10 ** e).toFixed(1));
+  if (m >= 10) { m = 1; e += 1; }
+  return [m, e];
+}

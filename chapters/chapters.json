@@ -21,8 +21,8 @@
   },
   "5": {
     "ko": "힘과 운동 I",
-    "pages": ["index.html", "normal.html", "third.html", "pulley.html"],
-    "sims": ["law-sim.html", "elevator-sim.html", "contact-sim.html", "pulley-sim.html"]
+    "pages": ["index.html", "third.html", "normal.html", "pulley.html"],
+    "sims": ["law-sim.html", "contact-sim.html", "elevator-sim.html", "pulley-sim.html"]
   },
   "6": {
     "ko": "힘과 운동 II",

@@ -6,23 +6,30 @@
 <title>뉴턴의 제3법칙 시뮬레이션 · 서강대 일반물리</title>
 <link rel="stylesheet" href="../../vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../../core/chapter.css">
+<style>
+.bar label .read { display: inline-block; min-width: 4.3em; }
+@media (max-width: 860px) { .page.screen svg.graphs { height: 340px; } }
+</style>
 </head>
 <body>
-<div class="page wide">
+<div class="page screen">
+<div class="sim-head">
 <a class="back" href="third.html">← 뉴턴의 제3법칙</a>
 <h1>뉴턴의 제3법칙 시뮬레이션</h1>
 <div class="eq"><div class="eq-tex" data-tex="\textcolor{#840025}{\vec F_{BC} = -\vec F_{CB}}"></div></div>
-<div class="sim" id="sim">
-<svg id="view" viewBox="0 0 900 280" role="img" aria-label="맞닿은 두 상자 A, B와 서로 주고받는 힘" style="touch-action:none"></svg>
-<div class="row">
-<label for="F">미는 힘 <span data-tex="F"></span> <input type="range" id="F" min="0" max="30" step="1" value="20"> <span class="read" id="Fval"></span></label>
-<label for="mA">질량 <span data-tex="m_A"></span> <input type="range" id="mA" min="1" max="10" step="0.5" value="3"> <span class="read" id="mAval"></span></label>
-<label for="mB">질량 <span data-tex="m_B"></span> <input type="range" id="mB" min="1" max="10" step="0.5" value="2"> <span class="read" id="mBval"></span></label>
-<button class="main" id="play">재생</button><button id="reset">처음으로</button>
+<p class="next"><a href="normal.html">다음 → 수직항력</a></p>
 </div>
-<p class="read" id="read"></p>
+<div class="stagewrap"><svg id="scene" class="scene" role="img" aria-label="마찰 없는 바닥 위 맞닿은 나무 상자 A, B와 미는 힘 F, 두 상자가 서로 주고받는 짝힘 F_AB와 F_BA, 가속도 a, 속도 v 화살표" style="touch-action:none"></svg>
+<div class="readout"><div class="read" id="BAval"></div><div class="read" id="ABval"></div><div class="read" id="aval"></div></div></div>
+<div class="bar">
+<button id="play" aria-label="재생">▶</button><button id="reset" aria-label="처음으로">↺</button>
+<label for="speed">배속 <select id="speed"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
+<span class="read" id="tval"></span>
+<label for="F">미는 힘 <span data-tex="F"></span> <input type="range" id="F" min="-20" max="20" step="1" value="15"> <span class="read" id="Fval"></span></label>
+<label for="mA">질량 <span data-tex="m_A"></span> <input type="range" id="mA" min="1" max="10" step="0.5" value="2"> <span class="read" id="mAval"></span></label>
+<label for="mB">질량 <span data-tex="m_B"></span> <input type="range" id="mB" min="1" max="10" step="0.5" value="3"> <span class="read" id="mBval"></span></label>
 </div>
-<p class="next"><a href="pulley.html">다음 → 도르래로 연결된 두 블록</a></p>
+<svg id="graphs" class="graphs" role="img" aria-label="같은 시간축의 F_BA-t, F_AB-t 그래프"></svg>
 </div>
 <script type="module" src="../../core/chapter.js"></script>
 <script type="module" src="contact.js"></script>

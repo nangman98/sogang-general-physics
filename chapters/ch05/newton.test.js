@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { accel, gravity, normalForce, contact, pulley, G } from './newton.js';
+import { accel, gravity, normalForce, contact, pulley, advance, hitTime, G } from './newton.js';
 
 const near = (x, y, e = 1e-9) => assert.ok(Math.abs(x - y) < e, `${x} vs ${y}`);
 
@@ -21,6 +21,35 @@ test('third law pair and the system (5.3.1, 5.3.2)', () => {
   near(c.a, 4); near(c.FBA, 8); near(c.FAB, -8);
   near(20 + c.FAB, 3 * c.a);                 // A alone: F + F_AB = mA a
   near(c.FBA, 2 * c.a);                      // B alone: F_BA = mB a
+});
+
+test('pushing B from the right: the pair still points apart (5.3.1, 5.3.2)', () => {
+  const c = contact(-20, 3, 2);
+  near(c.a, -4); near(c.FAB, -12); near(c.FBA, 12);
+  near(c.FAB, 3 * c.a);                      // A alone: F_AB = mA a
+  near(-20 + c.FBA, 2 * c.a);                // B alone: F + F_BA = mB a
+  const z = contact(0, 3, 2);
+  near(z.a, 0); near(z.FBA, 0); near(z.FAB, 0);
+  for (const F of [-30, -7, 7, 30]) {        // a contact force never pulls
+    const p = contact(F, 4, 1.5);
+    assert.ok(p.FBA >= 0 && p.FAB <= 0);
+    near(p.FBA + p.FAB, 0);
+  }
+});
+
+test('constant-acceleration step and hit time', () => {
+  const [x, v] = advance(1, 2, 3, 2);
+  near(x, 1 + 4 + 6); near(v, 8);
+  let s = [0, 0];
+  for (let i = 0; i < 100; i++) s = advance(...s, 3.8, 0.01);   // many small steps = one big step
+  near(s[0], 0.5 * 3.8 * 1); near(s[1], 3.8);
+  near(hitTime(0, 0, 2, 1), 1);              // x = t^2
+  near(hitTime(0.25, 0, 2, 1), Math.sqrt(0.75));
+  near(hitTime(0, 3, 0, 6), 2);              // constant speed
+  near(hitTime(0, 5, -2, 4), 1);             // first of the two crossings (t = 1, 4)
+  assert.equal(hitTime(0, 0, -2, 1), Infinity);
+  assert.equal(hitTime(0, 0, 0, 1), Infinity);
+  near(hitTime(1, 0, 2, 1), 0);
 });
 
 test('block on table, block hanging (5.3.4, 5.3.6, 5.3.7, 5.3.9)', () => {

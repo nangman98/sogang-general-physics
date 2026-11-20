@@ -8,20 +8,24 @@
 <link rel="stylesheet" href="../../core/chapter.css">
 </head>
 <body>
-<div class="page wide">
+<div class="page screen">
+<div class="sim-head">
 <a class="back" href="index.html">← 뉴턴의 제1·2법칙</a>
 <h1>뉴턴의 제1·2법칙 시뮬레이션</h1>
 <div class="eq"><div class="eq-tex" data-tex="\textcolor{#840025}{\vec F_{\text{net}} = m\vec a}"></div></div>
-<div class="sim" id="sim">
-<svg id="view" viewBox="0 0 900 320" role="img" aria-label="마찰 없는 바닥 위 상자에 작용하는 힘과 가속도, 속도 화살표" style="touch-action:none"></svg>
-<div class="row">
+<p class="next"><a href="third.html">다음 → 뉴턴의 제3법칙</a></p>
+</div>
+<div class="stagewrap"><svg id="scene" class="scene" role="img" aria-label="마찰 없는 바닥 위 나무 상자와 힘 F, 가속도 a, 속도 v 화살표, 0.5 s마다 찍은 상자 위치" style="touch-action:none"></svg>
+<div class="readout"><div class="read" id="aval"></div><div class="read" id="vval"></div></div></div>
+<div class="bar">
+<button id="play" aria-label="재생">▶</button><button id="reset" aria-label="처음으로">↺</button>
+<label for="speed">배속 <select id="speed"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
+<span class="read" id="tval"></span>
 <label for="F">힘 <span data-tex="F"></span> <input type="range" id="F" min="-20" max="20" step="1" value="10"> <span class="read" id="Fval"></span></label>
 <label for="m">질량 <span data-tex="m"></span> <input type="range" id="m" min="1" max="10" step="0.5" value="2"> <span class="read" id="mval"></span></label>
-<button class="main" id="play">재생</button><button id="reset">처음으로</button>
+<label for="strobe"><input type="checkbox" id="strobe" checked> 0.5 s마다 위치</label>
 </div>
-<p class="read" id="read"></p>
-</div>
-<p class="next"><a href="normal.html">다음 → 수직항력</a></p>
+<svg id="graphs" class="graphs" role="img" aria-label="같은 시간축의 x-t, v-t, a-t 그래프"></svg>
 </div>
 <script type="module" src="../../core/chapter.js"></script>
 <script type="module" src="law.js"></script>
